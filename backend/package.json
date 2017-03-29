@@ -21,7 +21,7 @@
     "include-all": "^1.0.0",
     "jsonwebtoken": "^7.3.0",
     "rc": "1.0.1",
-    "sails": "~0.12.13",
+    "sails": "github:lifespent/sails#hastings-fix",
     "sails-disk": "~0.10.9"
   },
   "scripts": {
