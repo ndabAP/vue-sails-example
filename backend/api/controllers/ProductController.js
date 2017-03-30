@@ -57,9 +57,9 @@ module.exports = {
       description,
       price
     }).exec((error, product) => {
+      if (error) return res.serverError(error);
+      
       if (product) return res.ok();
-
-      return res.ok();
     });
   },
 
@@ -72,8 +72,8 @@ module.exports = {
 
     Product.destroy({
       id
-    }).exec((error, product) => {
-      if (product) return res.ok();
+    }).exec((error) => {
+       if (error) return res.serverError(error);
 
       return res.ok();
     });
