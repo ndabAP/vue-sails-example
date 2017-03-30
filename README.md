@@ -10,7 +10,7 @@ This project is for those who are new to [single-page applications](https://en.w
 5. `cd ../backend && npm install`
 
 ### Production
-Do `cd backend && sails lift` and then open your browser and go to [localhost:1337](http://localhost:1337).
+First, you have to build up your Vue.js components and merge them with Sails.js. This can be done with `cd frontend && npm run build`. Now do `cd backend && sails lift` and then open your browser and go to [localhost:1337](http://localhost:1337).
 
 ### Development
 `cd frontend && npm run dev` and then open [localhost:8080](http://localhost:8080) in your browser.
