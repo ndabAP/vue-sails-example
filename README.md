@@ -37,4 +37,4 @@ HTTP client for Vue.js.
 Router for the frontend.
 
 ## To do
-Cookie sessions, password protection
+Cookie sessions, password protection, tests, multilanguage, mobile version
