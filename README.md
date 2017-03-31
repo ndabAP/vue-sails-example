@@ -3,17 +3,26 @@ This project is for those who are new to [single-page applications](https://en.w
 
 ## Getting started
 ### Prerequisites
-1. `curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -`
-2. `sudo apt-get install -y nodejs`
-3. `sudo npm install sails -g`
-4. `cd public/frontend && npm install`
-5. `cd ../backend && npm install`
+1. Get Nodes.js: 
+```bash
+$ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
+```
+2. Get Sails.js:
+```bash
+$ sudo npm install sails -g
+```
+3. Isntall modules:
+```bash
+$ cd public/frontend && npm install
+$ cd ../backend && npm install
+```
 
 ### Production
 First, you have to build up your Vue.js components and merge them with Sails.js. This can be done with `cd frontend && npm run build`. Now do `cd ../backend && sails lift` and then open your browser and go to [localhost:1337](http://localhost:1337).
 
 ### Development
-`cd backend && sails lift` and then `cd ../frontend && npm run dev` and then open [localhost:8080](http://localhost:8080) in your browser.
+`cd backend && sails lift` and then `cd ../frontend && npm run dev` after that open [localhost:8080](http://localhost:8080) in your browser.
 
 ## Components used
 The following components are used in this project:
