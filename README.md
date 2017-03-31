@@ -12,7 +12,7 @@ $ sudo apt-get install -y nodejs
 ```bash
 $ sudo npm install sails -g
 ```
-#### Isntall modules
+#### Install modules
 ```bash
 $ cd public/frontend && npm install
 $ cd ../backend && npm install
