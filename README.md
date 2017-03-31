@@ -3,16 +3,16 @@ This project is for those who are new to [single-page applications](https://en.w
 
 ## Getting started
 ### Prerequisites
-1. Get Nodes.js: 
+#### Get Nodes.js
 ```bash
 $ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 $ sudo apt-get install -y nodejs
 ```
-2. Get Sails.js:
+#### Get Sails.js
 ```bash
 $ sudo npm install sails -g
 ```
-3. Isntall modules:
+#### Isntall modules
 ```bash
 $ cd public/frontend && npm install
 $ cd ../backend && npm install
