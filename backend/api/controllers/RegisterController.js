@@ -15,7 +15,7 @@ module.exports = {
       if (error) return res.serverError(error);
 
       sails.log('Created user', user);
-      
+
       if (user) {
         return res.ok();
       }
