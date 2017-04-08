@@ -154,14 +154,17 @@ export default new Vuex.Store({
      * @param user
      */
     saveUser(context, user) {
-      Vue.http.post('/api/register/post', {
-        email: user.email,
-        name: user.name,
-        noob: user.noob
-      }).then((response) => {
-        context.commit('RESET_USER');
-      }, (error) => {
-        console.log(error);
+      return new Promise((resolve, reject) => {
+        Vue.http.post('/api/register/post', {
+          email: user.email,
+          name: user.name,
+          noob: user.noob
+        }).then((response) => {
+          context.commit('RESET_USER');
+          resolve();
+        }, (error) => {
+          reject();
+        });
       });
     },
 
@@ -203,7 +206,7 @@ export default new Vuex.Store({
           context.commit('RESET_PRODUCT');
           resolve();
         }, (error) => {
-          console.log(error);
+          reject();
         });
       });
     }

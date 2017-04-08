@@ -93,9 +93,14 @@ export default {
 
   methods: {
     create() {
-      this.$refs.user.validate((valid) => {
-        if (valid) {
-          this.$store.dispatch('saveUser', this.user);
+      this.$refs.user.validate((isValid) => {
+        if (isValid) {
+          this.$store.dispatch('saveUser', this.user).then(() => {
+            this.$message({
+              message: 'Congrats, you are registered.',
+              type: 'success'
+            });
+          });
         }
       });
     }
