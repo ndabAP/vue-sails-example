@@ -14,7 +14,7 @@ $ sudo npm install sails -g
 ```
 #### Install modules
 ```bash
-$ cd public/frontend && npm install
+$ cd frontend && npm install
 $ cd ../backend && npm install
 ```
 
@@ -22,10 +22,10 @@ $ cd ../backend && npm install
 First, you have to build up your Vue.js components and merge them with Sails.js. This can be done with `cd frontend && npm run build`. Now do `cd ../backend && sails lift` and then open your browser and go to [localhost:1337](http://localhost:1337).
 
 ### Development
-`cd backend && sails lift` and then `cd ../frontend && npm run dev` after that open [localhost:8080](http://localhost:8080) in your browser.
+`cd backend && sails lift` and then `cd ../frontend && npm run dev`. After that open [localhost:8080](http://localhost:8080) in your browser.
 
 ## Components used
-The following components are used in this project:
+The following components are used in this project.
 
 ### [Sails.js](https://github.com/balderdashy/sails)
 This is the backend and data provider.
@@ -46,4 +46,4 @@ HTTP client for Vue.js.
 Router for the frontend.
 
 ## To do
-Cookie sessions, password protection, tests, multilanguage, mobile version
+Cookies, password protection, tests, multilanguage, mobile version
