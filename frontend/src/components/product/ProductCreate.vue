@@ -3,17 +3,17 @@
   <el-row :gutter="20">
     <el-col :span="18">
       <el-form-item label="Title">
-        <el-input v-model="form.title"></el-input>
+        <el-input v-model="title"></el-input>
       </el-form-item>
     </el-col>
     <el-col :span="6">
       <el-form-item label="Price">
-        <el-input v-model="form.price"></el-input>
+        <el-input v-model="price"></el-input>
       </el-form-item>
     </el-col>
   </el-row>
   <el-form-item label="Description">
-    <el-input type="textarea" v-model="form.description"></el-input>
+    <el-input type="textarea" v-model="description"></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="create">Submit</el-button>
@@ -34,25 +34,63 @@ export default {
     }
   },
 
+  computed: {
+
+    product: {
+      get() {
+        return this.$store.state.product;
+      }
+    },
+
+    title: {
+      get() {
+        return this.$store.state.product.title;
+      },
+
+      /**
+       * @param title
+       */
+      set(title) {
+        this.$store.dispatch('setProductTitle', title);
+      }
+    },
+
+    description: {
+      get() {
+        return this.$store.state.product.description;
+      },
+
+      /**
+       * @param description
+       */
+      set(description) {
+        this.$store.dispatch('setProductDescription', description);
+      }
+    },
+
+    price: {
+      get() {
+        return this.$store.state.product.price;
+      },
+
+      /**
+       * @param price
+       */
+      set(price) {
+        this.$store.dispatch('setProductPrice', price);
+      }
+    }
+  },
+
   methods: {
     create() {
-      this.$http.post('/api/product/post', {
-        title: this.form.title,
-        description: this.form.description,
-        price: this.form.price
-      }).then((response) => {
-        this.$store.dispatch('getProducts');
-
-        this.$set(this.form, 'title', '');
-        this.$set(this.form, 'description', '');
-        this.$set(this.form, 'price', '');
-
+      this.$store.dispatch('saveProduct', this.product).then(() => {
         this.$message({
           message: 'Congrats, you have created a product.',
           type: 'success'
         });
-      }, (error) => {
-        this.$message.error('Oops, something went wrong.');
+        
+        this.$store.dispatch('getProducts');
       });
     }
   }

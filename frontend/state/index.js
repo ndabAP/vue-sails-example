@@ -10,6 +10,11 @@ export default new Vuex.Store({
       name: '',
       noob: false
     },
+    product: {
+      title: '',
+      description: '',
+      price: ''
+    },
     products: [],
     isUserAuthenticated: false
   },
@@ -63,7 +68,40 @@ export default new Vuex.Store({
       state.user.email = '';
       state.user.name = '';
       state.user.noob = '';
-    }
+    },
+
+    /**
+     * @param state
+     * @param title
+     */
+    SET_PRODUCT_TITLE(state, title) {
+      state.product.title = title;
+    },
+
+    /**
+     * @param state
+     * @param description
+     */
+    SET_PRODUCT_DESCRIPTION(state, description) {
+      state.product.description = description;
+    },
+
+    /**
+     * @param state
+     * @param price
+     */
+    SET_PRODUCT_PRICE(state, price) {
+      state.product.price = price;
+    },
+
+    /**
+     * @param state
+     */
+    RESET_PRODUCT(state) {
+      state.product.title = '';
+      state.product.description = '';
+      state.product.price = '';
+    },
   },
 
   actions: {
@@ -124,6 +162,49 @@ export default new Vuex.Store({
         context.commit('RESET_USER');
       }, (error) => {
         console.log(error);
+      });
+    },
+
+    /**
+     * @param context
+     * @param title
+     */
+    setProductTitle(context, title) {
+      context.commit('SET_PRODUCT_TITLE', title);
+    },
+
+    /**
+     * @param context
+     * @param description
+     */
+    setProductDescription(context, description) {
+      context.commit('SET_PRODUCT_DESCRIPTION', description);
+    },
+
+    /**
+     * @param context
+     * @param price
+     */
+    setProductPrice(context, price) {
+      context.commit('SET_PRODUCT_PRICE', price);
+    },
+
+    /**
+     * @param context
+     * @param product
+     */
+    saveProduct(context, product) {
+      return new Promise((resolve, reject) => {
+        Vue.http.post('/api/product/post', {
+          title: product.title,
+          description: product.description,
+          price: product.price
+        }).then((response) => {
+          context.commit('RESET_PRODUCT');
+          resolve();
+        }, (error) => {
+          console.log(error);
+        });
       });
     }
   }
