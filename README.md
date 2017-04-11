@@ -3,7 +3,7 @@ This project is for those who are new to [single-page applications](https://en.w
 
 ## Getting started
 ### Prerequisites
-I created a [Vagrant box](https://github.com/ndabAP/Vagrant-box-with-Sails.js-Vue.js-and-MongoDB) with MongoDB, Node.js, Sails.js and Vue.js. Or install the following software.
+I created a [Vagrant box](https://github.com/ndabAP/Vagrant-box-with-Sails.js-Vue.js-and-MongoDB) with MongoDB, Node.js, Sails.js and Vue.js. Or manually install Node.js and Sails.js.
 
 #### Get Nodes.js
 ```bash
