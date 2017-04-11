@@ -171,10 +171,10 @@ export default new Vuex.Store({
           email: user.email,
           name: user.name,
           noob: user.noob
-        }).then((response) => {
+        }).then(() => {
           context.commit('RESET_USER');
           resolve();
-        }, (error) => {
+        }, () => {
           reject();
         });
       });
