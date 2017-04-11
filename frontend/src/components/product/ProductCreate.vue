@@ -1,5 +1,5 @@
 <template>
-<el-form ref="form" :model="form" label-width="120px">
+<el-form label-width="120px">
   <el-row :gutter="20">
     <el-col :span="18">
       <el-form-item label="Title">
@@ -24,16 +24,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      form: {
-        title: '',
-        description: '',
-        price: ''
-      }
-    }
-  },
-
   computed: {
 
     product: {
@@ -89,7 +79,7 @@ export default {
           message: 'Congrats, you have created a product.',
           type: 'success'
         });
-        
+
         this.$store.dispatch('getProducts');
       });
     }
