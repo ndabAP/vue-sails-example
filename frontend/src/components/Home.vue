@@ -6,11 +6,3 @@
   </el-col>
 </el-row>
 </template>
-
-<script>
-
-</script>
-
-<style>
-
-</style>

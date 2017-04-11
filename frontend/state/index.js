@@ -13,7 +13,10 @@ export default new Vuex.Store({
     product: {
       title: '',
       description: '',
-      price: ''
+      price: '',
+      meta: {
+        isEditProductVisible: false
+      }
     },
     products: [],
     isUserAuthenticated: false
@@ -92,6 +95,15 @@ export default new Vuex.Store({
      */
     SET_PRODUCT_PRICE(state, price) {
       state.product.price = price;
+    },
+
+    /**
+     * @param state
+     * @param isEditProductVisible
+     * @constructor
+     */
+    SET_IS_EDIT_PRODUCT_VISIBLE(state, isEditProductVisible) {
+      state.product.meta.isEditProductVisible = isEditProductVisible;
     },
 
     /**
@@ -194,6 +206,14 @@ export default new Vuex.Store({
 
     /**
      * @param context
+     * @param isEditProductVisible
+     */
+    setIsEditProductVisible(context, isEditProductVisible) {
+      context.commit('SET_IS_EDIT_PRODUCT_VISIBLE', isEditProductVisible);
+    },
+
+    /**
+     * @param context
      * @param product
      */
     saveProduct(context, product) {
@@ -202,13 +222,24 @@ export default new Vuex.Store({
           title: product.title,
           description: product.description,
           price: product.price
-        }).then((response) => {
+        }).then(() => {
           context.commit('RESET_PRODUCT');
           resolve();
-        }, (error) => {
+        }, () => {
           reject();
         });
       });
+    },
+
+    /**
+     * @param context
+     */
+    resetProduct(context) {
+      context.commit('RESET_PRODUCT');
+    },
+
+    patchProduct(context, product) {
+
     }
   }
 });
