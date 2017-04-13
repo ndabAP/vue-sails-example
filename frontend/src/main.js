@@ -16,7 +16,7 @@ Vue.http.interceptors.push((request, next) => {
   }
 
   next((response) => {
-    if (response.status === 500) {
+    if (response.status === 404) {
       router.push({
         name: 'Home'
       });
