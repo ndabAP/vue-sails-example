@@ -9,7 +9,7 @@
               <el-card class="box-card">
                 <div slot="header" class="clearfix">
                   <span style="line-height: 36px;">{{ product.title }}</span>
-                  <el-button style="float: right;" @click="pushToBasket(product)" type="primary">Buy</el-button>
+                  <el-button style="float: right;" @click="pushToBasket(product)" type="success">Buy</el-button>
                 </div>
                 <p>{{ product.description }}</p>
                 <span class="price">Price: {{ product.price }}</span>
@@ -25,7 +25,7 @@
             </li>
           </ul>
           <p>Total price: {{ totalPrice }}</p>
-          <el-button @click="checkout" type="primary">Buy</el-button>
+          <el-button @click="checkout" type="success">Checkout</el-button>
         </el-tab-pane>
       </el-tabs>
     </el-col>
@@ -35,17 +35,17 @@
 <script>
   export default {
     created() {
-      this.$store.dispatch('getProducts');
+      this.$store.dispatch('getProducts')
     },
 
     computed: {
       products() {
-        return this.$store.state.products;
+        return this.$store.state.products
       },
 
       basket: {
         get () {
-          return this.$store.state.basket;
+          return this.$store.state.basket
         }
       },
 
@@ -55,7 +55,7 @@
           totalPrice += product.price
         });
 
-        return totalPrice;
+        return totalPrice
       }
     },
 
@@ -64,7 +64,7 @@
        * @param product
        */
       pushToBasket(product) {
-        this.$store.dispatch('pushToBasket', product);
+        this.$store.dispatch('pushToBasket', product)
       },
 
       checkout() {
@@ -72,8 +72,8 @@
           this.$message({
             message: 'Congrats, you have bought it.',
             type: 'success'
-          });
-        });
+          })
+        })
       }
     }
   }

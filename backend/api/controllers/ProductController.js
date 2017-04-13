@@ -6,20 +6,20 @@ module.exports = {
    */
   post: (req, res) => {
     let {
-      title,
-      price,
-      description
-    } = req.allParams();
+          title,
+          price,
+          description
+        } = req.allParams()
 
     Product.create({
       title,
       description,
       price
     }).exec((error, product) => {
-      if (error) return res.serverError(error);
+      if (error) return res.serverError(error)
 
-      if (product) return res.ok();
-    });
+      if (product) return res.ok()
+    })
   },
 
   /**
@@ -27,15 +27,15 @@ module.exports = {
    * @param res
    */
   get: (req, res) => {
-    let id = req.param('id');
+    let id = req.param('id')
 
     Product.findOne({
       id
     }).exec((error, product) => {
-      if (error) return res.serverError(error);
+      if (error) return res.serverError(error)
 
-      if (product) return res.json(product);
-    });
+      if (product) return res.json(product)
+    })
   },
 
   /**
@@ -44,11 +44,11 @@ module.exports = {
    */
   patch: (req, res) => {
     let {
-      id,
-      title,
-      price,
-      description
-    } = req.allParams();
+          id,
+          title,
+          price,
+          description
+        } = req.allParams()
 
     Product.update({
       id
@@ -57,10 +57,10 @@ module.exports = {
       description,
       price
     }).exec((error, product) => {
-      if (error) return res.serverError(error);
+      if (error) return res.serverError(error)
 
-      if (product) return res.ok();
-    });
+      if (product) return res.ok()
+    })
   },
 
   /**
@@ -68,14 +68,14 @@ module.exports = {
    * @param res
    */
   remove: (req, res) => {
-    let id = req.param('id');
+    let id = req.param('id')
 
     Product.destroy({
       id
     }).exec((error) => {
-       if (error) return res.serverError(error);
+      if (error) return res.serverError(error)
 
-      return res.ok();
-    });
+      return res.ok()
+    })
   }
-};
+}

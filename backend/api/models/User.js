@@ -12,6 +12,6 @@ module.exports = {
     },
     noob: {
       type: 'boolean'
-    },
+    }
   }
-};
+}

@@ -1,15 +1,15 @@
-module.exports = function isAuthorized(req, res, next) {
-  let token = req.headers.token;
+module.exports = function isAuthorized (req, res, next) {
+  let token = req.headers.token
 
-  if ('undefined' === token) return res.forbidden();
+  if ('undefined' === token) return res.forbidden()
 
-  let decryptedSessionStorageToken = TokenService.verify(token);
+  let decryptedSessionStorageToken = TokenService.verify(token)
 
   User.findOne({
     id: decryptedSessionStorageToken.id
   }).exec((error, user) => {
-    if (error) return res.serverError(error);
+    if (error) return res.serverError(error)
 
-    if (user) return next();
-  });
+    if (user) return next()
+  })
 }

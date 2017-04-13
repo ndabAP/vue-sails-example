@@ -12,13 +12,11 @@
             @click.native.prevent="showPatchForm(scope.row.id)" type="text"
             size="small">
             Edit
-
           </el-button>
           <el-button
             @click.native.prevent="remove(scope.row.id)" type="text"
             size="small">
             Remove
-
           </el-button>
         </template>
       </el-table-column>
@@ -41,24 +39,24 @@
     },
 
     created() {
-      this.$store.dispatch('getProducts');
+      this.$store.dispatch('getProducts')
     },
 
     computed: {
       products() {
-        return this.$store.state.products;
+        return this.$store.state.products
       },
 
       isEditProductVisible: {
         get() {
-          return this.$store.state.product.meta.isEditProductVisible;
+          return this.$store.state.product.meta.isEditProductVisible
         },
 
         /**
          * @param isEditProductVisible
          */
         set(isEditProductVisible) {
-          this.$store.dispatch('setIsEditProductVisible', isEditProductVisible);
+          this.$store.dispatch('setIsEditProductVisible', isEditProductVisible)
         }
       }
     },
@@ -68,8 +66,8 @@
        * @productId
        */
       showPatchForm(id) {
-        this.$set(this, 'id', id);
-        this.$store.dispatch('setIsEditProductVisible', true);
+        this.$set(this, 'id', id)
+        this.$store.dispatch('setIsEditProductVisible', true)
       },
 
       /**
@@ -84,12 +82,12 @@
           this.$message({
             message: 'Congrats, you have deleted a product.',
             type: 'success'
-          });
+          })
 
-          this.$store.dispatch('getProducts');
+          this.$store.dispatch('getProducts')
         }, () => {
-          this.$message.error('Oops, something went wrong.');
-        });
+          this.$message.error('Oops, something went wrong.')
+        })
       }
     }
   }

@@ -19,7 +19,7 @@
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button @click="isEditProductVisible = false">Cancel</el-button>
-      <el-button type="primary" @click="patch">Patch</el-button>
+      <el-button type="success" @click="patch">Patch</el-button>
     </span>
   </el-dialog>
 </template>
@@ -29,73 +29,73 @@
     props: ['id'],
 
     created() {
-      let id = this.id;
+      let id = this.id
 
       this.$http.get('/api/product/get', {
         params: {
           id
         }
       }).then((response) => {
-        let product = response.body;
+        let product = response.body
 
-        this.$store.dispatch('setProductTitle', product.title);
-        this.$store.dispatch('setProductDescription', product.description);
-        this.$store.dispatch('setProductPrice', product.price);
+        this.$store.dispatch('setProductTitle', product.title)
+        this.$store.dispatch('setProductDescription', product.description)
+        this.$store.dispatch('setProductPrice', product.price)
       }, () => {
-        this.$message.error('Oops, something went wrong.');
+        this.$message.error('Oops, something went wrong.')
       });
     },
 
     computed: {
       title: {
         get() {
-          return this.$store.state.product.title;
+          return this.$store.state.product.title
         },
 
         /**
          * @param title
          */
         set(title) {
-          this.$store.dispatch('setProductTitle', title);
+          this.$store.dispatch('setProductTitle', title)
         }
       },
 
       description: {
         get() {
-          return this.$store.state.product.description;
+          return this.$store.state.product.description
         },
 
         /**
          * @param description
          */
         set(description) {
-          this.$store.dispatch('setProductDescription', description);
+          this.$store.dispatch('setProductDescription', description)
         }
       },
 
       price: {
         get() {
-          return this.$store.state.product.price;
+          return this.$store.state.product.price
         },
 
         /**
          * @param price
          */
         set(price) {
-          this.$store.dispatch('setProductPrice', price);
+          this.$store.dispatch('setProductPrice', price)
         }
       },
 
       isEditProductVisible: {
         get() {
-          return this.$store.state.product.meta.isEditProductVisible;
+          return this.$store.state.product.meta.isEditProductVisible
         },
 
         /**
          * @param isEditProductVisible
          */
         set(isEditProductVisible) {
-          this.$store.dispatch('setIsEditProductVisible', isEditProductVisible);
+          this.$store.dispatch('setIsEditProductVisible', isEditProductVisible)
         }
       }
     },
@@ -111,15 +111,19 @@
           this.$message({
             message: 'Congrats, you have updated a product.',
             type: 'success'
-          });
+          })
 
-          this.$store.dispatch('getProducts');
-          this.$store.dispatch('setIsEditProductVisible', false);
-          this.$store.dispatch('resetProduct');
+          this.$store.dispatch('getProducts')
+          this.$store.dispatch('setIsEditProductVisible', false)
+          this.$store.dispatch('resetProduct')
         }, () => {
-          this.$message.error('Oops, something went wrong.');
-        });
+          this.$message.error('Oops, something went wrong.')
+        })
       }
+    },
+
+    destroyed() {
+      this.$store.dispatch('resetProduct')
     }
   }
 </script>
