@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
@@ -20,7 +20,6 @@ export default new Vuex.Store({
     },
     products: [],
     basket: {
-      id: Math.random().toString(36).substr(2, 10),
       products: []
     },
     isUserAuthenticated: false
@@ -33,7 +32,7 @@ export default new Vuex.Store({
      * @param products
      */
     SET_PRODUCTS(state, products) {
-      state.products = products;
+      state.products = products
     },
 
     /**
@@ -41,7 +40,7 @@ export default new Vuex.Store({
      * @param isUserAuthenticated
      */
     SET_IS_USER_AUTHENTICATED(state, isUserAuthenticated) {
-      state.isUserAuthenticated = isUserAuthenticated;
+      state.isUserAuthenticated = isUserAuthenticated
     },
 
     /**
@@ -49,7 +48,7 @@ export default new Vuex.Store({
      * @param email
      */
     SET_USER_EMAIL(state, email) {
-      state.user.email = email;
+      state.user.email = email
     },
 
     /**
@@ -57,7 +56,7 @@ export default new Vuex.Store({
      * @param name
      */
     SET_USER_NAME(state, name) {
-      state.user.name = name;
+      state.user.name = name
     },
 
     /**
@@ -65,16 +64,16 @@ export default new Vuex.Store({
      * @param noob
      */
     SET_USER_NOOB(state, noob) {
-      state.user.noob = noob;
+      state.user.noob = noob
     },
 
     /**
      * @param state
      */
     RESET_USER(state) {
-      state.user.email = '';
-      state.user.name = '';
-      state.user.noob = '';
+      state.user.email = ''
+      state.user.name  = ''
+      state.user.noob  = ''
     },
 
     /**
@@ -82,7 +81,7 @@ export default new Vuex.Store({
      * @param title
      */
     SET_PRODUCT_TITLE(state, title) {
-      state.product.title = title;
+      state.product.title = title
     },
 
     /**
@@ -90,7 +89,7 @@ export default new Vuex.Store({
      * @param description
      */
     SET_PRODUCT_DESCRIPTION(state, description) {
-      state.product.description = description;
+      state.product.description = description
     },
 
     /**
@@ -98,7 +97,7 @@ export default new Vuex.Store({
      * @param price
      */
     SET_PRODUCT_PRICE(state, price) {
-      state.product.price = price;
+      state.product.price = price
     },
 
     /**
@@ -107,16 +106,16 @@ export default new Vuex.Store({
      * @constructor
      */
     SET_IS_EDIT_PRODUCT_VISIBLE(state, isEditProductVisible) {
-      state.product.meta.isEditProductVisible = isEditProductVisible;
+      state.product.meta.isEditProductVisible = isEditProductVisible
     },
 
     /**
      * @param state
      */
     RESET_PRODUCT(state) {
-      state.product.title = '';
-      state.product.description = '';
-      state.product.price = '';
+      state.product.title       = ''
+      state.product.description = ''
+      state.product.price       = ''
     },
 
     /**
@@ -125,14 +124,18 @@ export default new Vuex.Store({
      * @constructor
      */
     PUSH_TO_BASKET(state, product) {
-      state.basket.products.push(product);
+      state.basket.products.push(product)
+    },
+
+    CHECKOUT(state) {
+
     },
 
     RESET_BASKET(state) {
       state.basket = {
-          id: Math.random().toString(36).substr(2, 10),
-          products: []
-      };
+        id: Math.random().toString(36).substr(2, 10),
+        products: []
+      }
     }
   },
 
@@ -143,10 +146,10 @@ export default new Vuex.Store({
      */
     getProducts(context) {
       Vue.http.get('/api/products/get').then((response) => {
-        context.commit('SET_PRODUCTS', response.body);
+        context.commit('SET_PRODUCTS', response.body)
       }, (error) => {
-        console.log(error);
-      });
+        console.log(error)
+      })
     },
 
     /**
@@ -154,7 +157,7 @@ export default new Vuex.Store({
      * @param isUserAuthenticated
      */
     setIsUserAuthenticated(context, isUserAuthenticated) {
-      context.commit('SET_IS_USER_AUTHENTICATED', isUserAuthenticated);
+      context.commit('SET_IS_USER_AUTHENTICATED', isUserAuthenticated)
     },
 
     /**
@@ -162,7 +165,7 @@ export default new Vuex.Store({
      * @param email
      */
     setUserEmail(context, email) {
-      context.commit('SET_USER_EMAIL', email);
+      context.commit('SET_USER_EMAIL', email)
     },
 
     /**
@@ -170,7 +173,7 @@ export default new Vuex.Store({
      * @param name
      */
     setUserName(context, name) {
-      context.commit('SET_USER_NAME', name);
+      context.commit('SET_USER_NAME', name)
     },
 
     /**
@@ -178,7 +181,7 @@ export default new Vuex.Store({
      * @param noob
      */
     setUserNoob(context, noob) {
-      context.commit('SET_USER_NOOB', noob);
+      context.commit('SET_USER_NOOB', noob)
     },
 
     /**
@@ -192,12 +195,12 @@ export default new Vuex.Store({
           name: user.name,
           noob: user.noob
         }).then(() => {
-          context.commit('RESET_USER');
-          resolve();
+          context.commit('RESET_USER')
+          resolve()
         }, () => {
-          reject();
-        });
-      });
+          reject()
+        })
+      })
     },
 
     /**
@@ -205,7 +208,7 @@ export default new Vuex.Store({
      * @param title
      */
     setProductTitle(context, title) {
-      context.commit('SET_PRODUCT_TITLE', title);
+      context.commit('SET_PRODUCT_TITLE', title)
     },
 
     /**
@@ -213,7 +216,7 @@ export default new Vuex.Store({
      * @param description
      */
     setProductDescription(context, description) {
-      context.commit('SET_PRODUCT_DESCRIPTION', description);
+      context.commit('SET_PRODUCT_DESCRIPTION', description)
     },
 
     /**
@@ -221,7 +224,7 @@ export default new Vuex.Store({
      * @param price
      */
     setProductPrice(context, price) {
-      context.commit('SET_PRODUCT_PRICE', price);
+      context.commit('SET_PRODUCT_PRICE', price)
     },
 
     /**
@@ -229,7 +232,7 @@ export default new Vuex.Store({
      * @param isEditProductVisible
      */
     setIsEditProductVisible(context, isEditProductVisible) {
-      context.commit('SET_IS_EDIT_PRODUCT_VISIBLE', isEditProductVisible);
+      context.commit('SET_IS_EDIT_PRODUCT_VISIBLE', isEditProductVisible)
     },
 
     /**
@@ -243,19 +246,19 @@ export default new Vuex.Store({
           description: product.description,
           price: product.price
         }).then(() => {
-          context.commit('RESET_PRODUCT');
-          resolve();
+          context.commit('RESET_PRODUCT')
+          resolve()
         }, error => {
-          reject(error);
-        });
-      });
+          reject(error)
+        })
+      })
     },
 
     /**
      * @param context
      */
     resetProduct(context) {
-      context.commit('RESET_PRODUCT');
+      context.commit('RESET_PRODUCT')
     },
 
     /**
@@ -263,11 +266,34 @@ export default new Vuex.Store({
      * @param product
      */
     pushToBasket(context, product) {
-      context.commit('PUSH_TO_BASKET', product);
+      context.commit('PUSH_TO_BASKET', product)
     },
 
-    resetBasket(context) {
-      context.commit('RESET_BASKET');
+    /**
+     * @param context
+     * @param basket
+     * @returns {Promise}
+     */
+    checkout(context, basket) {
+      return new Promise((resolve, reject) => {
+        Vue.http.post('/api/basket/post', {
+          products: basket.products,
+          boughtAt: new Date()
+        }).then(() => {
+          context.commit('RESET_BASKET')
+          resolve()
+        }, error => {
+          reject(error)
+        })
+      })
+    },
+
+    /**
+     * @param context
+     * @param basket
+     */
+    resetBasket(context, basket) {
+      context.commit('RESET_BASKET')
     }
   }
-});
+})

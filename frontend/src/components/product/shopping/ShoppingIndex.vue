@@ -25,7 +25,6 @@
             </li>
           </ul>
           <p>Total price: {{ totalPrice }}</p>
-
           <el-button @click="checkout" type="primary">Buy</el-button>
         </el-tab-pane>
       </el-tabs>
@@ -54,7 +53,7 @@
         let totalPrice = 0;
         this.basket.products.forEach((product) => {
           totalPrice += product.price
-        })
+        });
 
         return totalPrice;
       }
@@ -69,15 +68,11 @@
       },
 
       checkout() {
-        this.$store.dispatch('resetBasket');
-
-        this.$message({
-          message: 'Congrats, you have bought it.',
-          type: 'success'
-        });
-
-        this.$router.push({
-          name: 'Home'
+        this.$store.dispatch('checkout', this.basket).then(() => {
+          this.$message({
+            message: 'Congrats, you have bought it.',
+            type: 'success'
+          });
         });
       }
     }
