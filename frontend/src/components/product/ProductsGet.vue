@@ -12,11 +12,13 @@
             @click.native.prevent="showPatchForm(scope.row.id)" type="text"
             size="small">
             Edit
+
           </el-button>
           <el-button
             @click.native.prevent="remove(scope.row.id)" type="text"
             size="small">
             Remove
+
           </el-button>
         </template>
       </el-table-column>
@@ -92,3 +94,9 @@
     }
   }
 </script>
+
+<style>
+  .el-tabs__content {
+    overflow: visible; /* hack */
+  }
+</style>

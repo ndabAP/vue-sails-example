@@ -3,18 +3,18 @@
     <el-form label-width="120px">
       <el-row :gutter="20">
         <el-col :span="18">
-          <el-form-item label="Title">
-            <el-input v-model="title"></el-input>
+          <el-form-item label="Title *">
+            <el-input :maxlength="15" :minlength="1" v-model="title"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="6">
-          <el-form-item label="Price">
+          <el-form-item label="Price *">
             <el-input v-model="price"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-form-item label="Description">
-        <el-input type="textarea" v-model="description"></el-input>
+        <el-input type="textarea" :maxlength="40" :minlength="25" v-model="description"></el-input>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">

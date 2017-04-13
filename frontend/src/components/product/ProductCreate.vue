@@ -2,18 +2,18 @@
 <el-form label-width="120px">
   <el-row :gutter="20">
     <el-col :span="18">
-      <el-form-item label="Title">
-        <el-input v-model="title"></el-input>
+      <el-form-item label="Title *">
+        <el-input v-model="title" :maxlength="15" :minlength="1"></el-input>
       </el-form-item>
     </el-col>
     <el-col :span="6">
-      <el-form-item label="Price">
+      <el-form-item label="Price *">
         <el-input v-model="price"></el-input>
       </el-form-item>
     </el-col>
   </el-row>
   <el-form-item label="Description">
-    <el-input type="textarea" v-model="description"></el-input>
+    <el-input type="textarea" :minlength="25" :maxlength="40" v-model="description"></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="create">Submit</el-button>
@@ -81,6 +81,11 @@ export default {
         });
 
         this.$store.dispatch('getProducts');
+      }, error => {
+        this.$message({
+          message: `${error.body.reason}.`,
+          type: 'error'
+        });
       });
     }
   }
