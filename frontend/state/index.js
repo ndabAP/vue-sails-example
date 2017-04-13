@@ -19,6 +19,10 @@ export default new Vuex.Store({
       }
     },
     products: [],
+    basket: {
+      id: Math.random().toString(36).substr(2, 10),
+      products: []
+    },
     isUserAuthenticated: false
   },
 
@@ -114,6 +118,22 @@ export default new Vuex.Store({
       state.product.description = '';
       state.product.price = '';
     },
+
+    /**
+     * @param state
+     * @param product
+     * @constructor
+     */
+    PUSH_TO_BASKET(state, product) {
+      state.basket.products.push(product);
+    },
+
+    RESET_BASKET(state) {
+      state.basket = {
+          id: Math.random().toString(36).substr(2, 10),
+          products: []
+      };
+    }
   },
 
   actions: {
@@ -225,8 +245,8 @@ export default new Vuex.Store({
         }).then(() => {
           context.commit('RESET_PRODUCT');
           resolve();
-        }, () => {
-          reject();
+        }, error => {
+          reject(error);
         });
       });
     },
@@ -238,8 +258,16 @@ export default new Vuex.Store({
       context.commit('RESET_PRODUCT');
     },
 
-    patchProduct(context, product) {
+    /**
+     * @param context
+     * @param product
+     */
+    pushToBasket(context, product) {
+      context.commit('PUSH_TO_BASKET', product);
+    },
 
+    resetBasket(context) {
+      context.commit('RESET_BASKET');
     }
   }
 });
