@@ -4,9 +4,10 @@
       <div class="card">
         <div class="card-block">
       <div v-for="product in basket.products">
-        <p>{{ product.title }} <span class="float-right">${{ product.price }}</span></p>
+        <p>{{ product.title }} <span class="float-right"><small class="text-muted">${{ product.price }}</small></span></p>
+        <p>{{ product.description }}</p>
+        <hr>
       </div>
-      <hr>
       <p><span class="float-left">Total</span> <span class="float-right"><b>${{ totalPrice }}</b></span></p>
     </div>
     </div>
