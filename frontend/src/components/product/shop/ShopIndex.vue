@@ -1,5 +1,8 @@
 <template>
   <div>
+    <b-alert state="info" show>
+      Please notice that your own products are not visible in this list.
+    </b-alert>
     <div class="row">
       <div class="col-4" v-for="product in products" v-if="product.user.name !== user.name">
         <b-card :key="product.id"
