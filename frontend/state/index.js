@@ -3,6 +3,11 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const getCookie = (name) => {
+  let a = `; ${document.cookie}`.match(`;\\s*${name}=([^;]+)`);
+  return a ? a[1] : '';
+}
+
 export default new Vuex.Store({
   state: {
     user: {
@@ -22,7 +27,7 @@ export default new Vuex.Store({
     basket: {
       products: []
     },
-    isUserAuthenticated: !!(document.cookie)
+    isUserAuthenticated: !!(getCookie('user'))
   },
 
   mutations: {
@@ -67,8 +72,8 @@ export default new Vuex.Store({
      * @param state
      */
     RESET_USER(state) {
-      state.user.name  = ''
-      state.user.password  = ''
+      state.user.name     = ''
+      state.user.password = ''
     },
 
     /**
