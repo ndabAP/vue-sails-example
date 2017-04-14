@@ -25,7 +25,7 @@ const users = [
 const products = [
   {
     title: 'Cell phone',
-    description: 'Now with touch display and many colors.',
+    description: 'Now with a cool touch display and many colors.',
     price: 199.95,
     user: 1
   }, {
