@@ -9,7 +9,7 @@
 
       <b-collapse is-nav id="nav_collapse">
         <b-nav is-nav-bar>
-          <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Home'}">Home</b-nav-item>
+          <b-nav-item :to="{ name: 'Home'}">Home</b-nav-item>
           <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Register'}">Register</b-nav-item>
           <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Login'}">Login</b-nav-item>
           <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Shop'}">Shop</b-nav-item>
