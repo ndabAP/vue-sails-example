@@ -5,6 +5,7 @@ import Register from '@/components/Register'
 import Login from '@/components/Login'
 import ProductIndex from '@/components/product/ProductIndex'
 import ShoppingIndex from '@/components/product/shop/ShopIndex'
+import BasketIndex from '@/components/product/shop/BasketIndex'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/shop/index',
       name: 'Shop',
       component: ShoppingIndex
+    },
+    {
+      path: '/shop/basket/index',
+      name: 'Basket',
+      component: BasketIndex
     }
   ]
 })

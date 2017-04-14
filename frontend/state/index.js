@@ -3,6 +3,10 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+/**
+ * @param name
+ * @returns {string}
+ */
 const getCookie = (name) => {
   let a = `; ${document.cookie}`.match(`;\\s*${name}=([^;]+)`);
   return a ? a[1] : '';

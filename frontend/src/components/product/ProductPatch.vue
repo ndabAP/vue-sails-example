@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-8">
         <b-form-fieldset
-          description="Define a product title."
+          description="Patch the product title."
           label="Title"
           :label-size="1">
           <b-form-input v-model="title"></b-form-input>
@@ -13,7 +13,7 @@
 
       <div class="col-4">
         <b-form-fieldset
-          description="Define a product price."
+          description="Patch the product price."
           label="Price"
           :label-size="1">
           <b-form-input v-model="price"></b-form-input>
@@ -22,7 +22,7 @@
     </div>
 
     <b-form-fieldset
-      description="Define a product description."
+      description="Patch the product description."
       label="Description"
       :label-size="1">
       <b-form-input textarea v-model="description"></b-form-input>

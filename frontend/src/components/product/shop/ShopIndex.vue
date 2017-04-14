@@ -32,21 +32,6 @@
 
       user() {
         return this.$store.state.user
-      },
-
-      basket: {
-        get () {
-          return this.$store.state.basket
-        }
-      },
-
-      totalPrice () {
-        let totalPrice = 0;
-        this.basket.products.forEach((product) => {
-          totalPrice += product.price
-        });
-
-        return totalPrice
       }
     },
 
@@ -56,16 +41,14 @@
        */
       pushToBasket(product) {
         this.$store.dispatch('pushToBasket', product)
-      },
-
-      checkout() {
-        this.$store.dispatch('checkout', this.basket).then(() => {
-          this.$message({
-            message: 'Congrats, you have bought it.',
-            type: 'success'
-          })
-        })
       }
     }
   }
 </script>
+
+<style>
+  .fa-icon {
+    width: auto;
+    height: 2rem;
+  }
+</style>

@@ -12,13 +12,13 @@
 const users = [
   {
     name: 'Joe',
-    password: 'toasty' // toasty
+    password: 'toasty'
   }, {
     name: 'Anna',
-    password: 'sunflower' // sunflower
+    password: 'sunflower'
   }, {
     name: 'Tom',
-    password: 'jerry' // jerry
+    password: 'jerry'
   }
 ]
 
