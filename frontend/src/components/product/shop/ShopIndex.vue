@@ -9,7 +9,8 @@
           <p>{{ product.description }}</p>
           <b-button @click="pushToBasket(product)" variant="outline-success" size="sm">Buy</b-button>
           <small slot="footer" class="text-muted">
-            ${{ product.price }}
+            <span class="float-left">${{ product.price }}</span>
+            <span class="float-right">by {{ product.user.name }}</span>
           </small>
         </b-card>
       </div>
@@ -68,28 +69,3 @@
     }
   }
 </script>
-
-<style>
-  .el-tabs__content {
-    overflow: visible; /* hack */
-  }
-
-  .text {
-    font-size: 14px;
-  }
-
-  .item {
-    padding: 18px 0;
-  }
-
-  .box-card {
-    width: 100%;
-    height: 200px;
-    margin-bottom: 15px;
-  }
-
-  .price {
-    font-size: 13px;
-    color: #999;
-  }
-</style>
