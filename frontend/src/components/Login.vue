@@ -16,6 +16,25 @@
       </b-form-fieldset>
       <b-button variant="outline-success" size="sm" @click="login">Submit</b-button>
     </div>
+    <div class="col-6">
+      <figure class="figure">
+       <pre>
+        [
+          {
+            name: 'Joe',
+            password: 'toasty'
+          }, {
+            name: 'Anna',
+            password: 'sunflower'
+          }, {
+            name: 'Tom',
+            password: 'jerry'
+          }
+        ]
+      </pre>
+        <figcaption class="figure-caption">You may choose one of these users to login.</figcaption>
+      </figure>
+    </div>
   </div>
 </template>
 
@@ -61,7 +80,6 @@
         }).then((response) => {
           this.$store.dispatch('setIsUserAuthenticated', true)
           window.localStorage.setItem('token', response.body.token)
-
 
           // Success message
 
