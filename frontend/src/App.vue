@@ -1,13 +1,27 @@
 <template>
   <div id="app">
-    <el-menu theme="dark" mode="horizontal" :router="true">
-      <el-menu-item index="/">Home</el-menu-item>
-      <el-menu-item v-if="!isUserAuthenticated" index="/register">Register</el-menu-item>
-      <el-menu-item v-if="!isUserAuthenticated" index="/login">Login</el-menu-item>
-      <el-menu-item v-if="isUserAuthenticated" index="/products/index">Products</el-menu-item>
-      <el-menu-item v-if="isUserAuthenticated" index="/products/shopping/index">Shopping</el-menu-item>
-    </el-menu>
-    <router-view></router-view>
+    <b-navbar toggleable type="inverse" variant="primary">
+      <b-nav-toggle target="nav_collapse"></b-nav-toggle>
+
+      <b-link class="navbar-brand" to="#">
+        <span>Product paradise</span>
+      </b-link>
+
+      <b-collapse is-nav id="nav_collapse">
+        <b-nav is-nav-bar>
+          <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Home'}">Home</b-nav-item>
+          <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Register'}">Register</b-nav-item>
+          <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Login'}">Login</b-nav-item>
+          <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Shop'}">Shop</b-nav-item>
+        </b-nav>
+        <b-nav is-nav-bar class="ml-auto">
+          <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Products'}">Manage products</b-nav-item>
+        </b-nav>
+      </b-collapse>
+    </b-navbar>
+    <div class="container">
+      <router-view class="mt-4"></router-view>
+    </div>
   </div>
 </template>
 
@@ -21,10 +35,3 @@
     }
   }
 </script>
-
-<style>
-  body {
-    font-family: 'Arial';
-    margin: 0px;
-  }
-</style>

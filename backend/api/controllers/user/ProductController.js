@@ -9,12 +9,14 @@ module.exports = {
           title,
           price,
           description
-        } = req.allParams()
+        }    = req.allParams()
+    let user = req.cookies.user
 
     Product.create({
-      title,
-      description,
-      price
+      title: title,
+      description: description,
+      price: price,
+      user: user
     }).exec((error, product) => {
       if (error) return res.serverError(error)
 
@@ -27,10 +29,12 @@ module.exports = {
    * @param res
    */
   get: (req, res) => {
-    let id = req.param('id')
+    let id   = req.param('id')
+    let user = req.cookies.user
 
     Product.findOne({
-      id
+      id,
+      user
     }).exec((error, product) => {
       if (error) return res.serverError(error)
 
@@ -48,10 +52,12 @@ module.exports = {
           title,
           price,
           description
-        } = req.allParams()
+        }    = req.allParams()
+    let user = req.cookies.user
 
     Product.update({
-      id
+      id,
+      user
     }, {
       title,
       description,
@@ -69,9 +75,11 @@ module.exports = {
    */
   remove: (req, res) => {
     let id = req.param('id')
+    let user = req.cookies.user;
 
     Product.destroy({
-      id
+      id,
+      user
     }).exec((error) => {
       if (error) return res.serverError(error)
 

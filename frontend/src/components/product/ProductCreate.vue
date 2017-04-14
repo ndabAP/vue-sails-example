@@ -1,35 +1,47 @@
 <template>
-  <el-form label-width="120px">
-    <el-row :gutter="20">
-      <el-col :span="18">
-        <el-form-item label="Title *">
-          <el-input v-model="title" :maxlength="15" :minlength="1"></el-input>
-        </el-form-item>
-      </el-col>
-      <el-col :span="6">
-        <el-form-item label="Price *">
-          <el-input v-model="price"></el-input>
-        </el-form-item>
-      </el-col>
-    </el-row>
-    <el-form-item label="Description">
-      <el-input type="textarea" :minlength="25" :maxlength="40" v-model="description"></el-input>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="success" @click="create">Submit</el-button>
-      <el-button>Cancel</el-button>
-    </el-form-item>
-  </el-form>
+  <div>
+    <div class="row">
+      <div class="col-8">
+        <b-form-fieldset
+          description="Define a product title."
+          label="Title"
+          :label-size="1">
+          <b-form-input v-model="title"></b-form-input>
+        </b-form-fieldset>
+      </div>
+
+      <div class="col-4">
+        <b-form-fieldset
+          description="Define a product price."
+          label="Price"
+          :label-size="1">
+          <b-form-input v-model="price"></b-form-input>
+        </b-form-fieldset>
+      </div>
+    </div>
+
+    <b-form-fieldset
+      description="Define a product description."
+      label="Description"
+      :label-size="1">
+      <b-form-input textarea v-model="description"></b-form-input>
+    </b-form-fieldset>
+
+    <b-button size="sm" variant="outline-success" @click="create">Create</b-button>
+  </div>
 </template>
 
 <script>
   export default {
     computed: {
-
       product: {
         get() {
           return this.$store.state.product
         }
+      },
+
+      user() {
+        return this.$store.state.user
       },
 
       title: {
@@ -74,18 +86,15 @@
 
     methods: {
       create() {
-        this.$store.dispatch('saveProduct', this.product).then(() => {
-          this.$message({
-            message: 'Congrats, you have created a product.',
-            type: 'success'
-          })
+        this.$store.dispatch('saveProduct', {
+          product: this.product,
+          user: this.user
+        }).then(() => {
+          // Success message
 
-          this.$store.dispatch('getProducts')
+          this.$store.dispatch('getProductsByUser', this.user)
         }, error => {
-          this.$message({
-            message: `${error.body.reason}.`,
-            type: 'error'
-          })
+          // Error message
         })
       }
     }

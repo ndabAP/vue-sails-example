@@ -1,52 +1,26 @@
 <template>
-  <el-row :gutter="20">
-    <el-col :span="8" :offset="6">
-      <h1>Register</h1>
-      <el-form :rules="rules" ref="user" :model="user" label-width="120px">
-        <el-form-item label="E-Mail" prop="email">
-          <el-input v-model="email"></el-input>
-        </el-form-item>
-        <el-form-item label="Name" prop="name">
-          <el-input v-model="name"></el-input>
-        </el-form-item>
-        <el-form-item label="Noob" prop="noob">
-          <el-switch v-model="noob"></el-switch>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="create">Submit</el-button>
-          <el-button>Cancel</el-button>
-        </el-form-item>
-      </el-form>
-    </el-col>
-  </el-row>
+  <div class="row justify-content-md-center">
+    <div class="col-6">
+      <p>Here your can register.</p>
+      <b-form-fieldset
+        description="Define a name."
+        label="Name *"
+        :label-size="1">
+        <b-form-input v-model="name"></b-form-input>
+      </b-form-fieldset>
+      <b-form-fieldset
+        description="Set a password."
+        label="Password *"
+        :label-size="1">
+        <b-form-input v-model="password" type="password"></b-form-input>
+      </b-form-fieldset>
+      <b-button variant="outline-success" size="sm" @click="create">Submit</b-button>
+    </div>
+  </div>
 </template>
 
 <script>
   export default {
-    data() {
-      return {
-        rules: {
-          email: [
-            {
-              required: true,
-              message: 'Please enter your email address',
-              trigger: 'blur'
-            }, {
-              type: 'email',
-              message: 'Please enter a valid email address',
-              trigger: 'change'
-            }],
-          name: [
-            {
-              required: true,
-              message: 'Please enter your name',
-              trigger: 'blur'
-            }
-          ]
-        }
-      }
-    },
-
     computed: {
       user: {
         get() {
@@ -54,24 +28,10 @@
         }
       },
 
-      email: {
-        get() {
-          return this.$store.state.user.email
-        },
-
-        /**
-         * @param email
-         */
-        set(email) {
-          this.$store.dispatch('setUserEmail', email)
-        }
-      },
-
       name: {
-        get() {
+        get () {
           return this.$store.state.user.name
         },
-
         /**
          * @param name
          */
@@ -80,31 +40,23 @@
         }
       },
 
-      noob: {
-        get() {
-          return this.$store.state.user.noob
+      password: {
+        get () {
+          return this.$store.state.user.password
         },
-
         /**
-         * @param noob
+         * @param password
          */
-        set(noob) {
-          this.$store.dispatch('setUserNoob', noob)
+        set(password) {
+          this.$store.dispatch('setUserPassword', password)
         }
       }
     },
 
     methods: {
       create() {
-        this.$refs.user.validate((isValid) => {
-          if (isValid) {
-            this.$store.dispatch('saveUser', this.user).then(() => {
-              this.$message({
-                message: 'Congrats, you are registered.',
-                type: 'success'
-              })
-            })
-          }
+        this.$store.dispatch('saveUser', this.user).then(() => {
+          // Success message
         })
       }
     }

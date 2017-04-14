@@ -1,17 +1,18 @@
 <template>
-  <el-row :gutter="20">
-    <el-col :span="12" :offset="6">
-      <br/>
-      <el-tabs v-model="defaultTab">
-        <el-tab-pane label="Get products" name="get">
-          <products-get></products-get>
-        </el-tab-pane>
-        <el-tab-pane label="Create product" name="create">
-          <product-create></product-create>
-        </el-tab-pane>
-      </el-tabs>
-    </el-col>
-  </el-row>
+  <div class="row">
+    <div class="col">
+      <b-card no-block>
+        <b-tabs card ref="tabs">
+          <b-tab title="Get products">
+            <products-get></products-get>
+          </b-tab>
+          <b-tab title="Create product">
+            <product-create></product-create>
+          </b-tab>
+        </b-tabs>
+      </b-card>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -22,12 +23,5 @@
     components: {
       ProductCreate,
       ProductsGet
-    },
-
-    data() {
-      return {
-        defaultTab: 'create'
-      }
-    }
-  }
+    }}
 </script>

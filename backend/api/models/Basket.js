@@ -5,6 +5,10 @@ module.exports = {
     products: {
       type: 'array',
       required: true
+    },
+
+    user: {
+      model: 'user'
     }
   }
 }

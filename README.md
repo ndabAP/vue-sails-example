@@ -38,7 +38,7 @@ Handle frontend data with a [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93v
 ### [Vuex](https://github.com/vuejs/vuex)
 A [state pattern](https://en.wikipedia.org/wiki/State_pattern).
 
-### [Element](https://github.com/ElemeFE/element)
+### [BootstrapVue](https://github.com/bootstrap-vue/bootstrap-vue)
 Frontend framework. The design part.
 
 ### [vue-resource](https://github.com/pagekit/vue-resource)

@@ -1,27 +1,38 @@
 <template>
-  <el-dialog title="Patch product" size="large" v-model="isEditProductVisible">
-    <el-form label-width="120px">
-      <el-row :gutter="20">
-        <el-col :span="18">
-          <el-form-item label="Title *">
-            <el-input :maxlength="15" :minlength="1" v-model="title"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="6">
-          <el-form-item label="Price *">
-            <el-input v-model="price"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-form-item label="Description">
-        <el-input type="textarea" :maxlength="40" :minlength="25" v-model="description"></el-input>
-      </el-form-item>
-    </el-form>
-    <span slot="footer" class="dialog-footer">
-      <el-button @click="isEditProductVisible = false">Cancel</el-button>
-      <el-button type="success" @click="patch">Patch</el-button>
-    </span>
-  </el-dialog>
+  <b-modal size="lg" id="patch-product" title="Submit your name">
+    <template slot="modal-title">Patch product</template>
+    <div class="row">
+      <div class="col-8">
+        <b-form-fieldset
+          description="Define a product title."
+          label="Title"
+          :label-size="1">
+          <b-form-input v-model="title"></b-form-input>
+        </b-form-fieldset>
+      </div>
+
+      <div class="col-4">
+        <b-form-fieldset
+          description="Define a product price."
+          label="Price"
+          :label-size="1">
+          <b-form-input v-model="price"></b-form-input>
+        </b-form-fieldset>
+      </div>
+    </div>
+
+    <b-form-fieldset
+      description="Define a product description."
+      label="Description"
+      :label-size="1">
+      <b-form-input textarea v-model="description"></b-form-input>
+    </b-form-fieldset>
+
+    <template slot="modal-footer">
+      <b-button size="sm" variant="outline-primary" @click="cancel">Cancel</b-button>
+      <b-button size="sm" variant="outline-success" @click="patch">Patch</b-button>
+    </template>
+  </b-modal>
 </template>
 
 <script>
@@ -31,22 +42,27 @@
     created() {
       let id = this.id
 
-      this.$http.get('/api/product/get', {
+      this.$http.get('/api/user/product/get', {
         params: {
           id
         }
       }).then((response) => {
+        this.$root.$emit('show::modal', 'patch-product')
         let product = response.body
 
         this.$store.dispatch('setProductTitle', product.title)
         this.$store.dispatch('setProductDescription', product.description)
         this.$store.dispatch('setProductPrice', product.price)
       }, () => {
-        this.$message.error('Oops, something went wrong.')
-      });
+        // Error message
+      })
     },
 
     computed: {
+      user() {
+        return this.$store.state.user
+      },
+
       title: {
         get() {
           return this.$store.state.product.title
@@ -102,31 +118,32 @@
 
     methods: {
       patch() {
-        this.$http.patch('/api/product/patch', {
+        this.$http.patch('/api/user/product/patch', {
           id: this.id,
           title: this.title,
           price: this.price,
           description: this.description
         }).then(() => {
-          this.$message({
-            message: 'Congrats, you have updated a product.',
-            type: 'success'
-          })
 
-          this.$store.dispatch('getProducts')
+          // Success message
+
+          this.$store.dispatch('getProductsByUser', this.user)
           this.$store.dispatch('setIsEditProductVisible', false)
           this.$store.dispatch('resetProduct')
         }, () => {
-          this.$message.error('Oops, something went wrong.')
+          // Error message
         })
+      },
+
+      cancel() {
+        this.$store.dispatch('setIsEditProductVisible', false)
+        this.$root.$emit('hide::modal', 'patch-product')
       }
     },
 
     destroyed() {
+      this.$root.$emit('hide::modal', 'patch-product')
       this.$store.dispatch('resetProduct')
     }
   }
 </script>
-
-<style>
-</style>

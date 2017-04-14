@@ -6,9 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: {
-      email: '',
+      id: '',
       name: '',
-      noob: false
+      password: ''
     },
     product: {
       title: '',
@@ -22,10 +22,14 @@ export default new Vuex.Store({
     basket: {
       products: []
     },
-    isUserAuthenticated: false
+    isUserAuthenticated: !!(document.cookie)
   },
 
   mutations: {
+
+    SET_USER(state, user) {
+      state.user = user
+    },
 
     /**
      * @param state
@@ -45,14 +49,6 @@ export default new Vuex.Store({
 
     /**
      * @param state
-     * @param email
-     */
-    SET_USER_EMAIL(state, email) {
-      state.user.email = email
-    },
-
-    /**
-     * @param state
      * @param name
      */
     SET_USER_NAME(state, name) {
@@ -61,19 +57,18 @@ export default new Vuex.Store({
 
     /**
      * @param state
-     * @param noob
+     * @param password
      */
-    SET_USER_NOOB(state, noob) {
-      state.user.noob = noob
+    SET_USER_PASSWORD(state, password) {
+      state.user.password = password
     },
 
     /**
      * @param state
      */
     RESET_USER(state) {
-      state.user.email = ''
       state.user.name  = ''
-      state.user.noob  = ''
+      state.user.password  = ''
     },
 
     /**
@@ -144,8 +139,31 @@ export default new Vuex.Store({
     /**
      * @param context
      */
+    getUser(context) {
+      Vue.http.get('/api/user/get').then((response) => {
+        context.commit('SET_USER', response.body)
+      }, (error) => {
+        console.log(error)
+      })
+    },
+
+    /**
+     * @param context
+     */
     getProducts(context) {
       Vue.http.get('/api/products/get').then((response) => {
+        context.commit('SET_PRODUCTS', response.body)
+      }, (error) => {
+        console.log(error)
+      })
+    },
+
+    /**
+     * @param context
+     * @param user
+     */
+    getProductsByUser(context, user) {
+      Vue.http.get('/api/user/products/get').then((response) => {
         context.commit('SET_PRODUCTS', response.body)
       }, (error) => {
         console.log(error)
@@ -162,14 +180,6 @@ export default new Vuex.Store({
 
     /**
      * @param context
-     * @param email
-     */
-    setUserEmail(context, email) {
-      context.commit('SET_USER_EMAIL', email)
-    },
-
-    /**
-     * @param context
      * @param name
      */
     setUserName(context, name) {
@@ -178,10 +188,10 @@ export default new Vuex.Store({
 
     /**
      * @param context
-     * @param noob
+     * @param password
      */
-    setUserNoob(context, noob) {
-      context.commit('SET_USER_NOOB', noob)
+    setUserPassword(context, password) {
+      context.commit('SET_USER_PASSWORD', password)
     },
 
     /**
@@ -191,9 +201,8 @@ export default new Vuex.Store({
     saveUser(context, user) {
       return new Promise((resolve, reject) => {
         Vue.http.post('/api/register/post', {
-          email: user.email,
           name: user.name,
-          noob: user.noob
+          password: user.password
         }).then(() => {
           context.commit('RESET_USER')
           resolve()
@@ -237,14 +246,14 @@ export default new Vuex.Store({
 
     /**
      * @param context
-     * @param product
+     * @param parameters
      */
-    saveProduct(context, product) {
+    saveProduct(context, parameters) {
       return new Promise((resolve, reject) => {
-        Vue.http.post('/api/product/post', {
-          title: product.title,
-          description: product.description,
-          price: product.price
+        Vue.http.post('/api/user/product/post', {
+          title: parameters.product.title,
+          description: parameters.product.description,
+          price: parameters.product.price
         }).then(() => {
           context.commit('RESET_PRODUCT')
           resolve()
@@ -276,9 +285,8 @@ export default new Vuex.Store({
      */
     checkout(context, basket) {
       return new Promise((resolve, reject) => {
-        Vue.http.post('/api/basket/post', {
-          products: basket.products,
-          boughtAt: new Date()
+        Vue.http.post('/api/user/basket/post', {
+          products: basket.products
         }).then(() => {
           context.commit('RESET_BASKET')
           resolve()
@@ -292,7 +300,7 @@ export default new Vuex.Store({
      * @param context
      * @param basket
      */
-    resetBasket(context, basket) {
+    resetBasket(context) {
       context.commit('RESET_BASKET')
     }
   }

@@ -7,11 +7,15 @@ module.exports = {
       required: true
     },
     description: {
-      type: 'string'
+      type: 'text'
     },
     price: {
       type: 'float',
       required: true
+    },
+
+    user: {
+      model: 'user'
     }
   }
 }

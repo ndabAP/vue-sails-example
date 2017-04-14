@@ -6,18 +6,20 @@ module.exports = {
    */
   post: (req, res) => {
     let {
-          email,
-          name
+          name,
+          password
         } = req.allParams()
 
     User.findOne({
       name,
-      email
+      password
     }).exec((error, user) => {
       if (error) return res.serverError(error)
 
       if (user) {
-        sails.log('User logged in', user)
+        sails.log.info('User logged in', user)
+
+        res.cookie('user', user.id);
 
         return res.json({
           token: TokenService.issue({

@@ -1,53 +1,77 @@
 <template>
-  <el-row :gutter="20">
-    <el-col :span="8" :offset="6">
-      <h1>Login</h1>
-      <el-form ref="form" label-width="120px">
-        <el-form-item label="E-Mail">
-          <el-input v-model="email"></el-input>
-        </el-form-item>
-        <el-form-item label="Name">
-          <el-input v-model="name"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="login">Submit</el-button>
-          <el-button>Cancel</el-button>
-        </el-form-item>
-      </el-form>
-    </el-col>
-  </el-row>
+  <div class="row justify-content-md-center">
+    <div class="col-6">
+      <p>Here your can login.</p>
+      <b-form-fieldset
+        description="Enter your name."
+        label="Name *"
+        :label-size="1">
+        <b-form-input v-model="name"></b-form-input>
+      </b-form-fieldset>
+      <b-form-fieldset
+        description="Enter your password."
+        label="Password *"
+        :label-size="1">
+        <b-form-input v-model="password" type="password"></b-form-input>
+      </b-form-fieldset>
+      <b-button variant="outline-success" size="sm" @click="login">Submit</b-button>
+    </div>
+  </div>
 </template>
 
 <script>
   export default {
-    data() {
-      return {
-        email: '',
-        name: ''
+    computed: {
+      user: {
+        get() {
+          return this.$store.state.user
+        }
+      },
+
+      name: {
+        get () {
+          return this.$store.state.user.name
+        },
+        /**
+         * @param name
+         */
+        set(name) {
+          this.$store.dispatch('setUserName', name)
+        }
+      },
+
+      password: {
+        get () {
+          return this.$store.state.user.password
+        },
+        /**
+         * @param password
+         */
+        set(password) {
+          this.$store.dispatch('setUserPassword', password)
+        }
       }
     },
 
     methods: {
       login() {
         this.$http.post('/api/login/post', {
-          email: this.email,
-          name: this.name
+          name: this.name,
+          password: this.password
         }).then((response) => {
           this.$store.dispatch('setIsUserAuthenticated', true)
           window.localStorage.setItem('token', response.body.token)
 
-          this.$message({
-            message: 'Congrats, you are now logged in.',
-            type: 'success'
-          });
+
+          // Success message
 
           this.$router.push({
-            name: 'Products/Index'
-          });
+            name: 'Products'
+          })
         }, (error) => {
           if (error.status === 403) {
-            this.$message.error('Oops, wrong credentials.');
-          } else this.$message.error('Oops, something went wrong.');
+            // Error message
+          } else this.$message.error('Oops, something went wrong.')
         })
       }
     }

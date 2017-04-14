@@ -6,12 +6,19 @@ module.exports = {
       type: 'string',
       required: true
     },
-    email: {
+    password: {
       type: 'string',
       required: true
     },
-    noob: {
-      type: 'boolean'
+
+    products: {
+      collection: 'product',
+      via: 'user'
+    },
+
+    baskets: {
+      collection: 'basket',
+      via: 'user'
     }
   }
 }

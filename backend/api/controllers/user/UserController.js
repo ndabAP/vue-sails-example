@@ -5,10 +5,14 @@ module.exports = {
    * @param res
    */
   get: (req, res) => {
-    Product.find().populate('user').exec((error, products) => {
+    let user = req.cookies.user
+
+    User.findOne({
+      id: user
+    }).exec((error, user) => {
       if (error) return res.serverError(error)
 
-      if (products) return res.json(products)
+      if (user) return res.json(user)
     })
   }
 }
