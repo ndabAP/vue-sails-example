@@ -29,7 +29,7 @@
           totalPrice += product.price
         });
 
-        return totalPrice
+        return Math.round(totalPrice * 100) / 100
       }
     },
 
@@ -41,6 +41,3 @@
     }
   }
 </script>
-
-<style>
-</style>

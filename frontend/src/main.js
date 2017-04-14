@@ -25,6 +25,31 @@ Vue.http.interceptors.push((request, next) => {
   })
 })
 
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.userOnly)) {
+
+    /**
+     * @param name
+     * @returns {string}
+     */
+    const getCookie = (name) => {
+      let a = `; ${document.cookie}`.match(`;\\s*${name}=([^;]+)`)
+      return a ? a[1] : ''
+    }
+
+    if (!!(getCookie('user'))) {
+      next()
+    } else {
+      router.push({
+        name: 'Login'
+      })
+    }
+  } else {
+    next()
+  }
+
+})
+
 new Vue({
   el: '#app',
   store,

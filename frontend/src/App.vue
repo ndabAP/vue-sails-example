@@ -15,7 +15,7 @@
           <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Shop'}">Shop</b-nav-item>
         </b-nav>
         <b-nav is-nav-bar class="ml-auto">
-          <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Basket'}">Basket ({{ basket.products.length }})</b-nav-item>
+          <b-nav-item :disabled="!basket.products.length" v-if="isUserAuthenticated" :to="{ name: 'Basket'}">Basket ({{ basket.products.length }})</b-nav-item>
           <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Products'}">Manage products</b-nav-item>
         </b-nav>
       </b-collapse>

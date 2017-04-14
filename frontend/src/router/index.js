@@ -30,17 +30,26 @@ export default new Router({
     {
       path: '/user/products/index',
       name: 'Products',
-      component: ProductIndex
+      component: ProductIndex,
+      meta: {
+        userOnly: true
+      }
     },
     {
       path: '/shop/index',
       name: 'Shop',
-      component: ShoppingIndex
+      component: ShoppingIndex,
+      meta: {
+        userOnly: true
+      }
     },
     {
       path: '/shop/basket/index',
       name: 'Basket',
-      component: BasketIndex
+      component: BasketIndex,
+      meta: {
+        userOnly: true
+      }
     }
   ]
 })
