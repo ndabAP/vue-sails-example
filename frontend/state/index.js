@@ -8,8 +8,8 @@ Vue.use(Vuex)
  * @returns {string}
  */
 const getCookie = (name) => {
-  let a = `; ${document.cookie}`.match(`;\\s*${name}=([^;]+)`);
-  return a ? a[1] : '';
+  let a = `; ${document.cookie}`.match(`;\\s*${name}=([^;]+)`)
+  return a ? a[1] : ''
 }
 
 export default new Vuex.Store({
@@ -76,7 +76,7 @@ export default new Vuex.Store({
      * @param state
      */
     RESET_USER(state) {
-      state.user.name     = ''
+      state.user.name = ''
       state.user.password = ''
     },
 
@@ -117,9 +117,9 @@ export default new Vuex.Store({
      * @param state
      */
     RESET_PRODUCT(state) {
-      state.product.title       = ''
+      state.product.title = ''
       state.product.description = ''
-      state.product.price       = ''
+      state.product.price = ''
     },
 
     /**
@@ -208,16 +208,13 @@ export default new Vuex.Store({
      * @param user
      */
     saveUser(context, user) {
-      return new Promise((resolve, reject) => {
-        Vue.http.post('/api/register/post', {
-          name: user.name,
-          password: user.password
-        }).then(() => {
-          context.commit('RESET_USER')
-          resolve()
-        }, () => {
-          reject()
-        })
+      Vue.http.post('/api/register/post', {
+        name: user.name,
+        password: user.password
+      }).then((response) => {
+        context.commit('RESET_USER')
+      }).catch(error => {
+        console.log(error)
       })
     },
 

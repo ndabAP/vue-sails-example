@@ -55,9 +55,7 @@
 
     methods: {
       create () {
-        this.$store.dispatch('saveUser', this.user).then(() => {
-          // Success message
-        })
+        this.$store.dispatch('saveUser', this.user)
       }
     }
   }

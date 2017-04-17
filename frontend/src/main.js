@@ -48,7 +48,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 
-let vue = new Vue({
+new Vue({
   el: '#app',
   store,
   router,
@@ -57,5 +57,3 @@ let vue = new Vue({
     App
   }
 })
-
-vue()
