@@ -2,12 +2,14 @@
   <div>
     <product-patch v-if="isEditProductVisible" v-bind:id="id"></product-patch>
 
-    <b-table :items="products" :fields="fields">
+    <b-table :items="products" :fields="fields" v-if="products.length > 0">
       <template slot="actions" scope="item">
-        <b-button size="sm" variant="primary" @click="showPatchForm(item.item.id)">Patch</b-button>
-        <b-button size="sm" variant="warning" @click="remove(item.item.id)">Remove</b-button>
+        <b-button size="sm" variant="outline-primary" @click="showPatchForm(item.item.id)">Patch</b-button>
+        <b-button size="sm" variant="outline-warning" @click="remove(item.item.id)">Remove</b-button>
       </template>
     </b-table>
+
+    <p v-else>No products yet, you should create one.</p>
   </div>
 </template>
 
