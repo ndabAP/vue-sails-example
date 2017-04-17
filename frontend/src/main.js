@@ -17,7 +17,7 @@ Vue.http.interceptors.push((request, next) => {
   }
 
   next((response) => {
-    if (response.status === 404) {
+    if ((response.status === 404) || (response.status === 504)) {
       router.push({
         name: 'Home'
       })
@@ -47,7 +47,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-
 })
 
 new Vue({
