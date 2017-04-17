@@ -19,7 +19,7 @@
       ProductPatch
     },
 
-    data() {
+    data () {
       return {
         id: '',
         fields: {
@@ -39,28 +39,28 @@
       }
     },
 
-    created() {
+    created () {
       this.$store.dispatch('getProductsByUser', this.user)
     },
 
     computed: {
-      products() {
+      products () {
         return this.$store.state.products
       },
 
-      user() {
+      user () {
         return this.$store.state.user
       },
 
       isEditProductVisible: {
-        get() {
+        get () {
           return this.$store.state.product.meta.isEditProductVisible
         },
 
         /**
          * @param isEditProductVisible
          */
-        set(isEditProductVisible) {
+        set (isEditProductVisible) {
           this.$store.dispatch('setIsEditProductVisible', isEditProductVisible)
         }
       }
@@ -70,7 +70,7 @@
       /**
        * @productId
        */
-      showPatchForm(id) {
+      showPatchForm (id) {
         this.$set(this, 'id', id)
         this.$store.dispatch('setIsEditProductVisible', true)
       },
@@ -78,7 +78,7 @@
       /**
        * @param id
        */
-      remove(id) {
+      remove (id) {
         this.$http.delete('/api/user/product/remove', {
           params: {
             id

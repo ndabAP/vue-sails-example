@@ -42,7 +42,7 @@
   export default {
     computed: {
       user: {
-        get() {
+        get () {
           return this.$store.state.user
         }
       },
@@ -54,7 +54,7 @@
         /**
          * @param name
          */
-        set(name) {
+        set (name) {
           this.$store.dispatch('setUserName', name)
         }
       },
@@ -66,14 +66,14 @@
         /**
          * @param password
          */
-        set(password) {
+        set (password) {
           this.$store.dispatch('setUserPassword', password)
         }
       }
     },
 
     methods: {
-      login() {
+      login () {
         this.$http.post('/api/login/post', {
           name: this.name,
           password: this.password

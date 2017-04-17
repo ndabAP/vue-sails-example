@@ -25,17 +25,17 @@
       },
 
       totalPrice () {
-        let totalPrice = 0;
+        let totalPrice = 0
         this.basket.products.forEach((product) => {
           totalPrice += product.price
-        });
+        })
 
         return Math.round(totalPrice * 100) / 100
       }
     },
 
     methods: {
-      checkout() {
+      checkout () {
         this.$store.dispatch('checkout', this.basket).then(() => {
         })
       }

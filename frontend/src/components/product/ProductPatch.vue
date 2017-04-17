@@ -39,7 +39,7 @@
   export default {
     props: ['id'],
 
-    created() {
+    created () {
       let id = this.id
 
       this.$http.get('/api/user/product/get', {
@@ -59,72 +59,71 @@
     },
 
     computed: {
-      user() {
+      user () {
         return this.$store.state.user
       },
 
       title: {
-        get() {
+        get () {
           return this.$store.state.product.title
         },
 
         /**
          * @param title
          */
-        set(title) {
+        set (title) {
           this.$store.dispatch('setProductTitle', title)
         }
       },
 
       description: {
-        get() {
+        get () {
           return this.$store.state.product.description
         },
 
         /**
          * @param description
          */
-        set(description) {
+        set (description) {
           this.$store.dispatch('setProductDescription', description)
         }
       },
 
       price: {
-        get() {
+        get () {
           return this.$store.state.product.price
         },
 
         /**
          * @param price
          */
-        set(price) {
+        set (price) {
           this.$store.dispatch('setProductPrice', price)
         }
       },
 
       isEditProductVisible: {
-        get() {
+        get () {
           return this.$store.state.product.meta.isEditProductVisible
         },
 
         /**
          * @param isEditProductVisible
          */
-        set(isEditProductVisible) {
+        set (isEditProductVisible) {
           this.$store.dispatch('setIsEditProductVisible', isEditProductVisible)
         }
       }
     },
 
     methods: {
-      patch() {
+      patch () {
         this.$http.patch('/api/user/product/patch', {
           id: this.id,
           title: this.title,
           price: this.price,
           description: this.description
         }).then(() => {
-
           // Success message
 
           this.$store.dispatch('getProductsByUser', this.user)
@@ -135,13 +134,13 @@
         })
       },
 
-      cancel() {
+      cancel () {
         this.$store.dispatch('setIsEditProductVisible', false)
         this.$root.$emit('hide::modal', 'patch-product')
       }
     },
 
-    destroyed() {
+    destroyed () {
       this.$root.$emit('hide::modal', 'patch-product')
       this.$store.dispatch('resetProduct')
     }
