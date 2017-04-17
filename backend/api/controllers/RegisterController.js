@@ -5,20 +5,17 @@ module.exports = {
    * @param res
    */
   post: (req, res) => {
-    let {email, name, noob} = req.allParams()
+    let {name, password} = req.allParams()
 
     User.create({
       name,
-      email,
-      noob
+      password
     }).exec((error, user) => {
       if (error) return res.serverError(error)
 
       sails.log('Created user', user)
 
-      if (user) {
-        return res.ok()
-      }
+      if (user) return res.ok()
     })
   }
 }
