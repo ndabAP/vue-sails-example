@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-alert state="info" show>
+    <b-alert variant="info" show>
       Please notice that your own products are not visible in this list.
     </b-alert>
     <div class="row">
@@ -48,10 +48,3 @@
     }
   }
 </script>
-
-<style>
-  .fa-icon {
-    width: auto;
-    height: 2rem;
-  }
-</style>
