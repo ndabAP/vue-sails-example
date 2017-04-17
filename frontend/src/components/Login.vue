@@ -89,7 +89,7 @@
         }, (error) => {
           if (error.status === 403) {
             // Error message
-          } else this.$message.error('Oops, something went wrong.')
+          }
         })
       }
     }
