@@ -27,7 +27,6 @@ Vue.http.interceptors.push((request, next) => {
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.userOnly)) {
-
     /**
      * @param name
      * @returns {string}
@@ -37,7 +36,7 @@ router.beforeEach((to, from, next) => {
       return a ? a[1] : ''
     }
 
-    if (!!(getCookie('user'))) {
+    if (getCookie('user')) {
       next()
     } else {
       router.push({
@@ -49,6 +48,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+/* eslint no-new: "error" */
 new Vue({
   el: '#app',
   store,

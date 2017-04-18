@@ -23,17 +23,17 @@
 
 <script>
   export default {
-    created() {
+    created () {
       this.$store.dispatch('getProducts')
       this.$store.dispatch('getUser')
     },
 
     computed: {
-      products() {
+      products () {
         return this.$store.state.products
       },
 
-      user() {
+      user () {
         return this.$store.state.user
       }
     },
@@ -42,7 +42,7 @@
       /**
        * @param product
        */
-      pushToBasket(product) {
+      pushToBasket (product) {
         this.$store.dispatch('pushToBasket', product)
       }
     }

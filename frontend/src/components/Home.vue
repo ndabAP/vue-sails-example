@@ -41,14 +41,14 @@
 
 <script>
   export default {
-    created() {
+    created () {
       this.$store.dispatch('getProducts')
     },
 
     computed: {
-      products() {
+      products () {
         return this.$store.state.products
-      },
+      }
     }
   }
 </script>

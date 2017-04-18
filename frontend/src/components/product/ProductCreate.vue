@@ -35,57 +35,57 @@
   export default {
     computed: {
       product: {
-        get() {
+        get () {
           return this.$store.state.product
         }
       },
 
-      user() {
+      user () {
         return this.$store.state.user
       },
 
       title: {
-        get() {
+        get () {
           return this.$store.state.product.title
         },
 
         /**
          * @param title
          */
-        set(title) {
+        set (title) {
           this.$store.dispatch('setProductTitle', title)
         }
       },
 
       description: {
-        get() {
+        get () {
           return this.$store.state.product.description
         },
 
         /**
          * @param description
          */
-        set(description) {
+        set (description) {
           this.$store.dispatch('setProductDescription', description)
         }
       },
 
       price: {
-        get() {
+        get () {
           return this.$store.state.product.price
         },
 
         /**
          * @param price
          */
-        set(price) {
+        set (price) {
           this.$store.dispatch('setProductPrice', price)
         }
       }
     },
 
     methods: {
-      create() {
+      create () {
         this.$store.dispatch('saveProduct', {
           product: this.product,
           user: this.user
@@ -95,6 +95,7 @@
           this.$store.dispatch('getProductsByUser', this.user)
         }, error => {
           // Error message
+          console.log(error)
         })
       }
     }
