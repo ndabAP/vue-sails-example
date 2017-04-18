@@ -62,6 +62,6 @@ module.exports.policies = {
   },
 
   'ProductsController': {
-    '*': 'isAuthorized'
+    '*': true
   }
 };
