@@ -48,6 +48,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+/* eslint no-new: "error" */
 new Vue({
   el: '#app',
   store,
