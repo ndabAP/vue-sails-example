@@ -131,6 +131,17 @@ export default new Vuex.Store({
       state.basket.products.push(product)
     },
 
+    /**
+     * @param state
+     * @param productId
+     * @constructor
+     */
+    REMOVE_PRODUCT_FROM_BASKET (state, productId) {
+      state.basket.products.forEach((product, index) => {
+        if (productId === product.id) state.basket.products.splice(index, 1)
+      })
+    },
+
     CHECKOUT(state) {
 
     },
@@ -274,6 +285,14 @@ export default new Vuex.Store({
      */
     resetProduct(context) {
       context.commit('RESET_PRODUCT')
+    },
+
+    /**
+     * @param context
+     * @param productId
+     */
+    removeProductFromBasket(context, productId) {
+      context.commit('REMOVE_PRODUCT_FROM_BASKET', productId)
     },
 
     /**
