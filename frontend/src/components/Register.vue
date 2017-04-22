@@ -32,6 +32,7 @@
         get () {
           return this.$store.state.user.name
         },
+
         /**
          * @param name
          */
@@ -44,6 +45,7 @@
         get () {
           return this.$store.state.user.password
         },
+
         /**
          * @param password
          */
