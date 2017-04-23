@@ -6,6 +6,13 @@ import store from './../state/index'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueI18n from 'vue-i18n'
+
+Vue.use(VueI18n)
+
+const i18n = new VueI18n({
+  locale: 'en'
+})
 
 Vue.use(BootstrapVue)
 Vue.use(VueResource)
@@ -53,6 +60,7 @@ new Vue({
   el: '#app',
   store,
   router,
+  i18n,
   template: '<App/>',
   components: {
     App

@@ -19,6 +19,10 @@
             Basket ({{ basket.products.length }})
           </b-nav-item>
           <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Products'}">Manage products</b-nav-item>
+          <b-nav-item-dropdown text="Lang" right-alignment>
+            <b-dropdown-item @click="setLanguage('en')">EN</b-dropdown-item>
+            <b-dropdown-item @click="setLanguage('de')">DE</b-dropdown-item>
+          </b-nav-item-dropdown>
         </b-nav>
       </b-collapse>
     </b-navbar>
@@ -31,6 +35,7 @@
 <script>
   export default {
     name: 'app',
+
     computed: {
       isUserAuthenticated () {
         return this.$store.state.isUserAuthenticated
@@ -40,6 +45,12 @@
         get () {
           return this.$store.state.basket
         }
+      }
+    },
+
+    methods: {
+      setLanguage (language) {
+        this.$i18n.locale = language
       }
     }
   }
