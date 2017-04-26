@@ -53,7 +53,7 @@
           'login': 'Login',
           'shop': 'Shop',
           'basket': 'Warenkorb',
-          'products': 'Verwalte Produkte'
+          'products': 'Produktverwaltung'
 
         }
       }

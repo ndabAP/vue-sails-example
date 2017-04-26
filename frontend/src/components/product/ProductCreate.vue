@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-8">
         <b-form-fieldset
-          description="Define a product title."
-          label="Title"
+          :description="$t('description.first')"
+          :label="$t('label.first')"
           :label-size="1">
           <b-form-input v-model="title"></b-form-input>
         </b-form-fieldset>
@@ -12,8 +12,8 @@
 
       <div class="col-4">
         <b-form-fieldset
-          description="Define a product price."
-          label="Price"
+          :description="$t('description.second')"
+          :label="$t('label.second')"
           :label-size="1">
           <b-form-input v-model="price"></b-form-input>
         </b-form-fieldset>
@@ -21,18 +21,41 @@
     </div>
 
     <b-form-fieldset
-      description="Define a product description."
-      label="Description"
+      :description="$t('description.third')"
+      :label="$t('label.third')"
       :label-size="1">
       <b-form-input textarea v-model="description"></b-form-input>
     </b-form-fieldset>
 
-    <b-button size="sm" variant="outline-success" @click="create">Create</b-button>
+    <b-button size="sm" variant="outline-success" @click="create">{{ $t('button.first') }}</b-button>
   </div>
 </template>
 
 <script>
   export default {
+    i18n: {
+      messages: {
+        en: {
+          'description.first': 'Define a title',
+          'label.first': 'Title',
+          'description.second': 'Define a price',
+          'label.second': 'Price',
+          'description.third': 'Define a description',
+          'label.third': 'Description',
+          'button.first': 'Create'
+        },
+        de: {
+          'description.first': 'Definiere einen Titel',
+          'label.first': 'Titel',
+          'description.second': 'Definiere einen Preis',
+          'label.second': 'Preis',
+          'description.third': 'Definiere eine Beschreibung',
+          'label.third': 'Beschreibung',
+          'button.first': 'Erstellen'
+        }
+      }
+    },
+
     computed: {
       product: {
         get () {

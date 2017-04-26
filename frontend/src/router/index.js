@@ -50,6 +50,10 @@ export default new Router({
       meta: {
         userOnly: true
       }
+    },
+    {
+      path: '*',
+      component: Home
     }
   ]
 })

@@ -1,11 +1,11 @@
 <template>
-  <b-modal size="lg" id="patch-product" title="Submit your name">
-    <template slot="modal-title">Patch product</template>
+  <b-modal size="lg" id="patch-product">
+    <template slot="modal-title">{{ $t('template.first.title') }}</template>
     <div class="row">
       <div class="col-8">
         <b-form-fieldset
-          description="Patch the product title."
-          label="Title"
+          :description="$t('description.first')"
+          :label="$t('label.first')"
           :label-size="1">
           <b-form-input v-model="title"></b-form-input>
         </b-form-fieldset>
@@ -13,8 +13,8 @@
 
       <div class="col-4">
         <b-form-fieldset
-          description="Patch the product price."
-          label="Price"
+          :description="$t('description.second')"
+          :label="$t('label.second')"
           :label-size="1">
           <b-form-input v-model="price"></b-form-input>
         </b-form-fieldset>
@@ -22,15 +22,15 @@
     </div>
 
     <b-form-fieldset
-      description="Patch the product description."
-      label="Description"
+      :description="$t('description.third')"
+      :label="$t('label.third')"
       :label-size="1">
       <b-form-input textarea v-model="description"></b-form-input>
     </b-form-fieldset>
 
     <template slot="modal-footer">
-      <b-button size="sm" variant="outline-primary" @click="cancel">Cancel</b-button>
-      <b-button size="sm" variant="outline-success" @click="patch">Patch</b-button>
+      <b-button size="sm" variant="outline-primary" @click="cancel">{{ $t('button.first') }}</b-button>
+      <b-button size="sm" variant="outline-success" @click="patchProduct">{{ $t('button.second') }}</b-button>
     </template>
   </b-modal>
 </template>
@@ -38,6 +38,33 @@
 <script>
   export default {
     props: ['id'],
+
+    i18n: {
+      messages: {
+        en: {
+          'template.first.title': 'Patch product',
+          'description.first': 'Define a title',
+          'label.first': 'Title',
+          'description.second': 'Define a price',
+          'label.second': 'Price',
+          'description.third': 'Define a description',
+          'label.third': 'Description',
+          'button.first': 'Cancel',
+          'button.second': 'Patch'
+        },
+        de: {
+          'template.first.title': 'Bearbeite Produkt',
+          'description.first': 'Definiere einen Titel',
+          'label.first': 'Titel',
+          'description.second': 'Definiere einen Preis',
+          'label.second': 'Preis',
+          'description.third': 'Definiere eine Beschreibung',
+          'label.third': 'Beschreibung',
+          'button.first': 'Abbrechen',
+          'button.second': 'Speichern'
+        }
+      }
+    },
 
     created () {
       let id = this.id
@@ -117,7 +144,7 @@
     },
 
     methods: {
-      patch () {
+      patchProduct () {
         this.$http.patch('/api/user/product/patch', {
           id: this.id,
           title: this.title,

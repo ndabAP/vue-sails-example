@@ -7,10 +7,12 @@
             <p><b>{{ product.title }}</b> <span class="float-right"><small class="text-muted">${{ product.price
               }}</small></span></p>
             <p>{{ product.description }}</p>
-            <b-button size="sm" variant="outline-danger" @click="removeProduct(product.id)">Remove</b-button>
+            <b-button size="sm" variant="outline-danger" @click="removeProduct(product.id)">{{ $t('button.first') }}
+            </b-button>
             <hr>
           </div>
-          <p><span class="float-left">Total</span> <span class="float-right"><b>${{ totalPrice }}</b></span></p>
+          <p><span class="float-left">{{ $t('span.first') }}</span> <span class="float-right"><b>${{ totalPrice
+            }}</b></span></p>
         </div>
       </div>
     </div>
@@ -19,6 +21,19 @@
 
 <script>
   export default {
+    i18n: {
+      messages: {
+        en: {
+          'button.first': 'Remove',
+          'span.first': 'Total'
+        },
+        de: {
+          'button.first': 'Entfernen',
+          'span.first': 'Summe'
+        }
+      }
+    },
+
     computed: {
       basket: {
         get () {

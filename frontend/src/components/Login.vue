@@ -1,20 +1,19 @@
 <template>
   <div class="row justify-content-md-center">
     <div class="col-6">
-      <p>Here your can login.</p>
       <b-form-fieldset
-        description="Enter your name."
-        label="Name *"
+        :description="$t('description.first')"
+        :label="$t('label.first')"
         :label-size="1">
         <b-form-input v-model="name"></b-form-input>
       </b-form-fieldset>
       <b-form-fieldset
-        description="Enter your password."
-        label="Password *"
+        :description="$t('description.second')"
+        :label="$t('label.second')"
         :label-size="1">
         <b-form-input v-model="password" type="password"></b-form-input>
       </b-form-fieldset>
-      <b-button variant="outline-success" size="sm" @click="login">Submit</b-button>
+      <b-button variant="outline-success" size="sm" @click="login">{{ $t('button.first') }}</b-button>
     </div>
     <div class="col-6">
       <figure class="figure">
@@ -32,7 +31,7 @@
           }
         ]
       </pre>
-        <figcaption class="figure-caption">You may choose one of these users to login.</figcaption>
+        <figcaption class="figure-caption">{{ $t('figcaption.first') }}</figcaption>
       </figure>
     </div>
   </div>
@@ -40,6 +39,27 @@
 
 <script>
   export default {
+    i18n: {
+      messages: {
+        en: {
+          'description.first': 'Enter your name',
+          'label.first': 'Name',
+          'description.second': 'Enter your password',
+          'label.second': 'Password',
+          'figcaption.first': 'You may choose one of these users to login.',
+          'button.first': 'Submit'
+        },
+        de: {
+          'description.first': 'Gebe deinen Namen ein',
+          'label.first': 'Name',
+          'description.second': 'Gebe dein Passwort ein',
+          'label.second': 'Passwort',
+          'figcaption.first': 'Du kannst einen dieser Nutzer wählen, um dich einzuloggen.',
+          'button.first': 'Senden'
+        }
+      }
+    },
+
     computed: {
       user: {
         get () {
