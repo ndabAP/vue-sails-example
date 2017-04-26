@@ -35,6 +35,5 @@
   "author": "vagrant",
   "license": "",
   "devDependencies": {
-    "sails-hook-autoreload": "^0.14.1"
   }
 }
