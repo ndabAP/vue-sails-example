@@ -6,10 +6,10 @@ module.exports = {
    */
   post: (req, res) => {
     let {
-          title,
-          price,
-          description
-        }    = req.allParams()
+      title,
+      price,
+      description
+    } = req.allParams()
     let user = req.cookies.user
 
     Product.create({
@@ -20,6 +20,8 @@ module.exports = {
     }).exec((error, product) => {
       if (error) return res.serverError(error)
 
+      sails.log.info('Product created', product)
+
       if (product) return res.ok()
     })
   },
@@ -29,7 +31,7 @@ module.exports = {
    * @param res
    */
   get: (req, res) => {
-    let id   = req.param('id')
+    let id = req.param('id')
     let user = req.cookies.user
 
     Product.findOne({
@@ -48,11 +50,11 @@ module.exports = {
    */
   patch: (req, res) => {
     let {
-          id,
-          title,
-          price,
-          description
-        }    = req.allParams()
+      id,
+      title,
+      price,
+      description
+    } = req.allParams()
     let user = req.cookies.user
 
     Product.update({
@@ -65,6 +67,8 @@ module.exports = {
     }).exec((error, product) => {
       if (error) return res.serverError(error)
 
+      sails.log.info('Product patched', product)
+
       if (product) return res.ok()
     })
   },
@@ -75,13 +79,15 @@ module.exports = {
    */
   remove: (req, res) => {
     let id = req.param('id')
-    let user = req.cookies.user;
+    let user = req.cookies.user
 
     Product.destroy({
       id,
       user
     }).exec((error) => {
       if (error) return res.serverError(error)
+
+      sails.log.info('Product removed')
 
       return res.ok()
     })

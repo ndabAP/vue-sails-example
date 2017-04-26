@@ -19,7 +19,7 @@ module.exports = {
       if (user) {
         sails.log.info('User logged in', user)
 
-        res.cookie('user', user.id);
+        res.cookie('user', user.id)
 
         return res.json({
           token: TokenService.issue({
