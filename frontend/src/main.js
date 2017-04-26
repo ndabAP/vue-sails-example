@@ -55,6 +55,20 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+const LocaleMixin = {
+  computed: {
+    locale () {
+      return this.$store.state.locale
+    }
+  },
+
+  watch: {
+    locale () {
+      this.$i18n.locale = this.locale
+    }
+  }
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -62,6 +76,7 @@ new Vue({
   router,
   i18n,
   template: '<App/>',
+  mixins: [LocaleMixin],
   components: {
     App
   }

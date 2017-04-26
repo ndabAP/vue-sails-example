@@ -9,19 +9,19 @@
 
       <b-collapse is-nav id="nav_collapse">
         <b-nav is-nav-bar>
-          <b-nav-item :to="{ name: 'Home'}">Home</b-nav-item>
-          <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Register'}">Register</b-nav-item>
-          <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Login'}">Login</b-nav-item>
-          <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Shop'}">Shop</b-nav-item>
+          <b-nav-item :to="{ name: 'Home'}">{{ $t('home') }}</b-nav-item>
+          <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Register'}">{{ $t('register') }}</b-nav-item>
+          <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Login'}">{{ $t('login') }}</b-nav-item>
+          <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Shop'}">{{ $t('shop') }}</b-nav-item>
         </b-nav>
         <b-nav is-nav-bar class="ml-auto">
           <b-nav-item :disabled="!basket.products.length" v-if="isUserAuthenticated" :to="{ name: 'Basket'}">
-            Basket ({{ basket.products.length }})
+            {{ $t('basket') }} ({{ basket.products.length }})
           </b-nav-item>
-          <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Products'}">Manage products</b-nav-item>
-          <b-nav-item-dropdown text="Lang" right-alignment>
-            <b-dropdown-item @click="setLanguage('en')">EN</b-dropdown-item>
-            <b-dropdown-item @click="setLanguage('de')">DE</b-dropdown-item>
+          <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Products'}">{{ $t('products') }}</b-nav-item>
+          <b-nav-item-dropdown text="Language" right-alignment>
+            <b-dropdown-item @click="setLanguage('en')">English</b-dropdown-item>
+            <b-dropdown-item @click="setLanguage('de')">Deutsch</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-nav>
       </b-collapse>
@@ -36,6 +36,29 @@
   export default {
     name: 'app',
 
+    i18n: {
+      messages: {
+        en: {
+          'home': 'Home',
+          'register': 'Register',
+          'login': 'Login',
+          'shop': 'Shop',
+          'basket': 'Basket',
+          'products': 'Manage products'
+
+        },
+        de: {
+          'home': 'Startseite',
+          'register': 'Registrierung',
+          'login': 'Login',
+          'shop': 'Shop',
+          'basket': 'Warenkorb',
+          'products': 'Verwalte Produkte'
+
+        }
+      }
+    },
+
     computed: {
       isUserAuthenticated () {
         return this.$store.state.isUserAuthenticated
@@ -49,9 +72,14 @@
     },
 
     methods: {
+
+      /**
+       * @param language
+       */
       setLanguage (language) {
-        this.$i18n.locale = language
+        this.$store.dispatch('setLocale', language)
       }
     }
+
   }
 </script>

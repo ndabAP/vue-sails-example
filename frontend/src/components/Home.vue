@@ -30,7 +30,7 @@
           <p>{{ product.description }}</p>
           <small slot="footer" class="text-muted">
             <span class="float-left">${{ product.price }}</span>
-            <span class="float-right">by {{ product.user.name }}</span>
+            <span class="float-right">{{ $t('span.first') }} {{ product.user.name }}</span>
           </small>
         </b-card>
       </div>
@@ -52,7 +52,8 @@
           'h3.third': 'Buy fast',
           'p.first': 'Our users offer many products.',
           'p.second': 'The products here are very cheap.',
-          'p.third': 'Buy fast and easy here.'
+          'p.third': 'Buy fast and easy here.',
+          'span.first': 'by'
         },
         de: {
           'h3.first': 'Viele Produkte',
@@ -60,7 +61,8 @@
           'h3.third': 'Kaufe schnell',
           'p.first': 'Unsere Kunden bieten viele Produkte.',
           'p.second': 'Die Produkte sind sehr günstig hier.',
-          'p.third': 'Kaufe hier schnell und einfach.'
+          'p.third': 'Kaufe hier schnell und einfach.',
+          'span.first': 'von'
         }
       }
     },

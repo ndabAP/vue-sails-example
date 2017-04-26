@@ -14,6 +14,7 @@ const getCookie = (name) => {
 
 export default new Vuex.Store({
   state: {
+    locale: 'en',
     user: {
       id: '',
       name: '',
@@ -35,6 +36,15 @@ export default new Vuex.Store({
   },
 
   mutations: {
+
+    /**
+     * @param state
+     * @param locale
+     * @constructor
+     */
+    SET_LOCALE (state, locale) {
+      state.locale = locale
+    },
 
     /**
      * @param state
@@ -160,6 +170,14 @@ export default new Vuex.Store({
   },
 
   actions: {
+
+    /**
+     * @param context
+     * @param locale
+     */
+    setLocale (context, locale) {
+      context.commit('SET_LOCALE', locale)
+    },
 
     /**
      * @param context
