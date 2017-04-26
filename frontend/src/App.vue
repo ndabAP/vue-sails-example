@@ -3,7 +3,7 @@
     <b-navbar toggleable type="inverse" variant="primary">
       <b-nav-toggle target="nav_collapse"></b-nav-toggle>
 
-      <b-link class="navbar-brand" to="#">
+      <b-link class="navbar-brand" :to="{ name: 'Home'}">
         <span>Product paradise</span>
       </b-link>
 
