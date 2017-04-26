@@ -37,7 +37,7 @@
           'button.first': 'Buy'
         },
         de: {
-          'alert.first': 'Deine Produkte sind in der folgenden Auflistung nicht enthalten.',
+          'alert.first': 'Deine eigenen Produkte sind in der folgenden Auflistung nicht enthalten.',
           'span.first': 'von',
           'button.first': 'Einkaufen'
         }
