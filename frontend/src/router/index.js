@@ -1,11 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Register from '@/components/Register'
-import Login from '@/components/Login'
-import ProductIndex from '@/components/product/ProductIndex'
-import ShoppingIndex from '@/components/product/shop/ShopIndex'
-import BasketIndex from '@/components/product/shop/BasketIndex'
 
 Vue.use(Router)
 
@@ -15,22 +9,30 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: resolve => {
+        require(['./../components/Home.vue'], resolve)
+      }
     },
     {
       path: '/register',
       name: 'Register',
-      component: Register
+      component: resolve => {
+        require(['./../components/Register.vue'], resolve)
+      }
     },
     {
       path: '/login',
       name: 'Login',
-      component: Login
+      component: resolve => {
+        require(['./../components/Login.vue'], resolve)
+      }
     },
     {
       path: '/user/products/index',
       name: 'Products',
-      component: ProductIndex,
+      component: resolve => {
+        require(['./../components/product/ProductIndex.vue'], resolve)
+      },
       meta: {
         userOnly: true
       }
@@ -38,7 +40,9 @@ export default new Router({
     {
       path: '/shop/index',
       name: 'Shop',
-      component: ShoppingIndex,
+      component: resolve => {
+        require(['./../components/product/shop/ShopIndex.vue'], resolve)
+      },
       meta: {
         userOnly: true
       }
@@ -46,14 +50,18 @@ export default new Router({
     {
       path: '/shop/basket/index',
       name: 'Basket',
-      component: BasketIndex,
+      component: resolve => {
+        require(['./../components/product/shop/BasketIndex.vue'], resolve)
+      },
       meta: {
         userOnly: true
       }
     },
     {
       path: '*',
-      component: Home
+      component: resolve => {
+        require(['./../components/Home.vue'], resolve)
+      }
     }
   ]
 })
