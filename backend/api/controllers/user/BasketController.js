@@ -5,7 +5,7 @@ module.exports = {
    * @param res
    */
   post: (req, res) => {
-    let products = req.params('products')
+    let products = req.param('products')
 
     Basket.create({
       products
