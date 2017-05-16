@@ -53,6 +53,26 @@ const products = [
     description: 'This is the new generation mouse with multiple inputs.',
     price: 12.99,
     user: 3
+  }, {
+    title: 'Watch',
+    description: 'There is no better watch in this world. Just buy it.',
+    price: 199.95,
+    user: 1
+  }, {
+    title: 'Laptop',
+    description: 'This laptop lacks of nothing. You can do everything with it.',
+    price: 700,
+    user: 2
+  }, {
+    title: 'Printer',
+    description: 'You print so many things with this printer. Give it a try.',
+    price: 395,
+    user: 1
+  }, {
+    title: 'Headphones',
+    description: 'Feel the music with these headphones. Exclusive and special.',
+    price: 100.95,
+    user: 2
   }
 ]
 
