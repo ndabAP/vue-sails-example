@@ -48,4 +48,4 @@ HTTP client for Vue.js.
 Router for the frontend.
 
 ## To do
-Password en-/decryption, more tests, more multilingualism, mobile version, product pagination
+Password en-/decryption, more tests, more multilingualism, mobile version
