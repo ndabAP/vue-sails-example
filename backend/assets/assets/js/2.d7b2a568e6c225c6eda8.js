@@ -9,29 +9,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
-    this.$store.dispatch('getProducts');
+    this.$store.dispatch('getProducts', this.currentPage);
     this.$store.dispatch('getUser');
+  },
+  data: function data() {
+    return {
+      currentPage: 1
+    };
   },
 
 
   i18n: {
     messages: {
       en: {
-        'alert.first': 'Please notice that your own products are not visible in this list.',
+        'alert.first': 'Please notice that you cannot buy your own products.',
         'span.first': 'by',
         'button.first': 'Buy'
       },
       de: {
-        'alert.first': 'Deine eigenen Produkte sind in der folgenden Auflistung nicht enthalten.',
+        'alert.first': 'Bitte nehme zur Kenntnis, dass deine eigenen Produkte nicht kaufbar sind.',
         'span.first': 'von',
         'button.first': 'Einkaufen'
       }
     }
   },
 
+  watch: {
+    currentPage: function currentPage() {
+      this.$store.dispatch('getProducts', this.currentPage);
+    }
+  },
+
   computed: {
     products: function products() {
-      return this.$store.state.products;
+      return this.$store.state.products.products;
+    },
+    amountOfProducts: function amountOfProducts() {
+      return this.$store.state.products.amountOfProducts;
     },
     user: function user() {
       return this.$store.state.user;
@@ -59,7 +73,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n    " + _vm._s(_vm.$t('alert.first')) + "\n  ")]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, _vm._l((_vm.products), function(product) {
-    return (product.user.name !== _vm.user.name) ? _c('div', {
+    return _c('div', {
       staticClass: "col-4"
     }, [_c('b-card', {
       key: product.id,
@@ -70,6 +84,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('p', [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c('b-button', {
       attrs: {
+        "disabled": product.user.name === _vm.user.name,
         "variant": "outline-success",
         "size": "sm"
       },
@@ -85,8 +100,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "float-left"
     }, [_vm._v("$" + _vm._s(product.price))]), _vm._v(" "), _c('span', {
       staticClass: "float-right"
-    }, [_vm._v(_vm._s(_vm.$t('span.first')) + " " + _vm._s(product.user.name))])])], 1)], 1) : _vm._e()
-  }))], 1)
+    }, [_vm._v(_vm._s(_vm.$t('span.first')) + " " + _vm._s(product.user.name))])])], 1)], 1)
+  })), _vm._v(" "), _c('b-pagination', {
+    attrs: {
+      "size": "md",
+      "total-rows": _vm.amountOfProducts,
+      "per-page": 6
+    },
+    model: {
+      value: (_vm.currentPage),
+      callback: function($$v) {
+        _vm.currentPage = $$v
+      },
+      expression: "currentPage"
+    }
+  })], 1)
 },staticRenderFns: []}
 
 /***/ }),
@@ -111,4 +139,4 @@ module.exports = Component.exports
 /***/ })
 
 });
-//# sourceMappingURL=2.e91c53da305fb62b853a.js.map
+//# sourceMappingURL=2.d7b2a568e6c225c6eda8.js.map
