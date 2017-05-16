@@ -7,9 +7,11 @@ module.exports = {
   get: (req, res) => {
     let user = req.cookies.user
 
-    Product.find({
-      user: user
-    }).exec((error, products) => {
+    Product
+      .find({
+        user: user
+      })
+      .exec((error, products) => {
       if (error) return res.serverError(error)
 
       if (products) return res.json(products)
