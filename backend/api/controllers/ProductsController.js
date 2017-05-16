@@ -5,10 +5,29 @@ module.exports = {
    * @param res
    */
   get: (req, res) => {
-    Product.find().populate('user').exec((error, products) => {
-      if (error) return res.serverError(error)
+    let page = req.param('page')
+    let user = req.cookies.user
 
-      if (products) return res.json(products)
-    })
+    Product
+      .count()
+      .where({
+        user: {'!': user}
+      })
+      .exec((error, amountOfProducts) => {
+        if (error) return res.serverError(error)
+
+        Product
+          .find()
+          .populate('user')
+          .paginate({page: page, limit: 6})
+          .exec((error, products) => {
+            if (error) return res.serverError(error)
+
+            if (products) return res.json({
+              products,
+              amountOfProducts
+            })
+          })
+      })
   }
 }

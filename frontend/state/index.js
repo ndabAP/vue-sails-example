@@ -192,9 +192,14 @@ export default new Vuex.Store({
 
     /**
      * @param context
+     * @param page
      */
-    getProducts (context) {
-      Vue.http.get('/api/products/get').then((response) => {
+    getProducts (context, page) {
+      Vue.http.get('/api/products/get', {
+        params: {
+          page
+        }
+      }).then((response) => {
         context.commit('SET_PRODUCTS', response.body)
       }, (error) => {
         console.log(error)
@@ -203,9 +208,8 @@ export default new Vuex.Store({
 
     /**
      * @param context
-     * @param user
      */
-    getProductsByUser (context, user) {
+    getProductsByUser (context) {
       Vue.http.get('/api/user/products/get').then((response) => {
         context.commit('SET_PRODUCTS', response.body)
       }, (error) => {

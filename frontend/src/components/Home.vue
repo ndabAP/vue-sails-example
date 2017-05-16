@@ -35,13 +35,27 @@
         </b-card>
       </div>
     </div>
+
+    <b-pagination size="md" :total-rows="amountOfProducts" :per-page="6" v-model="currentPage"></b-pagination>
   </div>
 </template>
 
 <script>
   export default {
     created () {
-      this.$store.dispatch('getProducts')
+      this.$store.dispatch('getProducts', this.currentPage)
+    },
+
+    data () {
+      return {
+        currentPage: 1
+      }
+    },
+
+    watch: {
+      currentPage () {
+        this.$store.dispatch('getProducts', this.currentPage)
+      }
     },
 
     i18n: {
@@ -69,7 +83,11 @@
 
     computed: {
       products () {
-        return this.$store.state.products
+        return this.$store.state.products.products
+      },
+
+      amountOfProducts () {
+        return this.$store.state.products.amountOfProducts
       }
     }
   }
