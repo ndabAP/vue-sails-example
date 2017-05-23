@@ -7,14 +7,16 @@ module.exports = {
   post: (req, res) => {
     let products = req.param('products')
 
-    Basket.create({
-      products
-    }).exec((error, basket) => {
-      if (error) return res.serverError(error)
+    Basket
+      .create({
+        products
+      })
+      .exec((error, basket) => {
+        if (error) return res.serverError(error)
 
-      sails.log('Created basket', basket)
+        sails.log('Created basket', basket)
 
-      if (basket) return res.ok()
-    })
+        if (basket) return res.ok()
+      })
   }
 }

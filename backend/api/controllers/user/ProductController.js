@@ -32,16 +32,17 @@ module.exports = {
    */
   get: (req, res) => {
     let id = req.param('id')
-    let user = req.cookies.user
+    let user = CryptographyService.decrypt(req.cookies.user)
 
-    Product.findOne({
-      id,
-      user
-    }).exec((error, product) => {
-      if (error) return res.serverError(error)
-
-      if (product) return res.json(product)
-    })
+    Product
+      .findOne({
+        id,
+        user
+      })
+      .exec((error, product) => {
+        if (error) return res.serverError(error)
+        if (product) return res.json(product)
+      })
   },
 
   /**
@@ -55,22 +56,24 @@ module.exports = {
       price,
       description
     } = req.allParams()
-    let user = req.cookies.user
+    let user = CryptographyService.decrypt(req.cookies.user)
 
-    Product.update({
-      id,
-      user
-    }, {
-      title,
-      description,
-      price
-    }).exec((error, product) => {
-      if (error) return res.serverError(error)
+    Product
+      .update({
+        id,
+        user
+      }, {
+        title,
+        description,
+        price
+      })
+      .exec((error, product) => {
+        if (error) return res.serverError(error)
 
-      sails.log.info('Product patched', product)
+        sails.log.info('Product patched', product)
 
-      if (product) return res.ok()
-    })
+        if (product) return res.ok()
+      })
   },
 
   /**
@@ -79,17 +82,19 @@ module.exports = {
    */
   remove: (req, res) => {
     let id = req.param('id')
-    let user = req.cookies.user
+    let user = CryptographyService.decrypt(req.cookies.user)
 
-    Product.destroy({
-      id,
-      user
-    }).exec((error) => {
-      if (error) return res.serverError(error)
+    Product
+      .destroy({
+        id,
+        user
+      })
+      .exec(error => {
+        if (error) return res.serverError(error)
 
-      sails.log.info('Product removed')
+        sails.log.info('Product removed')
 
-      return res.ok()
-    })
+        return res.ok()
+      })
   }
 }

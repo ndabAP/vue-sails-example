@@ -5,6 +5,7 @@
   "description": "Product paradise",
   "keywords": [],
   "dependencies": {
+    "crypto": "0.0.3",
     "grunt": "1.0.1",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-coffee": "1.0.0",
@@ -34,6 +35,5 @@
   },
   "author": "vagrant",
   "license": "",
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

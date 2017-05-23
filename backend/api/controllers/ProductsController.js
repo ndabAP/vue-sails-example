@@ -6,7 +6,7 @@ module.exports = {
    */
   get: (req, res) => {
     let page = req.param('page')
-    let user = req.cookies.user
+    let user = CryptographyService.decrypt(req.cookies.user)
 
     Product
       .count()

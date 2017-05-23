@@ -7,15 +7,17 @@ module.exports = {
   post: (req, res) => {
     let {name, password} = req.allParams()
 
-    User.create({
-      name,
-      password
-    }).exec((error, user) => {
-      if (error) return res.serverError(error)
+    User
+      .create({
+        name,
+        password
+      })
+      .exec((error, user) => {
+        if (error) return res.serverError(error)
 
-      sails.log('Created user', user)
+        sails.log('Created user', user)
 
-      if (user) return res.ok()
-    })
+        if (user) return res.ok()
+      })
   }
 }
