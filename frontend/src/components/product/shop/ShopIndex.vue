@@ -30,7 +30,7 @@
 <script>
   export default {
     created () {
-      this.$store.dispatch('getProducts', this.currentPage)
+      this.$store.dispatch('getShopProducts', this.currentPage)
       this.$store.dispatch('getUser')
     },
 
@@ -57,7 +57,7 @@
 
     watch: {
       currentPage () {
-        this.$store.dispatch('getProducts', this.currentPage)
+        this.$store.dispatch('getShopProducts', this.currentPage)
       }
     },
 

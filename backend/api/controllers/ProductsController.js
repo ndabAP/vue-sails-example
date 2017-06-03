@@ -6,13 +6,9 @@ module.exports = {
    */
   get: (req, res) => {
     let page = req.param('page')
-    let user = CryptographyService.decrypt(req.cookies.user)
 
     Product
       .count()
-      .where({
-        user: {'!': user}
-      })
       .exec((error, amountOfProducts) => {
         if (error) return res.serverError(error)
 

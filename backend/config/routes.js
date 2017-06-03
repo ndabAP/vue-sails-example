@@ -55,6 +55,8 @@ module.exports.routes = {
 
   'delete /api/user/product/remove': 'user/ProductController.remove',
 
+  'get /api/user/products/getByUser': 'user/ProductsController.getByUser',
+
   'get /api/user/products/get': 'user/ProductsController.get',
 
   'post /api/user/basket/post': 'user/BasketController.post'

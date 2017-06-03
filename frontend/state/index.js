@@ -158,7 +158,7 @@ export default new Vuex.Store({
     },
 
     CHECKOUT (state) {
-
+      // Implement
     },
 
     RESET_BASKET (state) {
@@ -199,22 +199,41 @@ export default new Vuex.Store({
         params: {
           page
         }
-      }).then((response) => {
-        context.commit('SET_PRODUCTS', response.body)
-      }, (error) => {
-        console.log(error)
       })
+        .then(response => {
+          context.commit('SET_PRODUCTS', response.body)
+        }, (error) => {
+          console.error(error)
+        })
+    },
+
+    /**
+     * @param context
+     * @param page
+     */
+    getShopProducts (context, page) {
+      Vue.http.get('/api/user/products/get', {
+        params: {
+          page
+        }
+      })
+        .then(response => {
+          context.commit('SET_PRODUCTS', response.body)
+        }, (error) => {
+          console.error(error)
+        })
     },
 
     /**
      * @param context
      */
     getProductsByUser (context) {
-      Vue.http.get('/api/user/products/get').then((response) => {
-        context.commit('SET_PRODUCTS', response.body)
-      }, (error) => {
-        console.log(error)
-      })
+      Vue.http.get('/api/user/products/getByUser')
+        .then(response => {
+          context.commit('SET_PRODUCTS', response.body)
+        }, error => {
+          console.error(error)
+        })
     },
 
     /**
