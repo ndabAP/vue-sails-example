@@ -186,14 +186,25 @@ var getCookie = function getCookie(name) {
       }).then(function (response) {
         context.commit('SET_PRODUCTS', response.body);
       }, function (error) {
-        console.log(error);
+        console.error(error);
+      });
+    },
+    getShopProducts: function getShopProducts(context, page) {
+      __WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].http.get('/api/user/products/get', {
+        params: {
+          page: page
+        }
+      }).then(function (response) {
+        context.commit('SET_PRODUCTS', response.body);
+      }, function (error) {
+        console.error(error);
       });
     },
     getProductsByUser: function getProductsByUser(context) {
-      __WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].http.get('/api/user/products/get').then(function (response) {
+      __WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].http.get('/api/user/products/getByUser').then(function (response) {
         context.commit('SET_PRODUCTS', response.body);
       }, function (error) {
-        console.log(error);
+        console.error(error);
       });
     },
     setIsUserAuthenticated: function setIsUserAuthenticated(context, isUserAuthenticated) {
@@ -569,4 +580,4 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ })
 
 },[42]);
-//# sourceMappingURL=app.2e942241aa2e62a20a18.js.map
+//# sourceMappingURL=app.915c4d7f4bb999fb2ca2.js.map

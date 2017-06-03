@@ -6,15 +6,20 @@ This project is for those who are new to [single-page applications](https://en.w
 I created a [Vagrant box](https://github.com/ndabAP/Vagrant-box-with-Sails.js-Vue.js-and-MongoDB) with MongoDB, Node.js, Sails.js and Vue.js and also a [Docker file](https://github.com/ndabAP/Docker-image-with-Sails.js-vue-cli-Node.js-and-MongoDB). Or manually install Node.js and Sails.js.
 
 #### Get Nodes.js
+
 ```bash
 $ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 $ sudo apt-get install -y nodejs
 ```
+
 #### Get Sails.js
+
 ```bash
 $ sudo npm install sails -g
 ```
+
 #### Install modules
+
 ```bash
 $ cd frontend && npm install
 $ cd ../backend && npm install

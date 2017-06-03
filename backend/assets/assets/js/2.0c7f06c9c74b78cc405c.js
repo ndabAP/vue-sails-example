@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
-    this.$store.dispatch('getProducts', this.currentPage);
+    this.$store.dispatch('getShopProducts', this.currentPage);
     this.$store.dispatch('getUser');
   },
   data: function data() {
@@ -36,7 +36,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   watch: {
     currentPage: function currentPage() {
-      this.$store.dispatch('getProducts', this.currentPage);
+      this.$store.dispatch('getShopProducts', this.currentPage);
     }
   },
 
@@ -139,4 +139,4 @@ module.exports = Component.exports
 /***/ })
 
 });
-//# sourceMappingURL=2.d7b2a568e6c225c6eda8.js.map
+//# sourceMappingURL=2.0c7f06c9c74b78cc405c.js.map
