@@ -15,7 +15,7 @@ module.exports = {
       .exec((error, user) => {
         if (error) return res.serverError(error)
 
-        sails.log('Created user', user)
+        sails.log.info('Created user', user)
 
         if (user) return res.ok()
       })

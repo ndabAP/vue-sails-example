@@ -41,7 +41,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
       userOnly: true
     }
   }, {
-    path: '/shop/index',
+    path: '/user/shop/index',
     name: 'Shop',
     component: function component(resolve) {
       __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(89)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
@@ -50,7 +50,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
       userOnly: true
     }
   }, {
-    path: '/shop/basket/index',
+    path: '/user/shop/basket/index',
     name: 'Basket',
     component: function component(resolve) {
       __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(88)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
@@ -175,7 +175,7 @@ var getCookie = function getCookie(name) {
       __WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].http.get('/api/user/get').then(function (response) {
         context.commit('SET_USER', response.body);
       }, function (error) {
-        console.log(error);
+        console.error(error);
       });
     },
     getProducts: function getProducts(context, page) {
@@ -220,10 +220,10 @@ var getCookie = function getCookie(name) {
       __WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].http.post('/api/register/post', {
         name: user.name,
         password: user.password
-      }).then(function (response) {
+      }).then(function () {
         context.commit('RESET_USER');
       }).catch(function (error) {
-        console.log(error);
+        console.error(error);
       });
     },
     setProductTitle: function setProductTitle(context, title) {
@@ -580,4 +580,4 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ })
 
 },[42]);
-//# sourceMappingURL=app.915c4d7f4bb999fb2ca2.js.map
+//# sourceMappingURL=app.a0aa51f75076485d8889.js.map

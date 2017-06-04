@@ -61,7 +61,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 104:
+/***/ 111:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -103,7 +103,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(_vm.$t('span.first')) + " " + _vm._s(product.user.name))])])], 1)], 1)
   })), _vm._v(" "), _c('b-pagination', {
     attrs: {
-      "size": "md",
+      "size": "sm",
       "total-rows": _vm.amountOfProducts,
       "per-page": 6
     },
@@ -126,7 +126,7 @@ var Component = __webpack_require__(40)(
   /* script */
   __webpack_require__(100),
   /* template */
-  __webpack_require__(104),
+  __webpack_require__(111),
   /* scopeId */
   null,
   /* cssModules */
@@ -139,4 +139,4 @@ module.exports = Component.exports
 /***/ })
 
 });
-//# sourceMappingURL=2.0c7f06c9c74b78cc405c.js.map
+//# sourceMappingURL=2.85f668d306c463e32593.js.map

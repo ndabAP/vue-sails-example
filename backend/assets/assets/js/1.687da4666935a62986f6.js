@@ -7,7 +7,7 @@ var Component = __webpack_require__(40)(
   /* script */
   __webpack_require__(95),
   /* template */
-  __webpack_require__(108),
+  __webpack_require__(109),
   /* scopeId */
   null,
   /* cssModules */
@@ -24,9 +24,9 @@ module.exports = Component.exports
 
 var Component = __webpack_require__(40)(
   /* script */
-  __webpack_require__(97),
+  __webpack_require__(96),
   /* template */
-  __webpack_require__(110),
+  __webpack_require__(104),
   /* scopeId */
   null,
   /* cssModules */
@@ -45,7 +45,7 @@ var Component = __webpack_require__(40)(
   /* script */
   __webpack_require__(98),
   /* template */
-  __webpack_require__(111),
+  __webpack_require__(110),
   /* scopeId */
   null,
   /* cssModules */
@@ -57,7 +57,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 108:
+/***/ 104:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -121,6 +121,52 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.create
     }
   }, [_vm._v(_vm._s(_vm.$t('button.first')))])], 1)
+},staticRenderFns: []}
+
+/***/ }),
+
+/***/ 109:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [(_vm.isEditProductVisible) ? _c('product-patch', {
+    attrs: {
+      "id": _vm.id
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.products.length > 0) ? _c('b-table', {
+    attrs: {
+      "items": _vm.products,
+      "fields": _vm.fields
+    },
+    scopedSlots: _vm._u([
+      ["price", function(item) {
+        return [_vm._v("\n      $" + _vm._s(item.item.price) + "\n    ")]
+      }],
+      ["actions", function(item) {
+        return [_c('b-button', {
+          attrs: {
+            "size": "sm",
+            "variant": "outline-primary"
+          },
+          on: {
+            "click": function($event) {
+              _vm.showPatchForm(item.item.id)
+            }
+          }
+        }, [_vm._v(_vm._s(_vm.$t('button.first')) + "\n      ")]), _vm._v(" "), _c('b-button', {
+          attrs: {
+            "size": "sm",
+            "variant": "outline-warning"
+          },
+          on: {
+            "click": function($event) {
+              _vm.remove(item.item.id)
+            }
+          }
+        }, [_vm._v(_vm._s(_vm.$t('button.second')))])]
+      }]
+    ])
+  }) : _c('p', [_vm._v("No products yet, you should create one.")])], 1)
 },staticRenderFns: []}
 
 /***/ }),
@@ -210,52 +256,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 111:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.isEditProductVisible) ? _c('product-patch', {
-    attrs: {
-      "id": _vm.id
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.products.length > 0) ? _c('b-table', {
-    attrs: {
-      "items": _vm.products,
-      "fields": _vm.fields
-    },
-    scopedSlots: _vm._u([
-      ["price", function(item) {
-        return [_vm._v("\n      $" + _vm._s(item.item.price) + "\n    ")]
-      }],
-      ["actions", function(item) {
-        return [_c('b-button', {
-          attrs: {
-            "size": "sm",
-            "variant": "outline-primary"
-          },
-          on: {
-            "click": function($event) {
-              _vm.showPatchForm(item.item.id)
-            }
-          }
-        }, [_vm._v(_vm._s(_vm.$t('button.first')) + "\n      ")]), _vm._v(" "), _c('b-button', {
-          attrs: {
-            "size": "sm",
-            "variant": "outline-warning"
-          },
-          on: {
-            "click": function($event) {
-              _vm.remove(item.item.id)
-            }
-          }
-        }, [_vm._v(_vm._s(_vm.$t('button.second')))])]
-      }]
-    ])
-  }) : _c('p', [_vm._v("No products yet, you should create one.")])], 1)
-},staticRenderFns: []}
-
-/***/ }),
-
 /***/ 112:
 /***/ (function(module, exports) {
 
@@ -299,7 +299,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 var Component = __webpack_require__(40)(
   /* script */
-  __webpack_require__(96),
+  __webpack_require__(97),
   /* template */
   __webpack_require__(112),
   /* scopeId */
@@ -314,6 +314,110 @@ module.exports = Component.exports
 /***/ }),
 
 /***/ 95:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__product_ProductPatch__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__product_ProductPatch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__product_ProductPatch__);
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    ProductPatch: __WEBPACK_IMPORTED_MODULE_0__product_ProductPatch___default.a
+  },
+
+  data: function data() {
+    return {
+      id: ''
+    };
+  },
+  created: function created() {
+    this.$store.dispatch('getProductsByUser', this.user);
+  },
+
+
+  i18n: {
+    messages: {
+      en: {
+        'field.first': 'Title',
+        'field.second': 'Description',
+        'field.third': 'Price',
+        'field.fourth': 'Actions',
+        'button.first': 'Patch',
+        'button.second': 'Remove'
+      },
+      de: {
+        'field.first': 'Titel',
+        'field.second': 'Beschreibung',
+        'field.third': 'Preis',
+        'field.fourth': 'Aktionen',
+        'button.first': 'Bearbeiten',
+        'button.second': 'Entfernen'
+      }
+    }
+  },
+
+  computed: {
+    fields: function fields() {
+      return {
+        title: {
+          label: this.$t('field.first')
+        },
+        description: {
+          label: this.$t('field.second')
+        },
+        price: {
+          label: this.$t('field.third')
+        },
+        actions: {
+          label: this.$t('field.fourth')
+        }
+      };
+    },
+    products: function products() {
+      return this.$store.state.products;
+    },
+    user: function user() {
+      return this.$store.state.user;
+    },
+
+
+    isEditProductVisible: {
+      get: function get() {
+        return this.$store.state.product.meta.isEditProductVisible;
+      },
+      set: function set(isEditProductVisible) {
+        this.$store.dispatch('setIsEditProductVisible', isEditProductVisible);
+      }
+    }
+  },
+
+  methods: {
+    showPatchForm: function showPatchForm(id) {
+      this.$set(this, 'id', id);
+      this.$store.dispatch('setIsEditProductVisible', true);
+    },
+    remove: function remove(id) {
+      var _this = this;
+
+      this.$http.delete('/api/user/product/remove', {
+        params: {
+          id: id
+        }
+      }).then(function () {
+
+        _this.$store.dispatch('getProductsByUser', _this.user);
+      }, function () {});
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -343,6 +447,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     }
   },
+
+  created: function created() {
+    this.$store.dispatch('resetProduct');
+  },
+
 
   computed: {
     product: {
@@ -395,7 +504,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         _this.$store.dispatch('getProductsByUser', _this.user);
       }, function (error) {
-        console.log(error);
+        console.error(error);
       });
     }
   }
@@ -403,14 +512,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 96:
+/***/ 97:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProductCreate__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProductCreate__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProductCreate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProductCreate__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ProductsGet__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ProductsGet__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ProductsGet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ProductsGet__);
 
 
@@ -422,11 +531,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     messages: {
       en: {
         'tab.first': 'Get products',
-        'tab.second': 'Create products'
+        'tab.second': 'Create product'
       },
       de: {
         'tab.first': 'Hole Produkte',
-        'tab.second': 'Erstelle Produkte'
+        'tab.second': 'Erstelle Produkt'
       }
     }
   },
@@ -439,7 +548,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 97:
+/***/ 98:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -567,111 +676,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   }
 });
 
-/***/ }),
-
-/***/ 98:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProductPatch__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProductPatch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProductPatch__);
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    ProductPatch: __WEBPACK_IMPORTED_MODULE_0__ProductPatch___default.a
-  },
-
-  data: function data() {
-    return {
-      id: ''
-    };
-  },
-  created: function created() {
-    this.$store.dispatch('getProductsByUser', this.user);
-  },
-
-
-  i18n: {
-    messages: {
-      en: {
-        'field.first': 'Title',
-        'field.second': 'Description',
-        'field.third': 'Price',
-        'field.fourth': 'Actions',
-        'button.first': 'Patch',
-        'button.second': 'Remove'
-      },
-      de: {
-        'field.first': 'Titel',
-        'field.second': 'Beschreibung',
-        'field.third': 'Preis',
-        'field.fourth': 'Aktionen',
-        'button.first': 'Bearbeiten',
-        'button.second': 'Entfernen'
-      }
-    }
-  },
-
-  computed: {
-    fields: function fields() {
-      return {
-        title: {
-          label: this.$t('field.first')
-        },
-        description: {
-          label: this.$t('field.second')
-        },
-        price: {
-          label: this.$t('field.third')
-        },
-        actions: {
-          label: this.$t('field.fourth')
-        }
-      };
-    },
-    products: function products() {
-      return this.$store.state.products;
-    },
-    user: function user() {
-      return this.$store.state.user;
-    },
-
-
-    isEditProductVisible: {
-      get: function get() {
-        return this.$store.state.product.meta.isEditProductVisible;
-      },
-      set: function set(isEditProductVisible) {
-        this.$store.dispatch('setIsEditProductVisible', isEditProductVisible);
-      }
-    }
-  },
-
-  methods: {
-    showPatchForm: function showPatchForm(id) {
-      this.$set(this, 'id', id);
-      this.$store.dispatch('setIsEditProductVisible', true);
-    },
-    remove: function remove(id) {
-      var _this = this;
-
-      this.$http.delete('/api/user/product/remove', {
-        params: {
-          id: id
-        }
-      }).then(function () {
-
-        _this.$store.dispatch('getProductsByUser', _this.user);
-      }, function () {});
-    }
-  }
-});
-
 /***/ })
 
 });
-//# sourceMappingURL=1.274d4629b3fe3d4b5fa4.js.map
+//# sourceMappingURL=1.687da4666935a62986f6.js.map

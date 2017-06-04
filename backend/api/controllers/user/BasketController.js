@@ -14,7 +14,7 @@ module.exports = {
       .exec((error, basket) => {
         if (error) return res.serverError(error)
 
-        sails.log('Created basket', basket)
+        sails.log.info('Created basket', basket)
 
         if (basket) return res.ok()
       })

@@ -62,7 +62,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(_vm.$t('span.first')) + " " + _vm._s(product.user.name))])])])], 1)
   })), _vm._v(" "), _c('b-pagination', {
     attrs: {
-      "size": "md",
+      "size": "sm",
       "total-rows": _vm.amountOfProducts,
       "per-page": 6
     },
@@ -157,4 +157,4 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ })
 
 });
-//# sourceMappingURL=0.afa43396ec9a9a741642.js.map
+//# sourceMappingURL=0.7c2263d506a097f5ba73.js.map

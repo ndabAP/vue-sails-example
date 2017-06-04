@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <b-pagination size="md" :total-rows="amountOfProducts" :per-page="6" v-model="currentPage"></b-pagination>
+    <b-pagination size="sm" :total-rows="amountOfProducts" :per-page="6" v-model="currentPage"></b-pagination>
   </div>
 </template>
 

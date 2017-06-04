@@ -7,7 +7,7 @@ Vue.use(Vuex)
  * @param name
  * @returns {string}
  */
-const getCookie = (name) => {
+const getCookie = name => {
   let a = `; ${document.cookie}`.match(`;\\s*${name}=([^;]+)`)
   return a ? a[1] : ''
 }
@@ -183,11 +183,12 @@ export default new Vuex.Store({
      * @param context
      */
     getUser (context) {
-      Vue.http.get('/api/user/get').then((response) => {
-        context.commit('SET_USER', response.body)
-      }, (error) => {
-        console.log(error)
-      })
+      Vue.http.get('/api/user/get')
+        .then(response => {
+          context.commit('SET_USER', response.body)
+        }, (error) => {
+          console.error(error)
+        })
     },
 
     /**
@@ -268,11 +269,13 @@ export default new Vuex.Store({
       Vue.http.post('/api/register/post', {
         name: user.name,
         password: user.password
-      }).then((response) => {
-        context.commit('RESET_USER')
-      }).catch(error => {
-        console.log(error)
       })
+        .then(() => {
+          context.commit('RESET_USER')
+        })
+        .catch(error => {
+          console.error(error)
+        })
     },
 
     /**
@@ -317,12 +320,13 @@ export default new Vuex.Store({
           title: parameters.product.title,
           description: parameters.product.description,
           price: parameters.product.price
-        }).then(() => {
-          context.commit('RESET_PRODUCT')
-          resolve()
-        }, error => {
-          reject(error)
         })
+          .then(() => {
+            context.commit('RESET_PRODUCT')
+            resolve()
+          }, error => {
+            reject(error)
+          })
       })
     },
 
@@ -369,7 +373,6 @@ export default new Vuex.Store({
 
     /**
      * @param context
-     * @param basket
      */
     resetBasket (context) {
       context.commit('RESET_BASKET')
