@@ -10,7 +10,7 @@ module.exports = {
       price,
       description
     } = req.allParams()
-    let user = req.cookies.user
+    let user = CryptographyService.decrypt(req.cookies.user)
 
     Product.create({
       title: title,
