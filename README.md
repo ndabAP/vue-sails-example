@@ -53,4 +53,4 @@ HTTP client for Vue.js.
 Router for the frontend.
 
 ## To do
-Password en-/decryption, header token security, more tests, more multilingualism, file uploads, upgrading to Sails.js 1.0, mobile version, finish checkout
+Password en-/decryption, more tests, more multilingualism, file uploads, upgrading to Sails.js 1.0, mobile version, finalize checkout
