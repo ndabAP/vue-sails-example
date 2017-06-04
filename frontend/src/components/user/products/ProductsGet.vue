@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import ProductPatch from './ProductPatch'
+  import ProductPatch from './product/ProductPatch'
 
   export default {
     components: {

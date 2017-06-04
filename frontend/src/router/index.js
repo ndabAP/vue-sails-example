@@ -31,27 +31,27 @@ export default new Router({
       path: '/user/products/index',
       name: 'Products',
       component: resolve => {
-        require(['./../components/product/ProductIndex.vue'], resolve)
+        require(['../components/user/products/product/ProductIndex.vue'], resolve)
       },
       meta: {
         userOnly: true
       }
     },
     {
-      path: '/shop/index',
+      path: '/user/shop/index',
       name: 'Shop',
       component: resolve => {
-        require(['./../components/product/shop/ShopIndex.vue'], resolve)
+        require(['../components/user/shop/ShopIndex.vue'], resolve)
       },
       meta: {
         userOnly: true
       }
     },
     {
-      path: '/shop/basket/index',
+      path: '/user/shop/basket/index',
       name: 'Basket',
       component: resolve => {
-        require(['./../components/product/shop/BasketIndex.vue'], resolve)
+        require(['../components/user/shop/BasketIndex.vue'], resolve)
       },
       meta: {
         userOnly: true

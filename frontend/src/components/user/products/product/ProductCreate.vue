@@ -56,6 +56,10 @@
       }
     },
 
+    created () {
+      this.$store.dispatch('resetProduct')
+    },
+
     computed: {
       product: {
         get () {
@@ -118,7 +122,7 @@
           this.$store.dispatch('getProductsByUser', this.user)
         }, error => {
           // Error message
-          console.log(error)
+          console.error(error)
         })
       }
     }

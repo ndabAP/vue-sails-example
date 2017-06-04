@@ -17,18 +17,18 @@
 
 <script>
   import ProductCreate from './ProductCreate'
-  import ProductsGet from './ProductsGet'
+  import ProductsGet from '../ProductsGet'
 
   export default {
     i18n: {
       messages: {
         en: {
           'tab.first': 'Get products',
-          'tab.second': 'Create products'
+          'tab.second': 'Create product'
         },
         de: {
           'tab.first': 'Hole Produkte',
-          'tab.second': 'Erstelle Produkte'
+          'tab.second': 'Erstelle Produkt'
         }
       }
     },
