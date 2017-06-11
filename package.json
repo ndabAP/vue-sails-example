@@ -1,9 +1,9 @@
 {
   "engines": {
-    "node": "6.10.2"
+    "node": "7.9.0"
   },
   "main": "backend/app.js",
   "scripts": {
-    "start": "cd backend && npm i && node app.js"
+    "start": "cd backend && npm i && node app.js --prod"
   }
 }
