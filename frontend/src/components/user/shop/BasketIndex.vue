@@ -4,16 +4,20 @@
       <div class="col-6">
         <div class="card mb-2">
           <div class="card-block">
-            <div v-for="product in basket.products">
+            <div v-for="(product, index) in basket.products">
               <p><b>{{ product.title }}</b> <span class="float-right"><small class="text-muted">${{ product.price
                 }}</small></span></p>
               <p>{{ product.description }}</p>
-              <b-button size="sm" variant="outline-danger" @click="removeProduct(product.id)">{{ $t('button.first') }}
+              <b-button size="sm" variant="outline-danger" @click="removeProduct(index)">{{ $t('button.first') }}
               </b-button>
               <hr>
             </div>
-            <p><span class="float-left">{{ $t('span.first') }}</span> <span class="float-right"><b>${{ totalPrice
-              }}</b></span></p>
+            <p>
+              <span class="float-left">{{ $t('span.first') }}</span>
+                <span class="float-right">
+                  <b>${{ totalPrice }}</b>
+                </span>
+            </p>
           </div>
         </div>
       </div>
@@ -73,10 +77,10 @@
       },
 
       /**
-       * @param productId
+       * @param index
        */
-      removeProduct (productId) {
-        this.$store.dispatch('removeProductFromBasket', productId)
+      removeProduct (index) {
+        this.$store.dispatch('removeProductFromBasket', index)
       }
     }
   }

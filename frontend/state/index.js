@@ -148,13 +148,11 @@ export default new Vuex.Store({
 
     /**
      * @param state
-     * @param productId
+     * @param index
      * @constructor
      */
-    REMOVE_PRODUCT_FROM_BASKET (state, productId) {
-      state.basket.products.forEach((product, index) => {
-        if (productId === product.id) state.basket.products.splice(index, 1)
-      })
+    REMOVE_PRODUCT_FROM_BASKET (state, index) {
+      state.basket.products.splice(index, 1)
     },
 
     CHECKOUT (state) {
@@ -339,10 +337,10 @@ export default new Vuex.Store({
 
     /**
      * @param context
-     * @param productId
+     * @param index
      */
-    removeProductFromBasket (context, productId) {
-      context.commit('REMOVE_PRODUCT_FROM_BASKET', productId)
+    removeProductFromBasket (context, index) {
+      context.commit('REMOVE_PRODUCT_FROM_BASKET', index)
     },
 
     /**
