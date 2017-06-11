@@ -4,7 +4,8 @@
       "name": "app.js",
       "script": "app.js",
       "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "PORT": "1337"
       },
       "watch": "true",
       "cron_restart": "* */6 * * *"
