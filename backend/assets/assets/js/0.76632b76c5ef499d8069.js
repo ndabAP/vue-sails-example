@@ -5,9 +5,7 @@ webpackJsonp([0],{
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col"
+    staticClass: "d-flex justify-content-center"
   }, [_c('b-carousel', {
     attrs: {
       "interval": 3000,
@@ -16,7 +14,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('b-carousel-slide', {
     attrs: {
       "background": "transparent",
-      "height": "150px"
+      "height": "100px"
     }
   }, [_c('h3', {
     staticClass: "text-info"
@@ -25,7 +23,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.$t('p.first')))])]), _vm._v(" "), _c('b-carousel-slide', {
     attrs: {
       "background": "transparent",
-      "height": "150px"
+      "height": "100px"
     }
   }, [_c('h3', {
     staticClass: "text-success"
@@ -34,13 +32,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.$t('p.second')))])]), _vm._v(" "), _c('b-carousel-slide', {
     attrs: {
       "background": "transparent",
-      "height": "150px"
+      "height": "100px"
     }
   }, [_c('h3', {
     staticClass: "text-primary"
   }, [_vm._v(_vm._s(_vm.$t('h3.third')))]), _vm._v(" "), _c('p', {
     staticClass: "text-muted"
-  }, [_vm._v(_vm._s(_vm.$t('p.third')))])])], 1)], 1)]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.$t('p.third')))])])], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, _vm._l((_vm.products), function(product) {
     return _c('div', {
@@ -157,4 +155,4 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ })
 
 });
-//# sourceMappingURL=0.7c2263d506a097f5ba73.js.map
+//# sourceMappingURL=0.76632b76c5ef499d8069.js.map

@@ -12,7 +12,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "card mb-2"
   }, [_c('div', {
     staticClass: "card-block"
-  }, [_vm._l((_vm.basket.products), function(product) {
+  }, [_vm._l((_vm.basket.products), function(product, index) {
     return _c('div', [_c('p', [_c('b', [_vm._v(_vm._s(product.title))]), _vm._v(" "), _c('span', {
       staticClass: "float-right"
     }, [_c('small', {
@@ -24,7 +24,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
-          _vm.removeProduct(product.id)
+          _vm.removeProduct(index)
         }
       }
     }, [_vm._v(_vm._s(_vm.$t('button.first')) + "\n            ")]), _vm._v(" "), _c('hr')], 1)
@@ -113,8 +113,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     checkout: function checkout() {
       this.$store.dispatch('checkout', this.basket).then(function () {});
     },
-    removeProduct: function removeProduct(productId) {
-      this.$store.dispatch('removeProductFromBasket', productId);
+    removeProduct: function removeProduct(index) {
+      this.$store.dispatch('removeProductFromBasket', index);
     }
   }
 });
@@ -122,4 +122,4 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ })
 
 });
-//# sourceMappingURL=3.4c3a9b5b4df6f07b3c74.js.map
+//# sourceMappingURL=3.9a61b5ee94b5c344bd92.js.map

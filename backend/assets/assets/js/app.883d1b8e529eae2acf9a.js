@@ -153,10 +153,8 @@ var getCookie = function getCookie(name) {
     PUSH_TO_BASKET: function PUSH_TO_BASKET(state, product) {
       state.basket.products.push(product);
     },
-    REMOVE_PRODUCT_FROM_BASKET: function REMOVE_PRODUCT_FROM_BASKET(state, productId) {
-      state.basket.products.forEach(function (product, index) {
-        if (productId === product.id) state.basket.products.splice(index, 1);
-      });
+    REMOVE_PRODUCT_FROM_BASKET: function REMOVE_PRODUCT_FROM_BASKET(state, index) {
+      state.basket.products.splice(index, 1);
     },
     CHECKOUT: function CHECKOUT(state) {},
     RESET_BASKET: function RESET_BASKET(state) {
@@ -255,8 +253,8 @@ var getCookie = function getCookie(name) {
     resetProduct: function resetProduct(context) {
       context.commit('RESET_PRODUCT');
     },
-    removeProductFromBasket: function removeProductFromBasket(context, productId) {
-      context.commit('REMOVE_PRODUCT_FROM_BASKET', productId);
+    removeProductFromBasket: function removeProductFromBasket(context, index) {
+      context.commit('REMOVE_PRODUCT_FROM_BASKET', index);
     },
     pushToBasket: function pushToBasket(context, product) {
       context.commit('PUSH_TO_BASKET', product);
@@ -580,4 +578,4 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ })
 
 },[42]);
-//# sourceMappingURL=app.a0aa51f75076485d8889.js.map
+//# sourceMappingURL=app.883d1b8e529eae2acf9a.js.map
