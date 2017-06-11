@@ -1,9 +1,0 @@
-{
-  "engines": {
-    "node": "7.9.0"
-  },
-  "scripts": {
-    "preinstall": "npm install pm2 -g",
-    "start": "cd backend && npm i && pm2 start ../processes.json"
-  }
-}

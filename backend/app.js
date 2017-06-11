@@ -55,9 +55,5 @@ try {
   }
 }
 
-var fs = require('fs')
-
-fs.unlink('.tmp/localDiskDb.db')
-
 // Start server
 sails.lift(rc('sails'));

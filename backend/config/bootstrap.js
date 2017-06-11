@@ -77,8 +77,6 @@ const products = [
 ]
 
 module.exports.bootstrap = function (cb) {
-  sails.log.info('Data base flushed')
-
   users.forEach(user => {
     User.findOrCreate({
       name: user.name,

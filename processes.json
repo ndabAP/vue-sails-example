@@ -1,9 +1,0 @@
-{
-  "apps": [
-    {
-      "name": "app.js",
-      "script": "app.js",
-      "cron_restart": "* */6 * * *"
-    }
-  ]
-}
