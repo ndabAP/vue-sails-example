@@ -2,8 +2,8 @@
   "engines": {
     "node": "7.9.0"
   },
-  "main": "backend/app.js",
   "scripts": {
-    "start": "cd backend && npm i && node app.js --prod"
+    "preinstall": "npm install pm2 -g",
+    "start": "cd backend && npm i && pm2 start ../processes.json"
   }
 }
