@@ -8,8 +8,6 @@ module.exports = {
     let page = req.param('page')
     let user = CryptographyService.decrypt(req.cookies.user)
 
-
-
     Product
       .count()
       .where({
@@ -36,6 +34,10 @@ module.exports = {
       })
   },
 
+   /**
+   * @param req
+   * @param res
+   */
   getByUser: (req, res) => {
     let user = CryptographyService.decrypt(req.cookies.user)
 
