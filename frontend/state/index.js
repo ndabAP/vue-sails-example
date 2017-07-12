@@ -28,7 +28,7 @@ export default new Vuex.Store({
         isEditProductVisible: false
       }
     },
-    products: [],
+    products: {},
     basket: {
       products: []
     },
@@ -60,6 +60,7 @@ export default new Vuex.Store({
      * @param products
      */
     SET_PRODUCTS (state, products) {
+      console.log(state)
       state.products = products
     },
 
