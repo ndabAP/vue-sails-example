@@ -59,13 +59,15 @@
         }
       },
 
-      totalPrice () {
-        let totalPrice = 0
-        this.basket.products.forEach((product) => {
-          totalPrice += product.price
-        })
+      totalPrice: {
+        get () {
+          let totalPrice = 0
+          this.basket.products.forEach((product) => {
+            totalPrice += product.price
+          })
 
-        return Math.round(totalPrice * 100) / 100
+          return Math.round(totalPrice * 100) / 100
+        }
       }
     },
 
@@ -80,7 +82,7 @@
        * @param index
        */
       removeProduct (index) {
-        this.$store.dispatch('removeProductFromBasket', index)
+        this.$store.commit('REMOVE_PRODUCT_FROM_BASKET', index)
       }
     }
   }

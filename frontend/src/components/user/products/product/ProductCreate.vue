@@ -57,7 +57,7 @@
     },
 
     created () {
-      this.$store.dispatch('resetProduct')
+      this.$store.commit('RESET_PRODUCT')
     },
 
     computed: {
@@ -67,8 +67,10 @@
         }
       },
 
-      user () {
-        return this.$store.state.user
+      user: {
+        get () {
+          return this.$store.state.user
+        }
       },
 
       title: {
@@ -80,7 +82,7 @@
          * @param title
          */
         set (title) {
-          this.$store.dispatch('setProductTitle', title)
+          this.$store.commit('SET_PRODUCT_TITLE', title)
         }
       },
 
@@ -93,7 +95,7 @@
          * @param description
          */
         set (description) {
-          this.$store.dispatch('setProductDescription', description)
+          this.$store.commit('SET_PRODUCT_DESCRIPTION', description)
         }
       },
 
@@ -106,7 +108,7 @@
          * @param price
          */
         set (price) {
-          this.$store.dispatch('setProductPrice', price)
+          this.$store.commit('SET_PRODUCT_PRICE', price)
         }
       }
     },
@@ -116,7 +118,8 @@
         this.$store.dispatch('saveProduct', {
           product: this.product,
           user: this.user
-        }).then(() => {
+        })
+        .then(() => {
           // Success message
 
           this.$store.dispatch('getProductsByUser', this.user)

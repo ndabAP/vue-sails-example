@@ -74,12 +74,16 @@
         }
       },
 
-      products () {
-        return this.$store.state.products
+      products: {
+        get () {
+          return this.$store.state.products
+        }
       },
 
-      user () {
-        return this.$store.state.user
+      user: {
+        get () {
+          return this.$store.state.user
+        }
       },
 
       isEditProductVisible: {
@@ -91,7 +95,7 @@
          * @param isEditProductVisible
          */
         set (isEditProductVisible) {
-          this.$store.dispatch('setIsEditProductVisible', isEditProductVisible)
+          this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', isEditProductVisible)
         }
       }
     },
@@ -102,24 +106,26 @@
        */
       showPatchForm (id) {
         this.$set(this, 'id', id)
-        this.$store.dispatch('setIsEditProductVisible', true)
+        this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', true)
       },
 
       /**
        * @param id
        */
       remove (id) {
-        this.$http.delete('/api/user/product/remove', {
-          params: {
-            id
-          }
-        }).then(() => {
-          // Success message
+        this.$http
+          .delete('/api/user/product/remove', {
+            params: {
+              id
+            }
+          })
+          .then(() => {
+            // Success message
 
-          this.$store.dispatch('getProductsByUser', this.user)
-        }, () => {
-          // Error message
-        })
+            this.$store.dispatch('getProductsByUser', this.user)
+          }, () => {
+           // Error message
+          })
       }
     }
   }

@@ -13,10 +13,10 @@ module.exports = {
     let user = CryptographyService.decrypt(req.cookies.user)
 
     Product.create({
-      title: title,
-      description: description,
-      price: price,
-      user: user
+      title,
+      description,
+      price,
+      user
     }).exec((error, product) => {
       if (error) return res.serverError(error)
 

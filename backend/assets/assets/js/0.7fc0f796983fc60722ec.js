@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 105:
+/***/ 110:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -76,14 +76,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 41:
+/***/ 43:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(40)(
   /* script */
   __webpack_require__(92),
   /* template */
-  __webpack_require__(105),
+  __webpack_require__(110),
   /* scopeId */
   null,
   /* cssModules */
@@ -143,11 +143,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   computed: {
-    products: function products() {
-      return this.$store.state.products.products;
+    products: {
+      get: function get() {
+        return this.$store.state.products.products;
+      }
     },
-    amountOfProducts: function amountOfProducts() {
-      return this.$store.state.products.amountOfProducts;
+
+    amountOfProducts: {
+      get: function get() {
+        return this.$store.state.products.amountOfProducts;
+      }
     }
   }
 });
@@ -155,4 +160,4 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ })
 
 });
-//# sourceMappingURL=0.76632b76c5ef499d8069.js.map
+//# sourceMappingURL=0.7fc0f796983fc60722ec.js.map

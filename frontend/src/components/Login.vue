@@ -71,11 +71,12 @@
         get () {
           return this.$store.state.user.name
         },
+
         /**
          * @param name
          */
         set (name) {
-          this.$store.dispatch('setUserName', name)
+          this.$store.commit('SET_USER_NAME', name)
         }
       },
 
@@ -83,22 +84,25 @@
         get () {
           return this.$store.state.user.password
         },
+
         /**
          * @param password
          */
         set (password) {
-          this.$store.dispatch('setUserPassword', password)
+          this.$store.commit('SET_USER_PASSWORD', password)
         }
       }
     },
 
     methods: {
       login () {
-        this.$http.post('/api/login/post', {
+        this.$http
+        .post('/api/login/post', {
           name: this.name,
           password: this.password
-        }).then((response) => {
-          this.$store.dispatch('setIsUserAuthenticated', true)
+        })
+        .then(response => {
+          this.$store.commit('SET_IS_USER_AUTHENTICATED', true)
           window.localStorage.setItem('token', response.body.token)
 
           // Success message

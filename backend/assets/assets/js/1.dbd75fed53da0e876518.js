@@ -1,11 +1,30 @@
 webpackJsonp([1],{
 
-/***/ 101:
+/***/ 106:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(40)(
   /* script */
   __webpack_require__(95),
+  /* template */
+  __webpack_require__(114),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 107:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(40)(
+  /* script */
+  __webpack_require__(96),
   /* template */
   __webpack_require__(109),
   /* scopeId */
@@ -19,33 +38,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 102:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(40)(
-  /* script */
-  __webpack_require__(96),
-  /* template */
-  __webpack_require__(104),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 103:
+/***/ 108:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(40)(
   /* script */
   __webpack_require__(98),
   /* template */
-  __webpack_require__(110),
+  __webpack_require__(115),
   /* scopeId */
   null,
   /* cssModules */
@@ -57,7 +57,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 104:
+/***/ 109:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -125,7 +125,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 109:
+/***/ 114:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -171,7 +171,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 110:
+/***/ 115:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -256,7 +256,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 112:
+/***/ 117:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -301,7 +301,7 @@ var Component = __webpack_require__(40)(
   /* script */
   __webpack_require__(97),
   /* template */
-  __webpack_require__(112),
+  __webpack_require__(117),
   /* scopeId */
   null,
   /* cssModules */
@@ -318,7 +318,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__product_ProductPatch__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__product_ProductPatch__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__product_ProductPatch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__product_ProductPatch__);
 
 
@@ -377,20 +377,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
       };
     },
-    products: function products() {
-      return this.$store.state.products;
-    },
-    user: function user() {
-      return this.$store.state.user;
+
+
+    products: {
+      get: function get() {
+        return this.$store.state.products;
+      }
     },
 
+    user: {
+      get: function get() {
+        return this.$store.state.user;
+      }
+    },
 
     isEditProductVisible: {
       get: function get() {
         return this.$store.state.product.meta.isEditProductVisible;
       },
       set: function set(isEditProductVisible) {
-        this.$store.dispatch('setIsEditProductVisible', isEditProductVisible);
+        this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', isEditProductVisible);
       }
     }
   },
@@ -398,7 +404,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     showPatchForm: function showPatchForm(id) {
       this.$set(this, 'id', id);
-      this.$store.dispatch('setIsEditProductVisible', true);
+      this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', true);
     },
     remove: function remove(id) {
       var _this = this;
@@ -449,7 +455,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   created: function created() {
-    this.$store.dispatch('resetProduct');
+    this.$store.commit('RESET_PRODUCT');
   },
 
 
@@ -460,17 +466,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     },
 
-    user: function user() {
-      return this.$store.state.user;
+    user: {
+      get: function get() {
+        return this.$store.state.user;
+      }
     },
-
 
     title: {
       get: function get() {
         return this.$store.state.product.title;
       },
       set: function set(title) {
-        this.$store.dispatch('setProductTitle', title);
+        this.$store.commit('SET_PRODUCT_TITLE', title);
       }
     },
 
@@ -479,7 +486,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return this.$store.state.product.description;
       },
       set: function set(description) {
-        this.$store.dispatch('setProductDescription', description);
+        this.$store.commit('SET_PRODUCT_DESCRIPTION', description);
       }
     },
 
@@ -488,7 +495,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return this.$store.state.product.price;
       },
       set: function set(price) {
-        this.$store.dispatch('setProductPrice', price);
+        this.$store.commit('SET_PRODUCT_PRICE', price);
       }
     }
   },
@@ -517,9 +524,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProductCreate__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProductCreate__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProductCreate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProductCreate__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ProductsGet__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ProductsGet__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ProductsGet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ProductsGet__);
 
 
@@ -598,25 +605,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       _this.$root.$emit('show::modal', 'patch-product');
       var product = response.body;
 
-      _this.$store.dispatch('setProductTitle', product.title);
-      _this.$store.dispatch('setProductDescription', product.description);
-      _this.$store.dispatch('setProductPrice', product.price);
+      _this.$store.commit('SET_PRODUCT_TITLE', product.title);
+      _this.$store.commit('SET_PRODUCT_DESCRIPTION', product.description);
+      _this.$store.commit('SET_PRODUCT_PRICE', product.price);
     }, function () {});
   },
 
 
   computed: {
-    user: function user() {
-      return this.$store.state.user;
+    user: {
+      get: function get() {
+        return this.$store.state.user;
+      }
     },
-
 
     title: {
       get: function get() {
         return this.$store.state.product.title;
       },
       set: function set(title) {
-        this.$store.dispatch('setProductTitle', title);
+        this.$store.commit('SET_PRODUCT_TITLE', title);
       }
     },
 
@@ -625,7 +633,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return this.$store.state.product.description;
       },
       set: function set(description) {
-        this.$store.dispatch('setProductDescription', description);
+        this.$store.commit('SET_PRODUCT_DESCRIPTION', description);
       }
     },
 
@@ -634,7 +642,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return this.$store.state.product.price;
       },
       set: function set(price) {
-        this.$store.dispatch('setProductPrice', price);
+        this.$store.commit('SET_PRODUCT_PRICE', price);
       }
     },
 
@@ -643,7 +651,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return this.$store.state.product.meta.isEditProductVisible;
       },
       set: function set(isEditProductVisible) {
-        this.$store.dispatch('setIsEditProductVisible', isEditProductVisible);
+        this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', isEditProductVisible);
       }
     }
   },
@@ -660,23 +668,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }).then(function () {
 
         _this2.$store.dispatch('getProductsByUser', _this2.user);
-        _this2.$store.dispatch('setIsEditProductVisible', false);
-        _this2.$store.dispatch('resetProduct');
+        _this2.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false);
+        _this2.$store.commit('RESET_PRODUCT');
       }, function () {});
     },
     cancel: function cancel() {
-      this.$store.dispatch('setIsEditProductVisible', false);
+      this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false);
       this.$root.$emit('hide::modal', 'patch-product');
     }
   },
 
   destroyed: function destroyed() {
     this.$root.$emit('hide::modal', 'patch-product');
-    this.$store.dispatch('resetProduct');
+    this.$store.commit('RESET_PRODUCT');
   }
 });
 
 /***/ })
 
 });
-//# sourceMappingURL=1.687da4666935a62986f6.js.map
+//# sourceMappingURL=1.dbd75fed53da0e876518.js.map

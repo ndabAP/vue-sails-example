@@ -77,17 +77,19 @@
         this.$root.$emit('show::modal', 'patch-product')
         let product = response.body
 
-        this.$store.dispatch('setProductTitle', product.title)
-        this.$store.dispatch('setProductDescription', product.description)
-        this.$store.dispatch('setProductPrice', product.price)
+        this.$store.commit('SET_PRODUCT_TITLE', product.title)
+        this.$store.commit('SET_PRODUCT_DESCRIPTION', product.description)
+        this.$store.commit('SET_PRODUCT_PRICE', product.price)
       }, () => {
         // Error message
       })
     },
 
     computed: {
-      user () {
-        return this.$store.state.user
+      user: {
+        get () {
+          return this.$store.state.user
+        }
       },
 
       title: {
@@ -99,7 +101,7 @@
          * @param title
          */
         set (title) {
-          this.$store.dispatch('setProductTitle', title)
+          this.$store.commit('SET_PRODUCT_TITLE', title)
         }
       },
 
@@ -112,7 +114,7 @@
          * @param description
          */
         set (description) {
-          this.$store.dispatch('setProductDescription', description)
+          this.$store.commit('SET_PRODUCT_DESCRIPTION', description)
         }
       },
 
@@ -125,7 +127,7 @@
          * @param price
          */
         set (price) {
-          this.$store.dispatch('setProductPrice', price)
+          this.$store.commit('SET_PRODUCT_PRICE', price)
         }
       },
 
@@ -138,38 +140,40 @@
          * @param isEditProductVisible
          */
         set (isEditProductVisible) {
-          this.$store.dispatch('setIsEditProductVisible', isEditProductVisible)
+          this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', isEditProductVisible)
         }
       }
     },
 
     methods: {
       patchProduct () {
-        this.$http.patch('/api/user/product/patch', {
-          id: this.id,
-          title: this.title,
-          price: this.price,
-          description: this.description
-        }).then(() => {
-          // Success message
+        this.$http
+          .patch('/api/user/product/patch', {
+            id: this.id,
+            title: this.title,
+            price: this.price,
+            description: this.description
+          })
+          .then(() => {
+            // Success message
 
-          this.$store.dispatch('getProductsByUser', this.user)
-          this.$store.dispatch('setIsEditProductVisible', false)
-          this.$store.dispatch('resetProduct')
-        }, () => {
-          // Error message
-        })
+            this.$store.dispatch('getProductsByUser', this.user)
+            this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false)
+            this.$store.commit('RESET_PRODUCT')
+          }, () => {
+            // Error message
+          })
       },
 
       cancel () {
-        this.$store.dispatch('setIsEditProductVisible', false)
+        this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false)
         this.$root.$emit('hide::modal', 'patch-product')
       }
     },
 
     destroyed () {
       this.$root.$emit('hide::modal', 'patch-product')
-      this.$store.dispatch('resetProduct')
+      this.$store.commit('RESET_PRODUCT')
     }
   }
 </script>

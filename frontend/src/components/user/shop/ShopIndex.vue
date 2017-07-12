@@ -29,9 +29,9 @@
 
 <script>
   export default {
-    created () {
-      this.$store.dispatch('getShopProducts', this.currentPage)
-      this.$store.dispatch('getUser')
+    async created () {
+      await this.$store.dispatch('getShopProducts', this.currentPage)
+      await this.$store.dispatch('getUser')
     },
 
     data () {
@@ -62,16 +62,22 @@
     },
 
     computed: {
-      products () {
-        return this.$store.state.products.products
+      products: {
+        get () {
+          return this.$store.state.products.products
+        }
       },
 
-      amountOfProducts () {
-        return this.$store.state.products.amountOfProducts
+      amountOfProducts: {
+        get () {
+          return this.$store.state.products.amountOfProducts
+        }
       },
 
-      user () {
-        return this.$store.state.user
+      user: {
+        get () {
+          return this.$store.state.user
+        }
       }
     },
 
@@ -80,7 +86,7 @@
        * @param product
        */
       pushToBasket (product) {
-        this.$store.dispatch('pushToBasket', product)
+        this.$store.commit('PUSH_TO_BASKET', product)
       }
     }
   }

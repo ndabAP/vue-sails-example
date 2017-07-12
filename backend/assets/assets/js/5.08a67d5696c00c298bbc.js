@@ -1,6 +1,6 @@
 webpackJsonp([5],{
 
-/***/ 106:
+/***/ 111:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -65,7 +65,7 @@ var Component = __webpack_require__(40)(
   /* script */
   __webpack_require__(93),
   /* template */
-  __webpack_require__(106),
+  __webpack_require__(111),
   /* scopeId */
   null,
   /* cssModules */
@@ -118,7 +118,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return this.$store.state.user.name;
       },
       set: function set(name) {
-        this.$store.dispatch('setUserName', name);
+        this.$store.commit('SET_USER_NAME', name);
       }
     },
 
@@ -127,7 +127,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return this.$store.state.user.password;
       },
       set: function set(password) {
-        this.$store.dispatch('setUserPassword', password);
+        this.$store.commit('SET_USER_PASSWORD', password);
       }
     }
   },
@@ -140,7 +140,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         name: this.name,
         password: this.password
       }).then(function (response) {
-        _this.$store.dispatch('setIsUserAuthenticated', true);
+        _this.$store.commit('SET_IS_USER_AUTHENTICATED', true);
         window.localStorage.setItem('token', response.body.token);
 
         _this.$router.push({
@@ -156,4 +156,4 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ })
 
 });
-//# sourceMappingURL=5.ad5a956c65004d6a5ded.js.map
+//# sourceMappingURL=5.08a67d5696c00c298bbc.js.map

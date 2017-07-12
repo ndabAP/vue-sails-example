@@ -1,6 +1,6 @@
 webpackJsonp([4],{
 
-/***/ 108:
+/***/ 113:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -59,7 +59,7 @@ var Component = __webpack_require__(40)(
   /* script */
   __webpack_require__(94),
   /* template */
-  __webpack_require__(108),
+  __webpack_require__(113),
   /* scopeId */
   null,
   /* cssModules */
@@ -111,7 +111,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return this.$store.state.user.name;
       },
       set: function set(name) {
-        this.$store.dispatch('setUserName', name);
+        this.$store.commit('SET_USER_NAME', name);
       }
     },
 
@@ -120,7 +120,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return this.$store.state.user.password;
       },
       set: function set(password) {
-        this.$store.dispatch('setUserPassword', password);
+        this.$store.commit('SET_USER_PASSWORD', password);
       }
     }
   },
@@ -135,4 +135,4 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ })
 
 });
-//# sourceMappingURL=4.ba2cd61653415e0ad3f4.js.map
+//# sourceMappingURL=4.19a2c4081e90ef9417bd.js.map

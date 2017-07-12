@@ -60,8 +60,10 @@
     },
 
     computed: {
-      isUserAuthenticated () {
-        return this.$store.state.isUserAuthenticated
+      isUserAuthenticated: {
+        get () {
+          return this.$store.state.isUserAuthenticated
+        }
       },
 
       basket: {
@@ -77,7 +79,7 @@
        * @param language
        */
       setLanguage (language) {
-        this.$store.dispatch('setLocale', language)
+        this.$store.commit('SET_LOCALE', language)
       }
     }
 

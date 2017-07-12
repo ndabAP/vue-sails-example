@@ -56,7 +56,7 @@
          * @param name
          */
         set (name) {
-          this.$store.dispatch('setUserName', name)
+          this.$store.commit('SET_USER_NAME', name)
         }
       },
 
@@ -69,7 +69,7 @@
          * @param password
          */
         set (password) {
-          this.$store.dispatch('setUserPassword', password)
+          this.$store.commit('SET_USER_PASSWORD', password)
         }
       }
     },

@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 107:
+/***/ 112:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -57,7 +57,7 @@ var Component = __webpack_require__(40)(
   /* script */
   __webpack_require__(99),
   /* template */
-  __webpack_require__(107),
+  __webpack_require__(112),
   /* scopeId */
   null,
   /* cssModules */
@@ -99,13 +99,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     },
 
-    totalPrice: function totalPrice() {
-      var totalPrice = 0;
-      this.basket.products.forEach(function (product) {
-        totalPrice += product.price;
-      });
+    totalPrice: {
+      get: function get() {
+        var totalPrice = 0;
+        this.basket.products.forEach(function (product) {
+          totalPrice += product.price;
+        });
 
-      return Math.round(totalPrice * 100) / 100;
+        return Math.round(totalPrice * 100) / 100;
+      }
     }
   },
 
@@ -114,7 +116,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$store.dispatch('checkout', this.basket).then(function () {});
     },
     removeProduct: function removeProduct(index) {
-      this.$store.dispatch('removeProductFromBasket', index);
+      this.$store.commit('REMOVE_PRODUCT_FROM_BASKET', index);
     }
   }
 });
@@ -122,4 +124,4 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ })
 
 });
-//# sourceMappingURL=3.9a61b5ee94b5c344bd92.js.map
+//# sourceMappingURL=3.3d2f9bfaf444093f3c7e.js.map
