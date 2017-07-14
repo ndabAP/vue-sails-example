@@ -22,7 +22,8 @@
     "jsonwebtoken": "^7.3.0",
     "rc": "1.0.1",
     "sails": "github:lifespent/sails#hastings-fix",
-    "sails-disk": "~0.10.9"
+    "sails-disk": "~0.10.9",
+	"bcryptjs ": "~2.3.0"
   },
   "scripts": {
     "debug": "node debug app.js",
