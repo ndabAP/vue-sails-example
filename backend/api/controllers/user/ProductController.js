@@ -12,18 +12,20 @@ module.exports = {
     } = req.allParams()
     let user = CryptographyService.decrypt(req.cookies.user)
 
-    Product.create({
-      title,
-      description,
-      price,
-      user
-    }).exec((error, product) => {
-      if (error) return res.serverError(error)
+    Product
+      .create({
+        title,
+        description,
+        price,
+        user
+      })
+      .exec((error, product) => {
+        if (error) return res.serverError(error)
 
-      sails.log.info('Product created', product)
+        sails.log.info('Product created', product)
 
-      if (product) return res.ok()
-    })
+        if (product) return res.ok()
+      })
   },
 
   /**
