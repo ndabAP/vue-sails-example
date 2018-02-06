@@ -1,0 +1,25 @@
+{
+  "name": "vue-sails-example",
+  "version": "0.0.0",
+  "description": "Vue.js with Sails.js example project",
+  "main": "backend/app.js",
+  "scripts": {
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "push": "git push && git subtree push --prefix backend heroku master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndabAP/Vue.js-with-Sails.js-backend-example-project.git"
+  },
+  "author": "Julian Claus <kontakt@julian-claus.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ndabAP/Vue.js-with-Sails.js-backend-example-project/issues"
+  },
+  "homepage": "https://github.com/ndabAP/Vue.js-with-Sails.js-backend-example-project#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^6.1.0",
+    "@commitlint/config-conventional": "^6.1.0",
+    "husky": "^0.14.3"
+  }
+}
