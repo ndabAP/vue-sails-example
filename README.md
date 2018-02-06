@@ -12,7 +12,19 @@ example. Besides that, it should cover most of the features from Sails.js and Vu
 
 To see this project in action, click [here](https://vue-sails-example.herokuapp.com/). **Warning**: Since free Heroku applications sleep after 30 minutes of inactivity (no web request occurred), the application may need to wake up first, which can take some seconds.
 
-## Getting started
+## Features
+
+This project should cover as many features as possible. It should be used as an example for newbies and also serve as 
+a reference book. These notable elements are covered.
+
+- Internationalization
+- Unit and functional tests (frontend tests with Cypress.io)
+- Dedicated mobile version
+- Socket.IO usage
+- Local storage plus cookie authentication
+- User input validation
+
+## Installation
 
 ### Prerequisites
 
@@ -40,6 +52,8 @@ $ sudo npm install sails -g
 $ cd frontend && npm install
 $ cd ../backend && npm install
 ```
+
+## Usage
 
 ### Development
 
@@ -104,18 +118,6 @@ Run all available tests like unit or functional tests.
 $ npm run test
 ```
 
-## Covered elements
-
-This project should cover as many features as possible. It should be used as an example for newbies and also serve as 
-a reference book. These notable elements are covered.
-
-- Internationalization
-- Unit and functional tests (frontend tests with Cypress.io)
-- Dedicated mobile version
-- Socket.IO usage
-- Local storage plus cookie authentication
-- User input validation
-
 ## Essential components used
 
 The following components are used in this project. There are plenty more, though, check the `package.json` files.
@@ -147,3 +149,11 @@ Router for the frontend.
 ## Code style
 
 This project fulfils the [JavaScript Standard Style](https://standardjs.com/).
+
+## Author
+
+[Julian Claus](https://www.julian-claus.de) and contributors.
+
+## License
+
+MIT
