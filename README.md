@@ -23,6 +23,7 @@ a reference book. These notable elements are covered.
 - Socket.IO usage
 - Local storage plus cookie authentication
 - User input validation
+- Basic progressive web app support
 
 ## Installation
 
