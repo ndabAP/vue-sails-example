@@ -5,7 +5,7 @@
   "main": "backend/app.js",
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "push": "git push && git subtree push --prefix backend heroku master"
+    "push": "git push && git push heroku `git subtree split --prefix backend master`:master --force"
   },
   "repository": {
     "type": "git",
