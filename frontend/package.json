@@ -10,6 +10,7 @@
     "cypress:open": "cypress open --global",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
+    "start": "http-server ../backend/assets -p 3000",
     "test": "pm2 start build/dev-server.js --name vue-sails-example & cypress run --headed && pm2 stop vue-sails-example"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
     "bootstrap-vue": "^1.4.0",
     "ejs": "^2.5.7",
     "faker": "^4.1.0",
+    "http-server": "^0.11.1",
     "lodash": "^4.17.4",
     "mint-ui": "^2.2.13",
     "sails.io.js": "^1.1.12",
@@ -28,7 +30,8 @@
     "vue-sails.io": "^1.0.2",
     "vue-socket.io": "^2.1.1-a",
     "vue-translate-plugin": "^1.2.0",
-    "vuex": "^2.2.1"
+    "vuex": "^2.2.1",
+    "workbox-webpack-plugin": "^2.1.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
