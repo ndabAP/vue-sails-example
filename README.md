@@ -69,55 +69,23 @@ First, you have to build up your Vue.js components and merge them with Sails.js.
 
 ## Commands
 
+For a complete list see `package.json`.
+
 ### Backend
 
-#### Start
-
-Run the Sails.js application in the current directory at [localhost:1337](http://localhost:1337).
-
-```bash
-$ sails lift
-```
-
-Start Sails.js if you didn't install it globally.
-
-```bash
-$ npm run dev
-```
-
-#### Run tests
-
-Run all available tests like unit or functional tests.
-
-```bash
-$ npm run test
-```
+| Command           | Description                                                                                      |
+|-------------------|--------------------------------------------------------------------------------------------------|
+| `sails lift`      | Run the Sails.js application in the current directory at [localhost:1337](http://localhost:1337).|
+| `npm run dev`     | Start Sails.js if you didn't install it globally.                                                |
+| `npm run test`    | Run all available tests like unit or functional tests.                                           |
 
 ### Frontend
 
-#### Start
-
-Start the development server at [localhost:8080](http://localhost:8080).
-
-```bash
-$ npm run dev
-```
-
-#### Make production ready
-
-Minfiy, uglify and merge the application with Sails.js.
-
-```bash
-$ npm run build
-```
-
-#### Run tests
-
-Run all available tests like unit or functional tests.
-
-```bash
-$ npm run test
-```
+| Command           | Description                                                                                      |
+|-------------------|--------------------------------------------------------------------------------------------------|
+| `npm run dev`     | Start the development server at [localhost:8080](http://localhost:8080).                         |
+| `npm run build`   | Minfiy, uglify and merge the application with Sails.js.                                          |
+| `npm run test`    | Run all available tests like unit or functional tests.                                           |
 
 ## Essential components used
 
