@@ -79,6 +79,18 @@
               this.$router.push({name: 'Products'})
             }
           })
+
+          actions.push({
+            name: 'Logout',
+            method: () => {
+              this.deleteCookie('user')
+              this.isUserAuthenticated = false
+
+              this.$nextTick(() => this.setActions())
+
+              this.$router.push({name: 'Home'})
+            }
+          })
         }
 
         actions.push({
@@ -95,9 +107,7 @@
               duration: 3000
             })
 
-            this.$nextTick(() => {
-              this.setActions()
-            })
+            this.$nextTick(() => this.setActions())
           }
         })
 
