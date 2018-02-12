@@ -88,6 +88,11 @@
 
               this.$nextTick(() => this.setActions())
 
+              Toast({
+                message: this.t('app.mobile.logout'),
+                position: 'bottom',
+                duration: 3000
+              })
               this.$router.push({name: 'Home'})
             }
           })

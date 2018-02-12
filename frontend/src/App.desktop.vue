@@ -19,6 +19,7 @@
           <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Register'}">{{ t('app.mixin.register') }}</b-nav-item>
           <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Login'}">{{ t('app.mixin.login') }}</b-nav-item>
           <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Shop'}">{{ t('app.mixin.shop') }}</b-nav-item>
+          <b-nav-item v-if="isUserAuthenticated" @click="logout">Logout</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-item @click="setIsHelpVisible(true)">{{ t('app.mixin.help') }}</b-nav-item>
@@ -101,6 +102,13 @@
 
           this.$set(this, 'io', io)
         }
+      },
+
+      logout () {
+        this.deleteCookie('user')
+        this.isUserAuthenticated = false
+
+        this.$router.push({name: 'Home'})
       },
 
       ...mapMutations({
