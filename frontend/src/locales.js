@@ -131,7 +131,7 @@ export default {
     'productpost.mixin.label.second': 'Preis',
     'productpost.mixin.description.third': 'Definiere eine Beschreibung',
     'productpost.mixin.label.third': 'Beschreibung',
-    'productpost.mixin.post.button.first': 'Erstellen',
+    'productpost.mixin.button.first': 'Erstellen',
     'productpost.mixin.product.created': 'Produkt erstellt',
     'basketindex.mixin.button.first': 'Entfernen',
     'basketindex.mixin.span.first': 'Summe',
