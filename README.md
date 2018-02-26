@@ -59,7 +59,7 @@ $ cd ../backend && npm install
 ### Development
 
 `cd backend && sails lift` and then `cd ../frontend && npm run dev`. After that, open 
-[localhost:8080](http://localhost:8080) in your browser. Make sure that you start both servers.
+[localhost:8080](http://localhost:8080) in your browser. Make sure that you start both servers simultaneously.
 
 ### Production
 
