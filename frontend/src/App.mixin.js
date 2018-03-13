@@ -30,7 +30,7 @@ export default {
 
   methods: {
     deleteCookie (cookie) {
-      document.cookie = `${cookie}=; Max-Age=0`
+      document.cookie = `${cookie}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`
     },
 
     ...mapMutations({
