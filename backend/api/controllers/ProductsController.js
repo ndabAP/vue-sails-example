@@ -1,6 +1,6 @@
 module.exports = {
   getProducts: (req, res) => {
-    const page = req.param('page')
+    const p = req.param('page')
 
     Product
       .count()
@@ -10,7 +10,7 @@ module.exports = {
         Product
           .find()
           .populate('user')
-          .paginate({page, limit: 6})
+          .paginate({p, limit: 6})
           .exec((error, products) => {
             if (error) return res.serverError(error)
 
