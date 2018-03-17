@@ -1,12 +1,16 @@
 import Vue from 'vue'
+import localForage from 'localforage'
+
+localForage.config({name: 'Products'})
 
 export default {
   getProducts (context, page) {
     return new Promise((resolve, reject) => {
       Vue.http
         .get('/api/products/get', {params: {page}})
-        .then(({body}) => {
+        .then(async ({body}) => {
           context.commit('SET_PRODUCTS', body)
+          await localForage.setItem(`/api/products/get?page=${page}`, body)
           resolve()
         })
         .catch(error => reject(error))

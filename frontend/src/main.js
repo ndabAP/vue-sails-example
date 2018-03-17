@@ -1,8 +1,11 @@
 if ('serviceWorker' in navigator && process.env.NODE_ENV !== 'development') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
-    .then(registration => console.log('SW registered: ', registration))
-    .catch(registrationError => console.log('SW failed: ', registrationError))
+    .then(registration => {
+      console.log(registration)
+      registration.pushManager.subscribe({userVisibleOnly: true})
+    })
+    .catch(registrationError => console.log(registrationError))
   })
 }
 
