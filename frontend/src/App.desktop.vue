@@ -108,6 +108,7 @@
         this.deleteCookie('user')
         this.isUserAuthenticated = false
         localStorage.clear()
+
         this.$router.push({name: 'Home'})
       },
 
