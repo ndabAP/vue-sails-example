@@ -22,16 +22,11 @@ module.exports = {
 
   customToJSON () {
     let user = this.toObject()
-
     delete user.password
 
     return user
   },
 
-  /**
-   * @param user
-   * @param next
-   */
   beforeCreate: (user, next) => {
     bcrypt.genSalt(10, (error, salt) => {
       if (error) return next(error)
@@ -45,11 +40,6 @@ module.exports = {
     })
   },
 
-  /**
-   * @param password
-   * @param user
-   * @param callback
-   */
   checkIfPasswordIsValid: (password, user, callback) => {
     bcrypt.compare(password, user.password, (error, isMatch) => {
       if (error) callback(error)
