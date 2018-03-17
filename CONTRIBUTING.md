@@ -17,8 +17,8 @@ For Vue.js frontend tasks, consult the [Vue.js Component Style Guide](https://gi
 
 ## Commits
 
-You must follow the given commit schema, which is similar to the Angular one. A linter should warn you and prevent you
-from committing if you don't follow the rules.
+You must follow the given commit schema, which is similar to the Angular one. A linter should warn and prevent you from 
+committing if you don't follow the rules.
 
 ```
 type<scope>: message
