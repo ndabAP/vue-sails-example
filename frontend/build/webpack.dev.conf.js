@@ -6,7 +6,6 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-var ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin')
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
@@ -35,9 +34,6 @@ module.exports = merge(baseWebpackConfig, {
     new FriendlyErrorsPlugin(),
     new BundleAnalyzerPlugin({
       openAnalyzer: false
-    }),
-    new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, 'src/sw.js'),
     })
   ]
 })
