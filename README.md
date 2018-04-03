@@ -115,6 +115,10 @@ HTTP client for Vue.js.
 
 Router for the frontend.
 
+## Starter template
+
+If you want to start from scratch without any content take a look at the [starter template](https://github.com/steventhanna/vue-sails-template) made by [Steven Hanna](https://github.com/steventhanna). It uses the same setup as this example.
+
 ## Code style
 
 This project fulfils the [JavaScript Standard Style](https://standardjs.com/).
