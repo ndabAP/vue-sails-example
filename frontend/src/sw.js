@@ -1,14 +1,13 @@
 /* eslint-disable */
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.0.0/workbox-sw.js')
-
-console.log('Service Worker initialized')
+workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 
 workbox.routing.registerRoute(
   new RegExp('.*\.js'),
-  workbox.strategies.networkFirst()
+  workbox.strategies.staleWhileRevalidate()
 )
 
 workbox.routing.registerRoute(
   new RegExp('(.*)/api/(.*)$'),
   workbox.strategies.networkFirst()
 )
+
