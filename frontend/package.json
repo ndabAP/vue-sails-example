@@ -11,7 +11,7 @@
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
     "start": "http-server ../backend/assets -p 3000",
-    "test": "pm2 start build/dev-server.js --name vue-sails-example & cypress run --headed && pm2 stop vue-sails-example"
+    "test": "pm2 start build/dev-server.js --name vue-sails-example -f & cypress run --headed && pm2 stop vue-sails-example && pm2 delete vue-sails-example"
   },
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
