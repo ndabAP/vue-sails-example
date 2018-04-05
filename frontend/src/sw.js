@@ -7,3 +7,8 @@ workbox.routing.registerRoute(
   new RegExp('.*\.js'),
   workbox.strategies.networkFirst()
 )
+
+workbox.routing.registerRoute(
+  new RegExp('(.*)/api/(.*)$'),
+  workbox.strategies.networkFirst()
+)

@@ -70,6 +70,11 @@ const products = [{
   description: 'Feel the music with these headphones. Exclusive and special.',
   price: 100.95,
   user: 2
+}, {
+  title: 'House',
+  description: 'Many rooms, many windows, one door. What more to say? It\'s a house.',
+  price: 100000,
+  user: 2
 }]
 
 module.exports.bootstrap = function(cb) {
