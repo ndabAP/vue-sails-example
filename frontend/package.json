@@ -19,9 +19,11 @@
     "ejs": "^2.5.7",
     "faker": "^4.1.0",
     "http-server": "^0.11.1",
+    "localforage": "^1.6.0",
     "lodash": "^4.17.4",
     "mint-ui": "^2.2.13",
     "sails.io.js": "^1.1.12",
+    "serviceworker-webpack-plugin": "^0.2.3",
     "socket.io-client": "^2.0.3",
     "validate.js": "^0.12.0",
     "vue": "^2.5.11",
@@ -31,7 +33,7 @@
     "vue-socket.io": "^2.1.1-a",
     "vue-translate-plugin": "^1.2.0",
     "vuex": "^2.2.1",
-    "workbox-webpack-plugin": "^2.1.2"
+    "workbox-webpack-plugin": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
