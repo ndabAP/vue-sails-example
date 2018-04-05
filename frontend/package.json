@@ -33,7 +33,7 @@
     "vue-socket.io": "^2.1.1-a",
     "vue-translate-plugin": "^1.2.0",
     "vuex": "^2.2.1",
-    "workbox-webpack-plugin": "^2.1.2"
+    "workbox-webpack-plugin": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

@@ -1,10 +1,7 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
-    .then(registration => {
-      console.log(registration)
-      registration.pushManager.subscribe({userVisibleOnly: true})
-    })
+    .then(registration => console.log(registration))
     .catch(registrationError => console.log(registrationError))
   })
 }
