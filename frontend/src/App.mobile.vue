@@ -12,7 +12,11 @@
     <router-view @userLoggedIn="setActions"></router-view>
 
     <footer class="mt-3 text-center">
-      <span class="text-muted"><small>This shop is not real and only for demonstration purposes</small></span>
+      <span class="text-muted">
+        <small>
+          This shop is not real and only for demonstration purposes. <a href="https://github.com/ndabAP/vue-sails-example">Source code</a>
+        </small>
+      </span>
     </footer>
 
     <mt-actionsheet

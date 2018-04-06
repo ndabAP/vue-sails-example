@@ -40,7 +40,11 @@
 
     <footer class="mt-3 text-center">
       <div class="container">
-        <span class="text-muted"><small>This shop is not real and only for demonstration purposes</small></span>
+        <span class="text-muted">
+          <small>
+            This shop is not real and only for demonstration purposes. <a href="https://github.com/ndabAP/vue-sails-example">Source code</a>
+          </small>
+        </span>
       </div>
     </footer>
   </div>
