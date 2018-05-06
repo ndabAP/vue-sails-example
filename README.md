@@ -29,15 +29,12 @@ a reference book. These notable elements are covered.
 
 ### Prerequisites
 
-I created a [Vagrant box](https://github.com/ndabAP/Vagrant-box-with-Sails.js-Vue.js-and-MongoDB) with MongoDB, Node.js, 
-Sails.js and Vue.js and also a 
-[Docker file](https://github.com/ndabAP/Docker-image-with-Sails.js-vue-cli-Node.js-and-MongoDB). Or manually install 
-Node.js and Sails.js.
+To get started, you need Node.js. It's also recommend to have Sails.js globally installed. If you don't want to have Sails.js globally installed just use `npm run dev`. Finally, install the Node.js modules.
 
 #### Get Node.js
 
 ```bash
-$ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+$ curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 $ sudo apt-get install -y nodejs
 ```
 
