@@ -20,7 +20,7 @@
     "faker": "^4.1.0",
     "http-server": "^0.11.1",
     "localforage": "^1.6.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.10",
     "mint-ui": "^2.2.13",
     "sails.io.js": "^1.1.12",
     "serviceworker-webpack-plugin": "^0.2.3",
