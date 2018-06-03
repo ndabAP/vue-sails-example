@@ -21,7 +21,7 @@
     "grunt-sails-linker": "^1.0.4",
     "grunt-sync": "^0.7.0",
     "include-all": "^1.0.0",
-    "jsonwebtoken": "^7.4.3",
+    "jsonwebtoken": "^8.2.2",
     "mocha": "^3.4.2",
     "rc": "1.0.1",
     "sails": "^1.0.0-45",
