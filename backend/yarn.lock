@@ -2059,13 +2059,13 @@ image-size@~0.5.0:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
 
-include-all@1.0.8, include-all@^1.0.0, include-all@^1.0.5:
+include-all@1.0.8, include-all@^1.0.5:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/include-all/-/include-all-1.0.8.tgz#e8bb84b057278a22cf944319037d9700c18a4379"
   dependencies:
     lodash "3.10.1"
 
-include-all@^4.0.0:
+include-all@^4.0.0, include-all@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/include-all/-/include-all-4.0.3.tgz#65f06e8f11894b1a7b5ec1fc97e6b3392f7cfa75"
   dependencies:
