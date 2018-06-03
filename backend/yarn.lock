@@ -1590,6 +1590,17 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+glob@7.0.5:
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.0.5.tgz#b4202a69099bbb4d292a7c1b95b6682b67ebdc95"
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.2"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
 glob@7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
@@ -1817,13 +1828,22 @@ grunt-sails-linker@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/grunt-sails-linker/-/grunt-sails-linker-1.0.4.tgz#2b7d690d522aa04327f8f3f80dffd6668bb3b5c2"
 
-grunt-sync@0.6.2, grunt-sync@^0.6.2:
+grunt-sync@0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/grunt-sync/-/grunt-sync-0.6.2.tgz#d9acb65b4205d017bd6462e49fec2d9071ace47b"
   dependencies:
     glob "^7.0.5"
     lodash "^4.14.2"
     md5-file "^2.0.3"
+    promised-io "0.3.5"
+
+grunt-sync@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/grunt-sync/-/grunt-sync-0.7.0.tgz#bd5399f29938da4add6586d5bf3316d28ccccd2c"
+  dependencies:
+    glob "7.0.5"
+    lodash "4.17.4"
+    md5-file "2.0.3"
     promised-io "0.3.5"
 
 grunt@1.0.1:
@@ -2415,6 +2435,10 @@ lodash@3.8.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.8.0.tgz#376eb98bdcd9382a9365c33c4cb8250de1325b91"
 
+lodash@4.17.4:
+  version "4.17.4"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
 lodash@^2.4.1, lodash@~2.4.1:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-2.4.2.tgz#fadd834b9683073da179b3eae6d9c0d15053f73e"
@@ -2572,6 +2596,10 @@ maxmin@^2.1.0:
     figures "^1.0.1"
     gzip-size "^3.0.0"
     pretty-bytes "^3.0.0"
+
+md5-file@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/md5-file/-/md5-file-2.0.3.tgz#4a050b52e40b5477d09943bf9fd7f1ff8a289cd1"
 
 md5-file@^2.0.3:
   version "2.0.7"
