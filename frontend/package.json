@@ -82,7 +82,7 @@
     "shelljs": "^0.7.6",
     "url-loader": "^0.5.8",
     "vue-loader": "^11.1.4",
-    "vue-style-loader": "^2.0.0",
+    "vue-style-loader": "^4.1.0",
     "vue-template-compiler": "^2.5.11",
     "webpack": "^3.4.1",
     "webpack-bundle-analyzer": "^2.8.3",
