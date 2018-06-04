@@ -31,7 +31,7 @@
     "sails-hook-sockets": "^0.13.11",
     "sails.io.js": "^1.1.12",
     "sinon": "^2.3.8",
-    "supertest": "^3.0.0"
+    "supertest": "^3.1.0"
   },
   "scripts": {
     "checkout": "NODE_PATH=. node ./node_modules/git-checkout.js/src/index.js",
