@@ -932,6 +932,10 @@ coffee-script@~1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.10.0.tgz#12938bcf9be1948fa006f92e0c4c9e81705108c0"
 
+coffeescript@^2.0.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/coffeescript/-/coffeescript-2.3.1.tgz#a25f69c251d25805c9842e57fc94bfc453ef6aed"
+
 coffeescript@~1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/coffeescript/-/coffeescript-1.10.0.tgz#e7aa8301917ef621b35d8a39f348dcdd1db7e33e"
@@ -1695,7 +1699,7 @@ grunt-contrib-clean@^1.1.0:
     async "^1.5.2"
     rimraf "^2.5.1"
 
-grunt-contrib-coffee@1.0.0, grunt-contrib-coffee@^1.0.0:
+grunt-contrib-coffee@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/grunt-contrib-coffee/-/grunt-contrib-coffee-1.0.0.tgz#daeeb04954f14e2868bcc9ba6eaf9105fdc2da4c"
   dependencies:
@@ -1703,6 +1707,15 @@ grunt-contrib-coffee@1.0.0, grunt-contrib-coffee@^1.0.0:
     coffee-script "~1.10.0"
     lodash "~4.3.0"
     uri-path "~1.0.0"
+
+grunt-contrib-coffee@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/grunt-contrib-coffee/-/grunt-contrib-coffee-2.0.0.tgz#d18acc7e7e7307b304a33fd5e61db1902d204f7f"
+  dependencies:
+    chalk "^1.1.1"
+    coffeescript "^2.0.1"
+    lodash "^4.6.1"
+    uri-path "^1.0.0"
 
 grunt-contrib-concat@1.0.1, grunt-contrib-concat@^1.0.1:
   version "1.0.1"
@@ -2446,6 +2459,10 @@ lodash@^2.4.1, lodash@~2.4.1:
 lodash@^4.0.1, lodash@^4.14.0, lodash@^4.14.2, lodash@^4.17.4, lodash@^4.8.0, lodash@^4.8.2, lodash@~4.17.4:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
+
+lodash@^4.6.1:
+  version "4.17.10"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
 lodash@~4.3.0:
   version "4.3.0"
