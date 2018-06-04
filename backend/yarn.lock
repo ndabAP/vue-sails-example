@@ -3414,9 +3414,9 @@ sails.io.js-dist@^1.0.0:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/sails.io.js-dist/-/sails.io.js-dist-1.1.13.tgz#10fbf8db5380644a83158f06910a57eafe822c00"
 
-sails.io.js@^1.1.12:
-  version "1.1.13"
-  resolved "https://registry.yarnpkg.com/sails.io.js/-/sails.io.js-1.1.13.tgz#c77f767728ef52a984b66864377fd2b2a32d8690"
+sails.io.js@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/sails.io.js/-/sails.io.js-1.2.1.tgz#31aa9927a09ae02481de50774a4d5a15450e2e57"
 
 sails@^1.0.0-45:
   version "1.0.0-46"
