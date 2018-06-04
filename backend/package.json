@@ -30,7 +30,7 @@
     "sails-hook-orm": "^1.0.9",
     "sails-hook-sockets": "^0.13.11",
     "sails.io.js": "^1.1.12",
-    "sinon": "^2.3.8",
+    "sinon": "^5.0.10",
     "supertest": "^3.0.0"
   },
   "scripts": {
