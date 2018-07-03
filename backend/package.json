@@ -24,7 +24,7 @@
     "jsonwebtoken": "^7.4.3",
     "mocha": "^3.4.2",
     "rc": "1.0.1",
-    "sails": "^1.0.0-45",
+    "sails": "^1.0.3-2",
     "sails-disk": "^0.10.10",
     "sails-hook-grunt": "^2.1.0",
     "sails-hook-orm": "^1.0.9",

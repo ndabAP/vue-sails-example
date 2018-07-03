@@ -750,8 +750,6 @@ boom@4.x.x:
 boom@5.x.x:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/boom/-/boom-5.2.0.tgz#5dd9da6ee3a5f302077436290cb717d3f4a54e02"
-  dependencies:
-    hoek "4.x.x"
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -2485,13 +2483,13 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
-machine-as-action@^10.0.0-0:
-  version "10.1.1"
-  resolved "https://registry.yarnpkg.com/machine-as-action/-/machine-as-action-10.1.1.tgz#d16697e760b6690a13cc9f986136b75f0ff68b87"
+machine-as-action@^10.2.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/machine-as-action/-/machine-as-action-10.2.0.tgz#e23606ff3800de4bedefd468c816c006f8da588a"
   dependencies:
     "@sailshq/lodash" "^3.10.2"
     flaverr "^1.5.1"
-    machine "^15.0.0-19"
+    machine "^15.2.2"
     rttc "^10.0.0-4"
     streamifier "0.1.1"
 
@@ -2506,14 +2504,14 @@ machine@^13.0.0-11:
     rttc "^9.8.1"
     switchback "^2.0.1"
 
-machine@^15.0.0-19, machine@^15.0.0-21, machine@^15.0.0-5:
-  version "15.0.0-22"
-  resolved "https://registry.yarnpkg.com/machine/-/machine-15.0.0-22.tgz#57f2f20423248f27a4c3ba105705ab8740d6cc30"
+machine@^15.2.2:
+  version "15.2.2"
+  resolved "https://registry.yarnpkg.com/machine/-/machine-15.2.2.tgz#58e0cc119ffad32b2e70087bb6c23bfb8686452d"
   dependencies:
     "@sailshq/lodash" "^3.10.2"
     anchor "^1.2.0"
     flaverr "^1.7.0"
-    parley "^3.1.0"
+    parley "^3.8.0"
     rttc "^10.0.0-3"
 
 machine@^4.0.0:
@@ -2837,13 +2835,21 @@ pako@~0.2.0:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
 
-parasails@^0.5.2:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/parasails/-/parasails-0.5.3.tgz#4cc5ace4c8642be73e7a977f98ce0c4192be4092"
+parasails@^0.7.1:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/parasails/-/parasails-0.7.4.tgz#2543c0ae3bc5a4ee7abdf083387b9df79e074ea6"
 
-parley@^3.1.0, parley@^3.3.4:
+parley@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/parley/-/parley-3.3.4.tgz#1769bbdaa79f2b2cc659b3f8810f0b24ba48591b"
+  dependencies:
+    "@sailshq/lodash" "^3.10.2"
+    bluebird "3.2.1"
+    flaverr "^1.5.1"
+
+parley@^3.8.0:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/parley/-/parley-3.8.0.tgz#432842d7497ad0a496d34e45d74c5376e7c147e3"
   dependencies:
     "@sailshq/lodash" "^3.10.2"
     bluebird "3.2.1"
@@ -3341,9 +3347,9 @@ sails-disk@^0.10.10:
     waterline-cursor "~0.0.6"
     waterline-errors "~0.10.1"
 
-sails-generate@^1.10.21:
-  version "1.15.5"
-  resolved "https://registry.yarnpkg.com/sails-generate/-/sails-generate-1.15.5.tgz#a2f5db566136488b02de6798e981e7ff3fdf8c59"
+sails-generate@^1.15.19:
+  version "1.15.28"
+  resolved "https://registry.yarnpkg.com/sails-generate/-/sails-generate-1.15.28.tgz#ada8239c33dbb680cf99b5cbb7c0c0fa7343f202"
   dependencies:
     async "2.0.1"
     chalk "1.1.3"
@@ -3352,7 +3358,7 @@ sails-generate@^1.10.21:
     fs-extra "0.30.0"
     lodash "3.10.1"
     machinepack-process "^2.0.2"
-    parasails "^0.5.2"
+    parasails "^0.7.1"
     read "1.0.7"
     reportback "^2.0.1"
     sails.io.js-dist "^1.0.0"
@@ -3418,9 +3424,9 @@ sails.io.js@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/sails.io.js/-/sails.io.js-1.2.1.tgz#31aa9927a09ae02481de50774a4d5a15450e2e57"
 
-sails@^1.0.0-45:
-  version "1.0.0-46"
-  resolved "https://registry.yarnpkg.com/sails/-/sails-1.0.0-46.tgz#2749443cff01c313746454905292f80f5ac6d51c"
+sails@^1.0.3-2:
+  version "1.0.3-2"
+  resolved "https://registry.yarnpkg.com/sails/-/sails-1.0.3-2.tgz#8add64e226c6106f14668d3a8a2d40cec38f3d96"
   dependencies:
     "@sailshq/lodash" "^3.10.2"
     async "2.5.0"
@@ -3441,8 +3447,8 @@ sails@^1.0.0-45:
     glob "7.1.2"
     i18n-2 "0.6.3"
     include-all "^4.0.0"
-    machine "^15.0.0-21"
-    machine-as-action "^10.0.0-0"
+    machine "^15.2.2"
+    machine-as-action "^10.2.0"
     machinepack-process "^2.0.2"
     machinepack-redis "^1.1.1"
     merge-defaults "0.2.1"
@@ -3456,7 +3462,7 @@ sails@^1.0.0-45:
     rc "1.2.2"
     router "1.3.2"
     rttc "^10.0.0-0"
-    sails-generate "^1.10.21"
+    sails-generate "^1.15.19"
     sails-stringfile "0.3.2"
     semver "4.3.6"
     serve-favicon "2.4.5"
@@ -3465,7 +3471,7 @@ sails@^1.0.0-45:
     sort-route-addresses "^0.0.1"
     uid-safe "2.1.5"
     vary "1.1.2"
-    whelk "^6.0.0"
+    whelk "^6.0.1"
 
 samsam@1.x, samsam@^1.1.3:
   version "1.3.0"
@@ -4092,15 +4098,15 @@ websocket-extensions@>=0.1.1:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
 
-whelk@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/whelk/-/whelk-6.0.0.tgz#62e01d54dd5675cc022083de1756864d0c369418"
+whelk@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/whelk/-/whelk-6.0.1.tgz#96955aa2d26672a78346c894568148b557dce998"
   dependencies:
     "@sailshq/lodash" "^3.10.2"
     chalk "1.1.3"
     commander "2.8.1"
     flaverr "^1.7.0"
-    machine "^15.0.0-5"
+    machine "^15.2.2"
     rttc "^10.0.0-0"
     yargs "3.4.5"
 
