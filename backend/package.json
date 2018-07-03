@@ -43,5 +43,9 @@
   },
   "main": "app.js",
   "author": "Julian Claus <kontakt@julian-claus.de>",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">= 10.5.0",
+    "npm": ">= 4.0.0"
+  }
 }
