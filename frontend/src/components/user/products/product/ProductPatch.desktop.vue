@@ -35,51 +35,53 @@
     </b-form-fieldset>
 
     <template slot="modal-footer">
-      <b-button size="sm" variant="outline-primary" @click="cancel">{{ t('productpatch.mixin.button.first') }}</b-button>
-      <b-button size="sm" variant="outline-success" @click="patchProduct">{{ t('productpatch.mixin.button.second') }}</b-button>
+      <b-button size="sm" variant="outline-primary" @click="cancel">{{ t('productpatch.mixin.button.first') }}
+      </b-button>
+      <b-button size="sm" variant="outline-success" @click="patchProduct">{{ t('productpatch.mixin.button.second') }}
+      </b-button>
     </template>
   </b-modal>
 </template>
 
 <script>
-  import ProductPatchMixin from './ProductPatch.mixin'
-  import ProductValidation from './ProductValidation.mixin'
+import ProductPatchMixin from './ProductPatch.mixin'
+import ProductValidation from './ProductValidation.mixin'
 
-  export default {
-    mixins: [ProductPatchMixin, ProductValidation],
+export default {
+  mixins: [ProductPatchMixin, ProductValidation],
 
-    async created () {
-      let product = await this.$store.dispatch('getProduct', this.id)
-      this.$root.$emit('bv::show::modal', 'patch-product')
+  async created () {
+    let product = await this.$store.dispatch('getProduct', this.id)
+    this.$root.$emit('bv::show::modal', 'patch-product')
 
-      this.$store.commit('SET_PRODUCT_TITLE', product.title)
-      this.$store.commit('SET_PRODUCT_DESCRIPTION', product.description)
-      this.$store.commit('SET_PRODUCT_PRICE', product.price)
-    },
+    this.$store.commit('SET_PRODUCT_TITLE', product.title)
+    this.$store.commit('SET_PRODUCT_DESCRIPTION', product.description)
+    this.$store.commit('SET_PRODUCT_PRICE', product.price)
+  },
 
-    methods: {
-      async patchProduct () {
-        await this.$store.dispatch('patchProduct', {
-          id: this.id,
-          title: this.title,
-          price: this.price,
-          description: this.description
-        })
+  methods: {
+    async patchProduct () {
+      await this.$store.dispatch('patchProduct', {
+        id: this.id,
+        title: this.title,
+        price: this.price,
+        description: this.description
+      })
 
-        this.$store.dispatch('getProductsByUser', this.user)
-        this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false)
-        this.$store.commit('RESET_PRODUCT')
-      },
-
-      cancel () {
-        this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false)
-        this.$root.$emit('bv::hide::modal', 'patch-product')
-      }
-    },
-
-    destroyed () {
-      this.$root.$emit('bv::hide::modal', 'patch-product')
+      this.$store.dispatch('getProductsByUser', this.user)
+      this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false)
       this.$store.commit('RESET_PRODUCT')
+    },
+
+    cancel () {
+      this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false)
+      this.$root.$emit('bv::hide::modal', 'patch-product')
     }
+  },
+
+  destroyed () {
+    this.$root.$emit('bv::hide::modal', 'patch-product')
+    this.$store.commit('RESET_PRODUCT')
   }
+}
 </script>

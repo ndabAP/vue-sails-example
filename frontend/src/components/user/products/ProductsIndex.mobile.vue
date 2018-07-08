@@ -17,14 +17,14 @@
 </template>
 
 <script>
-  export default {
-    components: {
-      ProductPost: () => import('./product/ProductPost.mobile'),
-      ProductsGet: () => import('./ProductsGet.mobile')
-    },
+export default {
+  components: {
+    ProductPost: () => import('./product/ProductPost.mobile'),
+    ProductsGet: () => import('./ProductsGet.mobile')
+  },
 
-    data: () => ({
-      currentTab: 'products-get'
-    })
-  }
+  data: () => ({
+    currentTab: 'products-get'
+  })
+}
 </script>

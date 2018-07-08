@@ -16,10 +16,10 @@
 </template>
 
 <script>
-  export default {
-    components: {
-      ProductPost: () => import('./product/ProductPost.desktop'),
-      ProductsGet: () => import('./ProductsGet.desktop')
-    }
+export default {
+  components: {
+    ProductPost: () => import('./product/ProductPost.desktop'),
+    ProductsGet: () => import('./ProductsGet.desktop')
   }
+}
 </script>

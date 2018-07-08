@@ -18,39 +18,39 @@
 
     <mt-cell title="">
       <mt-button
-      :disabled="isNextButtonDisabled"
-      size="small"
-      type="primary"
-      @click="currentPage++">
-      {{ t('home.mixin.button.second') }}
-    </mt-button>
+        :disabled="isNextButtonDisabled"
+        size="small"
+        type="primary"
+        @click="currentPage++">
+        {{ t('home.mixin.button.second') }}
+      </mt-button>
     </mt-cell>
   </div>
 </template>
 
 <script>
-  import HomeMixin from './Home.mixin'
-  import { MessageBox } from 'mint-ui'
+import HomeMixin from './Home.mixin'
+import { MessageBox } from 'mint-ui'
 
-  export default {
-    mixins: [HomeMixin],
+export default {
+  mixins: [HomeMixin],
 
-    computed: {
-      isNextButtonDisabled () {
-        return this.currentPage === Math.ceil(this.amountOfProducts / 6)
-      }
-    },
+  computed: {
+    isNextButtonDisabled () {
+      return this.currentPage === Math.ceil(this.amountOfProducts / 6)
+    }
+  },
 
-    methods: {
-      makeProductVisible (product) {
-        MessageBox({
-          title: product.title,
-          message: product.description,
-          confirmButtonText: 'Okay'
-        })
-      }
+  methods: {
+    makeProductVisible (product) {
+      MessageBox({
+        title: product.title,
+        message: product.description,
+        confirmButtonText: 'Okay'
+      })
     }
   }
+}
 </script>
 
 <style>

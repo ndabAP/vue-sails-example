@@ -33,26 +33,27 @@
       </b-form-feedback>
     </b-form-fieldset>
 
-    <b-button size="sm" variant="outline-success" @click="postProduct">{{ t('productpost.mixin.button.first') }}</b-button>
+    <b-button size="sm" variant="outline-success" @click="postProduct">{{ t('productpost.mixin.button.first') }}
+    </b-button>
   </div>
 </template>
 
 <script>
-  import ProductPostMixin from './ProductPost.mixin'
-  import ProductValidation from './ProductValidation.mixin'
+import ProductPostMixin from './ProductPost.mixin'
+import ProductValidation from './ProductValidation.mixin'
 
-  export default {
-    mixins: [ProductPostMixin, ProductValidation],
+export default {
+  mixins: [ProductPostMixin, ProductValidation],
 
-    methods: {
-      async postProduct () {
-        await this.$store.dispatch('postProduct', {
-          product: this.product,
-          user: this.user
-        })
+  methods: {
+    async postProduct () {
+      await this.$store.dispatch('postProduct', {
+        product: this.product,
+        user: this.user
+      })
 
-        this.$store.dispatch('getProductsByUser', this.user)
-      }
+      this.$store.dispatch('getProductsByUser', this.user)
     }
   }
+}
 </script>

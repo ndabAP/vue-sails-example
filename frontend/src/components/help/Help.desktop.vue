@@ -9,7 +9,7 @@
     size="lg">
     <div class="card mb-2">
       <div class="card-body">
-        <div v-for="message in messages">
+        <div v-for="(message, index) in messages" :key="index">
           <p v-if="message.message.assistant" class="mb-0"><b class="mr-2">{{ message.message.assistant.name}}</b>
             {{ message.message.assistant.message }}</p>
           <p v-if="message.message.assistant" class="text-muted">
@@ -33,96 +33,96 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 
-  export default {
-    props: ['io'],
+export default {
+  props: ['io'],
 
-    data: () => ({
-      assistant: '',
-      message: '',
-      messages: [{
+  data: () => ({
+    assistant: '',
+    message: '',
+    messages: [{
+      message: {
+        assistant: {
+          name: 'System',
+          message: 'Hey, how can we help you?'
+        }
+      },
+
+      time: new Date().toString()
+    }]
+  }),
+
+  mounted () {
+    this.$root.$emit('bv::show::modal', 'help')
+    this.$emit('helpMounted')
+  },
+
+  created () {
+    this.setRandomAssistantName()
+  },
+
+  computed: {
+    isHelpVisible: {
+      get () {
+        return this.$store.state.isHelpVisible
+      },
+
+      set (isHelpVisible) {
+        this.store.commit('SET_IS_HELP_VISIBLE', isHelpVisible)
+      }
+    }
+  },
+
+  updated () {
+    let card = this.$el.querySelector('.card')
+    card.scrollTop = card.scrollHeight
+  },
+
+  methods: {
+    postMessage () {
+      this.messages.push({
         message: {
-          assistant: {
-            name: 'System',
-            message: 'Hey, how can we help you?'
+          user: {
+            message: this.message
           }
         },
 
         time: new Date().toString()
-      }]
-    }),
+      })
 
-    mounted () {
-      this.$root.$emit('bv::show::modal', 'help')
-      this.$emit('helpMounted')
-    },
-
-    created () {
-      this.setRandomAssistantName()
-    },
-
-    computed: {
-      isHelpVisible: {
-        get () {
-          return this.$store.state.isHelpVisible
-        },
-
-        set (isHelpVisible) {
-          this.store.commit('SET_IS_HELP_VISIBLE', isHelpVisible)
-        }
-      }
-    },
-
-    updated () {
-      let card = this.$el.querySelector('.card')
-      card.scrollTop = card.scrollHeight
-    },
-
-    methods: {
-      postMessage () {
+      this.io.socket.post('/api/help', {}, message => {
         this.messages.push({
           message: {
-            user: {
-              message: this.message
+            assistant: {
+              name: this.assistant,
+              message: message.answer
             }
           },
 
           time: new Date().toString()
         })
-
-        this.io.socket.post('/api/help', {}, message => {
-          this.messages.push({
-            message: {
-              assistant: {
-                name: this.assistant,
-                message: message.answer
-              }
-            },
-
-            time: new Date().toString()
-          })
-        })
-
-        this.$set(this, 'message', '')
-      },
-
-      setRandomAssistantName () {
-        const assistants = [
-          'Irvin Case',
-          'Juliette Cooper',
-          'Sheldon James'
-        ]
-
-        let assistant = assistants[Math.floor(Math.random() * assistants.length)]
-        this.$set(this, 'assistant', assistant)
-      },
-
-      ...mapMutations({
-        setIsHelpVisible: 'SET_IS_HELP_VISIBLE'
       })
-    }
+
+      this.$set(this, 'message', '')
+    },
+
+    setRandomAssistantName () {
+      const assistants = [
+        'Irvin Case',
+        'Juliette Cooper',
+        'Sheldon James'
+      ]
+
+      let assistant = assistants[Math.floor(Math.random() * assistants.length)]
+      this.$set(this, 'assistant', assistant)
+    },
+
+    ...mapMutations({
+      setIsHelpVisible: 'SET_IS_HELP_VISIBLE'
+    })
   }
+}
 </script>
 
 <style scoped>

@@ -10,9 +10,9 @@
 </template>
 
 <script>
-  import LoginMixin from './Login.mixin'
+import LoginMixin from './Login.mixin'
 
-  export default {
-    mixins: [LoginMixin]
-  }
+export default {
+  mixins: [LoginMixin]
+}
 </script>

@@ -7,9 +7,14 @@
         ${{ item.item.price }}
       </template>
       <template slot="actions" slot-scope="item">
-        <b-button size="sm" variant="outline-primary" @click="showPatchForm(item.item.id)">{{ t('productsget.mixin.button.first') }}
-        </b-button>
-        <b-button size="sm" variant="outline-warning" @click="deleteProduct(item.item.id)">{{ t('productsget.mixin.button.second') }}</b-button>
+        <b-button-group>
+          <b-button size="sm" variant="outline-primary" @click="showPatchForm(item.item.id)">
+            {{ t('productsget.mixin.button.first') }}
+          </b-button>
+          <b-button size="sm" variant="outline-warning" @click="deleteProduct(item.item.id)">
+            {{t('productsget.mixin.button.second') }}
+          </b-button>
+        </b-button-group>
       </template>
     </b-table>
 
@@ -18,27 +23,27 @@
 </template>
 
 <script>
-  import ProductsGetMixin from './ProductsGet.mixin'
+import ProductsGetMixin from './ProductsGet.mixin'
 
-  const ProductPatch = () => import('./product/ProductPatch.desktop')
+const ProductPatch = () => import('./product/ProductPatch.desktop')
 
-  export default {
-    mixins: [ProductsGetMixin],
+export default {
+  mixins: [ProductsGetMixin],
 
-    components: {
-      ProductPatch
+  components: {
+    ProductPatch
+  },
+
+  methods: {
+    showPatchForm (id) {
+      this.$set(this, 'id', id)
+      this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', true)
     },
 
-    methods: {
-      showPatchForm (id) {
-        this.$set(this, 'id', id)
-        this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', true)
-      },
-
-      async deleteProduct (id) {
-        await this.$store.dispatch('deleteProduct', id)
-        this.$store.dispatch('getProductsByUser', this.user)
-      }
+    async deleteProduct (id) {
+      await this.$store.dispatch('deleteProduct', id)
+      this.$store.dispatch('getProductsByUser', this.user)
     }
   }
+}
 </script>

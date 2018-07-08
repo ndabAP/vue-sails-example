@@ -41,9 +41,9 @@
 </template>
 
 <script>
-  import HomeMixin from './Home.mixin'
+import HomeMixin from './Home.mixin'
 
-  export default {
-    mixins: [HomeMixin]
-  }
+export default {
+  mixins: [HomeMixin]
+}
 </script>

@@ -4,7 +4,7 @@
       <div class="col-6">
         <div class="card mb-2">
           <div class="card-body">
-            <div v-for="(product, index) in basket.products">
+            <div v-for="(product, index) in basket.products" :key="product.id">
               <p><b>{{ product.title }}</b> <span class="float-right"><small class="text-muted">${{ product.price
                 }}</small></span></p>
               <p>{{ product.description }}</p>

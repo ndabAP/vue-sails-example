@@ -14,7 +14,8 @@
     <footer class="mt-3 text-center">
       <span class="text-muted">
         <small>
-          This shop is not real and only for demonstration purposes. <a href="https://github.com/ndabAP/vue-sails-example">Source code</a>
+          This shop is not real and only for demonstration purposes. <a
+          href="https://github.com/ndabAP/vue-sails-example">Source code</a>
         </small>
       </span>
     </footer>
@@ -29,101 +30,101 @@
 </template>
 
 <script>
-  import AppMixin from './App.mixin'
-  import { Toast } from 'mint-ui'
+import AppMixin from './App.mixin'
+import { Toast } from 'mint-ui'
 
-  export default {
-    mixins: [AppMixin],
+export default {
+  mixins: [AppMixin],
 
-    data: () => ({
-      actions: [],
-      isNavbarVisible: false
-    }),
+  data: () => ({
+    actions: [],
+    isNavbarVisible: false
+  }),
 
-    mounted () {
-      this.setActions()
-    },
+  mounted () {
+    this.setActions()
+  },
 
-    methods: {
-      setActions () {
-        let actions = []
+  methods: {
+    setActions () {
+      let actions = []
 
-        if (!this.isUserAuthenticated) {
-          actions.push({
-            name: this.t('app.mixin.register'),
-            method: () => {
-              this.$router.push({name: 'Register'})
-            }
-          })
-
-          actions.push({
-            name: this.t('app.mixin.login'),
-            method: () => {
-              this.$router.push({name: 'Login'})
-            }
-          })
-        } else {
-          actions.push({
-            name: this.t('app.mixin.shop'),
-            method: () => {
-              this.$router.push({name: 'Shop'})
-            }
-          })
-
-          actions.push({
-            name: this.t('app.mixin.basket'),
-            method: () => {
-              this.$router.push({name: 'Basket'})
-            }
-          })
-
-          actions.push({
-            name: this.t('app.mixin.products'),
-            method: () => {
-              this.$router.push({name: 'Products'})
-            }
-          })
-
-          actions.push({
-            name: 'Logout',
-            method: () => {
-              this.deleteCookie('user')
-              this.isUserAuthenticated = false
-
-              this.$nextTick(() => this.setActions())
-
-              Toast({
-                message: this.t('app.mobile.logout'),
-                position: 'bottom',
-                duration: 3000
-              })
-              this.$router.push({name: 'Home'})
-            }
-          })
-        }
-
+      if (!this.isUserAuthenticated) {
         actions.push({
-          name: 'Change language',
+          name: this.t('app.mixin.register'),
           method: () => {
-            let locale = this.$store.state.locale
-
-            if (locale === 'en') this.setLocale('de')
-            if (locale === 'de') this.setLocale('en')
-
-            Toast({
-              message: this.t('app.mixin.language.changed'),
-              position: 'bottom',
-              duration: 3000
-            })
-
-            this.$nextTick(() => this.setActions())
+            this.$router.push({name: 'Register'})
           }
         })
 
-        this.$set(this, 'actions', actions)
+        actions.push({
+          name: this.t('app.mixin.login'),
+          method: () => {
+            this.$router.push({name: 'Login'})
+          }
+        })
+      } else {
+        actions.push({
+          name: this.t('app.mixin.shop'),
+          method: () => {
+            this.$router.push({name: 'Shop'})
+          }
+        })
+
+        actions.push({
+          name: this.t('app.mixin.basket'),
+          method: () => {
+            this.$router.push({name: 'Basket'})
+          }
+        })
+
+        actions.push({
+          name: this.t('app.mixin.products'),
+          method: () => {
+            this.$router.push({name: 'Products'})
+          }
+        })
+
+        actions.push({
+          name: 'Logout',
+          method: () => {
+            this.deleteCookie('user')
+            this.isUserAuthenticated = false
+
+            this.$nextTick(() => this.setActions())
+
+            Toast({
+              message: this.t('app.mobile.logout'),
+              position: 'bottom',
+              duration: 3000
+            })
+            this.$router.push({name: 'Home'})
+          }
+        })
       }
+
+      actions.push({
+        name: 'Change language',
+        method: () => {
+          let locale = this.$store.state.locale
+
+          if (locale === 'en') this.setLocale('de')
+          if (locale === 'de') this.setLocale('en')
+
+          Toast({
+            message: this.t('app.mixin.language.changed'),
+            position: 'bottom',
+            duration: 3000
+          })
+
+          this.$nextTick(() => this.setActions())
+        }
+      })
+
+      this.$set(this, 'actions', actions)
     }
   }
+}
 </script>
 
 <style>

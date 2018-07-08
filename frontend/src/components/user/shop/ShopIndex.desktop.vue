@@ -4,7 +4,7 @@
       {{ t('shopindex.mixin.alert.first') }}
     </b-alert>
     <div class="row">
-      <div class="col-4" v-for="product in products">
+      <div class="col-4" v-for="product in products" :key="product.id">
         <b-card :key="product.id"
                 :header="product.title"
                 class="mb-4"
@@ -28,9 +28,9 @@
 </template>
 
 <script>
-  import ShopIndexMixin from './ShopIndex.mixin'
+import ShopIndexMixin from './ShopIndex.mixin'
 
-  export default {
-    mixins: [ShopIndexMixin]
-  }
+export default {
+  mixins: [ShopIndexMixin]
+}
 </script>

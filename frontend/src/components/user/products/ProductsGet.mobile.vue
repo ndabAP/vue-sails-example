@@ -1,12 +1,16 @@
 <template>
-<div>
-  <product-patch v-if="isEditProductVisible" v-bind:id="id"></product-patch>
+  <div>
+    <product-patch v-if="isEditProductVisible" v-bind:id="id"></product-patch>
 
-  <mt-cell v-for="product in products" :key="product.id" :title="product.title">
-    <mt-button size="small" @click="showPatchForm(product.id)" type="default">{{ t('productsget.mixin.button.first') }}</mt-button>
-    <mt-button size="small" @click="deleteProduct(product.id)" type="danger">{{ t('productsget.mixin.button.second') }}</mt-button>
-  </mt-cell>
-</div>
+    <mt-cell v-for="product in products" :key="product.id" :title="product.title">
+      <mt-button size="small" @click="showPatchForm(product.id)" type="default">{{ t('productsget.mixin.button.first')
+        }}
+      </mt-button>
+      <mt-button size="small" @click="deleteProduct(product.id)" type="danger">{{ t('productsget.mixin.button.second')
+        }}
+      </mt-button>
+    </mt-cell>
+  </div>
 </template>
 
 <script>

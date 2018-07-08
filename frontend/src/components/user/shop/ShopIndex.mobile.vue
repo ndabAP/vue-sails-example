@@ -1,13 +1,15 @@
 <template>
-<div>
-  <mt-cell v-for="product in products" :key="product.id" :title="product.title">
-    <mt-button size="small" @click="makeProductVisible(product)">{{ t('shopindex.mixin.button.second')}}</mt-button>
-  </mt-cell>
+  <div>
+    <mt-cell v-for="product in products" :key="product.id" :title="product.title">
+      <mt-button size="small" @click="makeProductVisible(product)">{{ t('shopindex.mixin.button.second')}}</mt-button>
+    </mt-cell>
 
-  <mt-cell title="">
-    <mt-button :disabled="isNextButtonDisabled" size="small" type="primary" @click="currentPage++">{{ t('shopindex.mixin.button.third')}}</mt-button>
-  </mt-cell>
-</div>
+    <mt-cell title="">
+      <mt-button :disabled="isNextButtonDisabled" size="small" type="primary" @click="currentPage++">{{
+        t('shopindex.mixin.button.third')}}
+      </mt-button>
+    </mt-cell>
+  </div>
 </template>
 
 <script>
