@@ -7,9 +7,11 @@
   "private": false,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "cypress:open": "cypress open --global",
+    "cypress:open": "npm run dev & cypress open --global",
+    "cypress:run": "cypress run --headed",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "start-server-and-test dev http://localhost:8080 cypress:run"
   },
   "dependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-rc.3",
@@ -32,6 +34,7 @@
     "sails.io.js": "^1.2.1",
     "sass-loader": "^7.0.1",
     "socket.io-client": "^2.1.1",
+    "start-server-and-test": "^1.5.0",
     "validate.js": "^0.12.0",
     "vue": "^2.5.16",
     "vue-resource": "^1.5.1",

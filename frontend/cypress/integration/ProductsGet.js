@@ -68,15 +68,15 @@ describe('ProductsGet', () => {
       cy.get('tbody > :nth-child(1) > [aria-colindex="1"]').should('not.be.empty')
     })
 
-    it('remove products', () => {
+    it('removes products', () => {
       cy.route({
         method: 'GET',
         url: '/api/user/products/getProductsByUser',
         status: 200,
         response: mocks('productsByUser', 11)
       })
-      .as('/api/user/products/getProductsByUser')
-      cy.get(':nth-child(1) > [aria-colindex="4"] > .btn-outline-warning').click()
+        .as('/api/user/products/product/delete?id=0')
+      cy.get(':nth-child(1) > [aria-colindex="4"] > .btn-group > .btn-outline-warning').click()
       cy.wait('@/api/user/products/product/delete?id=0')
       cy.wait('@/api/user/products/getProductsByUser')
       cy.get('table tbody').find('tr').should($tbody => expect($tbody).to.have.length(11))

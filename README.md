@@ -76,7 +76,8 @@ For a complete list see `package.json`.
 |---------------------------|------------------------------------------------------------------------------------------|
 | `npm run dev`             | Start the development server at [localhost:8080](http://localhost:8080).                 |
 | `npm run build`           | Minfiy, uglify and merge the application with Sails.js.                                  |
-| `npm run cypress:open`    | Run tests with Cypress                                                                   |
+| `npm run test`            | Run all available tests like unit or functional tests.                                   |
+                                                                |
 
 ## Essential components used
 
