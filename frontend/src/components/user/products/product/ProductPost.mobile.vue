@@ -54,7 +54,7 @@ export default {
       })
 
       Toast({
-        message: this.t('product.created'),
+        message: this.t('productpost.mixin.product.created'),
         position: 'bottom',
         duration: 3000
       })
