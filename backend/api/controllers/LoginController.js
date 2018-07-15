@@ -18,7 +18,7 @@ module.exports = {
             const encryptedId = CryptographyService.encrypt(user.id)
 
             return res.json({
-              token: TokenService.issue({id: user.id}),
+              xToken: TokenService.issue({id: user.id}),
               cookie: encryptedId
             })
           })

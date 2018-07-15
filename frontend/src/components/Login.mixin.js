@@ -31,9 +31,9 @@ export default {
 
   methods: {
     async login () {
-      let {token, cookie} = await this.$store.dispatch('loginUser', this.user)
+      let {xToken, cookie} = await this.$store.dispatch('loginUser', this.user)
 
-      window.localStorage.setItem('token', token)
+      window.localStorage.setItem('x-token', xToken)
       this.setCookie('user', cookie, 3600 * 24 * 7)
       this.setIsUserAuthenticated(true)
       this.$emit('userLoggedIn')

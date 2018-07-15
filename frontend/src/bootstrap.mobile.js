@@ -8,8 +8,8 @@ Vue.use(MintUI)
 
 Vue.http.interceptors.push((request, next) => {
   if (request.url !== '/api/login/post') {
-    let token = window.localStorage.getItem('token')
-    request.headers.set('token', token)
+    const xToken = window.localStorage.getItem('x-token')
+    request.headers.set('X-Token', xToken)
   }
 
   next(response => {

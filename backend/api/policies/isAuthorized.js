@@ -1,7 +1,7 @@
 module.exports = function isAuthorized (req, res, next) {
   if (process.env.NODE_ENV === 'test') return next()
-  let token = req.headers.token
 
+  const token = req.headers['x-token']
   if ('undefined' === token) return res.forbidden()
 
   try {

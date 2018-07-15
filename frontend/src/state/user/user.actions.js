@@ -33,6 +33,7 @@ export default {
           password
         })
         .then(response => {
+          console.log(response)
           context.commit('SET_IS_USER_AUTHENTICATED', true)
           resolve(response.body)
         })
