@@ -77,8 +77,7 @@ For a complete list see `package.json`.
 | `npm run dev`             | Start the development server at [localhost:8080](http://localhost:8080).                 |
 | `npm run build`           | Minfiy, uglify and merge the application with Sails.js.                                  |
 | `npm run test`            | Run all available tests like unit or functional tests.                                   |
-                                                                |
-
+                                                                
 ## Essential components used
 
 The following components are used in this project. There are plenty more, though, check the `package.json` files.
