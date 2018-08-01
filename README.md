@@ -32,7 +32,7 @@ $ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 $ sudo apt-get install -y nodejs
 ```
 
-#### Get Sails.js
+#### Get Sails.js (optional)
 
 ```bash
 $ sudo npm install sails -g
