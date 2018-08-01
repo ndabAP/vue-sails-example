@@ -12,6 +12,10 @@
 
 module.exports = {
 
+  sockets: {
+    onlyAllowOrigins: ['https://vue-sails-example.herokuapp.com'],
+  }
+
   /***************************************************************************
    * Set the default database connection for models in the production        *
    * environment (see config/connections.js and config/models.js )           *

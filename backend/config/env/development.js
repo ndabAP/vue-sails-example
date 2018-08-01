@@ -17,6 +17,12 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
+  session: {
+    cookie: {
+      secure: false
+    }
+  }
+
   // models: {
   //   connection: 'someMongodbServer'
   // }
