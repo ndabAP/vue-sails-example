@@ -28,7 +28,7 @@ To get started, you need Node.js. It's also recommend to have Sails.js globally 
 #### Get Node.js
 
 ```bash
-$ curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 $ sudo apt-get install -y nodejs
 ```
 
@@ -60,17 +60,18 @@ First, you have to build up your Vue.js components and merge them with Sails.js.
 
 ## Commands
 
-For a complete list see `package.json`.
-
 ### Backend
+
+For a complete list see `package.json`.
 
 | Command           | Description                                                                                      |
 |-------------------|--------------------------------------------------------------------------------------------------|
-| `sails lift`      | Run the Sails.js application in the current directory at [localhost:1337](http://localhost:1337).|
 | `npm run dev`     | Start Sails.js if you didn't install it globally.                                                |
 | `npm run test`    | Run all available tests like unit or functional tests.                                           |
 
 ### Frontend
+
+For a complete list see `package.json`.
 
 | Command                   | Description                                                                              |
 |---------------------------|------------------------------------------------------------------------------------------|
