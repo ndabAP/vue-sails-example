@@ -12,6 +12,7 @@
 
 module.exports.sockets = {
 
+  // onlyAllowOrigins: ['http://localhost:1337', 'https://vue-sails-example.herokuapp.com'],
 
   /***************************************************************************
   *                                                                          *
