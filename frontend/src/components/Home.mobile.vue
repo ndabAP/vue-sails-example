@@ -18,7 +18,7 @@
 
     <mt-cell title="">
       <mt-button
-        :disabled="isNextButtonDisabled"
+        :disabled="isDisabledNextButton"
         size="small"
         type="primary"
         @click="currentPage++">
@@ -36,7 +36,7 @@ export default {
   mixins: [HomeMixin],
 
   computed: {
-    isNextButtonDisabled () {
+    isDisabledNextButton () {
       return this.currentPage === Math.ceil(this.amountOfProducts / 6)
     }
   },

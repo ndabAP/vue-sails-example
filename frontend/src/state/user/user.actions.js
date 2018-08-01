@@ -13,7 +13,7 @@ export default {
     })
   },
 
-  postUser (context, {name, password}) {
+  signUp (context, {name, password}) {
     return new Promise((resolve, reject) => {
       Vue.http
         .post('/api/register/post', {name, password})
@@ -25,17 +25,16 @@ export default {
     })
   },
 
-  loginUser (context, {name, password}) {
+  signIn (context, {name, password}) {
     return new Promise((resolve, reject) => {
       Vue.http
         .post('/api/login/post', {
           name,
           password
         })
-        .then(response => {
-          console.log(response)
+        .then(({body}) => {
           context.commit('SET_IS_USER_AUTHENTICATED', true)
-          resolve(response.body)
+          resolve(body)
         })
         .catch(error => reject(error))
     })

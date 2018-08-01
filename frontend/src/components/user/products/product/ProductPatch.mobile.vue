@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mt-popup v-model="isEditProductVisible" class="mint-popup-1">
+    <mt-popup v-model="isPatchProductVisible" class="mint-popup-1">
       <mt-field :label="t('productpatch.mixin.label.first')" v-model="title"></mt-field>
       <mt-field :label="t('productpatch.mixin.label.third')" v-model="description"></mt-field>
       <mt-field :label="t('productpatch.mixin.label.second')" v-model="price"></mt-field>
@@ -46,12 +46,12 @@ export default {
       })
 
       this.$store.dispatch('getProductsByUser', this.user)
-      this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false)
+      this.$store.commit('SET_IS_PATCH_PRODUCT_VISIBLE', false)
       this.$store.commit('RESET_PRODUCT')
     },
 
     cancel () {
-      this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false)
+      this.$store.commit('SET_IS_PATCH_PRODUCT_VISIBLE', false)
     }
   },
 

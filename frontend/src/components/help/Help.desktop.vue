@@ -25,7 +25,7 @@
     </div>
     <b-form-input type="text" @keyup.enter.native="postMessage" v-model="message"></b-form-input>
     <template slot="modal-footer">
-      <b-button @click="setIsHelpVisible(false)" size="sm" variant="secondary">
+      <b-button @click="setIsVisibleHelp(false)" size="sm" variant="secondary">
         {{ t('help.desktop.button.first')}}
       </b-button>
     </template>
@@ -41,6 +41,7 @@ export default {
   data: () => ({
     assistant: '',
     message: '',
+
     messages: [{
       message: {
         assistant: {
@@ -114,12 +115,12 @@ export default {
         'Sheldon James'
       ]
 
-      let assistant = assistants[Math.floor(Math.random() * assistants.length)]
+      const assistant = assistants[Math.floor(Math.random() * assistants.length)]
       this.$set(this, 'assistant', assistant)
     },
 
     ...mapMutations({
-      setIsHelpVisible: 'SET_IS_HELP_VISIBLE'
+      setIsVisibleHelp: 'SET_IS_VISIBLE_HELP'
     })
   }
 }

@@ -51,7 +51,7 @@ export default {
   mixins: [ProductPatchMixin, ProductValidation],
 
   async created () {
-    let product = await this.$store.dispatch('getProduct', this.id)
+    const product = await this.$store.dispatch('getProduct', this.id)
     this.$root.$emit('bv::show::modal', 'patch-product')
 
     this.$store.commit('SET_PRODUCT_TITLE', product.title)
@@ -69,12 +69,13 @@ export default {
       })
 
       this.$store.dispatch('getProductsByUser', this.user)
-      this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false)
+
+      this.$store.commit('SET_IS_PATCH_PRODUCT_VISIBLE', false)
       this.$store.commit('RESET_PRODUCT')
     },
 
     cancel () {
-      this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', false)
+      this.$store.commit('SET_IS_PATCH_PRODUCT_VISIBLE', false)
       this.$root.$emit('bv::hide::modal', 'patch-product')
     }
   },

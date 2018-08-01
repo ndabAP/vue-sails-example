@@ -1,9 +1,9 @@
 <template>
   <div>
     <help-index
-      v-if="isHelpVisible"
+      v-if="isVisibleHelp"
       :io="io"
-      @helpMounted="setIo">
+      @helpMounted="setIoHandler">
     </help-index>
 
     <b-navbar toggleable="md" type="dark" variant="primary">
@@ -19,10 +19,10 @@
           <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Register'}">{{ t('app.mixin.register') }}</b-nav-item>
           <b-nav-item v-if="!isUserAuthenticated" :to="{ name: 'Login'}">{{ t('app.mixin.login') }}</b-nav-item>
           <b-nav-item v-if="isUserAuthenticated" :to="{ name: 'Shop'}">{{ t('app.mixin.shop') }}</b-nav-item>
-          <b-nav-item v-if="isUserAuthenticated" @click="logout">Logout</b-nav-item>
+          <b-nav-item v-if="isUserAuthenticated" @click="signOut">Logout</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-item @click="setIsHelpVisible(true)">{{ t('app.mixin.help') }}</b-nav-item>
+          <b-nav-item @click="setIsVisibleHelp(true)">{{ t('app.mixin.help') }}</b-nav-item>
           <b-nav-item :disabled="!basket.products.length" v-if="isUserAuthenticated" :to="{ name: 'Basket'}">
             {{ t('app.mixin.basket') }} ({{ basket.products.length }})
           </b-nav-item>
@@ -71,26 +71,22 @@ export default {
   }),
 
   computed: {
-    isHelpVisible: {
+    isVisibleHelp: {
       get () {
-        return this.$store.state.isHelpVisible
-      },
-
-      set (isHelpVisible) {
-        this.store.commit('SET_IS_HELP_VISIBLE', isHelpVisible)
+        return this.$store.state.isVisibleHelp
       }
     }
   },
 
   watch: {
-    isHelpVisible () {
-      if (!this.isHelpVisible) this.io.socket.disconnect()
-      if (this.isHelpVisible && this.io) this.io.socket.reconnect()
+    isVisibleHelp () {
+      if (!this.isVisibleHelp) this.io.socket.disconnect()
+      if (this.isVisibleHelp && this.io) this.io.socket.reconnect()
     }
   },
 
   methods: {
-    setIo () {
+    setIoHandler () {
       if (!this.io) {
         let io = sailsIo(socketIoClient)
 
@@ -109,7 +105,7 @@ export default {
       }
     },
 
-    logout () {
+    signOut () {
       this.deleteCookie('user')
       this.isUserAuthenticated = false
       localStorage.clear()
@@ -118,7 +114,7 @@ export default {
     },
 
     ...mapMutations({
-      setIsHelpVisible: 'SET_IS_HELP_VISIBLE'
+      setIsVisibleHelp: 'SET_IS_VISIBLE_HELP'
     })
   }
 }

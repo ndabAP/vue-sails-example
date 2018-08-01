@@ -28,8 +28,8 @@ export default {
   },
 
   methods: {
-    create () {
-      this.$store.dispatch('postUser', this.user)
+    signUp () {
+      this.$store.dispatch('signUp', this.user)
     }
   }
 }

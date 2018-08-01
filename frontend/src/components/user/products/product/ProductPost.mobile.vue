@@ -1,9 +1,9 @@
 <template>
   <div>
-    <mt-field :label="t('productpost.mixin.label.first')" :state="isTitleValidMobile" v-model="title"></mt-field>
-    <mt-field :label="t('productpost.mixin.label.third')" :state="isDescriptionValidMobile"
+    <mt-field :label="t('productpost.mixin.label.first')" :state="isValidTitleMobile" v-model="title"></mt-field>
+    <mt-field :label="t('productpost.mixin.label.third')" :state="isValidDescriptionMobile"
               v-model="description"></mt-field>
-    <mt-field :label="t('productpost.mixin.label.second')" :state="isPriceValidMobile" v-model="price"></mt-field>
+    <mt-field :label="t('productpost.mixin.label.second')" :state="isValidPriceMobile" v-model="price"></mt-field>
 
     <mt-cell title="">
       <mt-button size="small" type="primary" @click="postProduct" plain>{{ t('productpost.mixin.button.first') }}
@@ -21,25 +21,25 @@ export default {
   mixins: [ProductPostMixin, ProductValidation],
 
   computed: {
-    isTitleValidMobile: {
+    isValidTitleMobile: {
       get () {
-        if (this.isTitleValid) return 'success'
+        if (this.isValidTitle) return 'success'
 
         return 'error'
       }
     },
 
-    isDescriptionValidMobile: {
+    isValidDescriptionMobile: {
       get () {
-        if (this.isDescriptionValid) return 'success'
+        if (this.isValidDescription) return 'success'
 
         return 'error'
       }
     },
 
-    isPriceValidMobile: {
+    isValidPriceMobile: {
       get () {
-        if (this.isPriceValid) return 'success'
+        if (this.isValidPrice) return 'success'
 
         return 'error'
       }

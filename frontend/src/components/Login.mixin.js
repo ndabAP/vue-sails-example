@@ -30,8 +30,8 @@ export default {
   },
 
   methods: {
-    async login () {
-      let {xToken, cookie} = await this.$store.dispatch('loginUser', this.user)
+    async signIn () {
+      const {xToken, cookie} = await this.$store.dispatch('signIn', this.user)
 
       window.localStorage.setItem('x-token', xToken)
       this.setCookie('user', cookie, 3600 * 24 * 7)

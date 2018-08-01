@@ -1,11 +1,11 @@
 <template>
   <div>
-    <mt-field :label="t('register.mixin.label.first')" :state="isNameValidMobile" v-model="name"></mt-field>
-    <mt-field :label="t('register.mixin.label.second')" :state="isPasswordValidMobile" v-model="password"
+    <mt-field :label="t('register.mixin.label.first')" :state="isValidNameMobile" v-model="name"></mt-field>
+    <mt-field :label="t('register.mixin.label.second')" :state="isValidPasswordMobile" v-model="password"
               type="password"></mt-field>
 
     <mt-cell title="">
-      <mt-button size="small" type="primary" @click="create" plain>{{ t('register.mixin.button.first') }}</mt-button>
+      <mt-button size="small" type="primary" @click="signUp" plain>{{ t('register.mixin.button.first') }}</mt-button>
     </mt-cell>
   </div>
 </template>
@@ -18,17 +18,17 @@ export default {
   mixins: [RegisterMixin, UserValidation],
 
   computed: {
-    isNameValidMobile: {
+    isValidNameMobile: {
       get () {
-        if (this.isNameValid) return 'success'
+        if (this.isValidName) return 'success'
 
         return 'error'
       }
     },
 
-    isPasswordValidMobile: {
+    isValidPasswordMobile: {
       get () {
-        if (this.isPasswordValid) return 'success'
+        if (this.isValidPassword) return 'success'
 
         return 'error'
       }

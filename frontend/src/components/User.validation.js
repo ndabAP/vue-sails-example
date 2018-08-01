@@ -10,11 +10,11 @@ export default {
   }),
 
   computed: {
-    isNameValid: {
+    isValidName: {
       get () {
         if (isEmpty(this.user.name)) return null
 
-        let validation = validate.single(this.user.name, {
+        const validation = validate.single(this.user.name, {
           presence: true,
           length: {
             minimum: 3,
@@ -37,11 +37,11 @@ export default {
       }
     },
 
-    isPasswordValid: {
+    isValidPassword: {
       get () {
         if (isEmpty(this.user.password)) return null
 
-        let validation = validate.single(this.user.password, {
+        const validation = validate.single(this.user.password, {
           presence: true,
           length: {
             minimum: 3,

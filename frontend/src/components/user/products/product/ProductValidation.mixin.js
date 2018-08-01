@@ -11,11 +11,11 @@ export default {
   }),
 
   computed: {
-    isTitleValid: {
+    isValidTitle: {
       get () {
         if (isEmpty(this.title)) return null
 
-        let validation = validate.single(this.title, {
+        const validation = validate.single(this.title, {
           presence: true,
           format: {
             pattern: '^[A-Z](.*)$',
@@ -33,11 +33,11 @@ export default {
       }
     },
 
-    isPriceValid: {
+    isValidPrice: {
       get () {
         if (this.price === null) return null
 
-        let validation = validate.single(this.price, {
+        const validation = validate.single(this.price, {
           presence: true,
           numericality: {
             notValid: 'Price must be number',
@@ -56,11 +56,11 @@ export default {
       }
     },
 
-    isDescriptionValid: {
+    isValidDescription: {
       get () {
         if (isEmpty(this.description)) return null
 
-        let validation = validate.single(this.description, {
+        const validation = validate.single(this.description, {
           presence: true,
           length: {
             minimum: 40,

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <product-patch v-if="isEditProductVisible" :id="id"></product-patch>
+    <product-patch v-if="isPatchProductVisible" :id="id"></product-patch>
 
     <b-table :items="products" :fields="fields" v-if="products.length > 0">
       <template slot="price" slot-scope="item">
@@ -37,7 +37,7 @@ export default {
   methods: {
     showPatchForm (id) {
       this.$set(this, 'id', id)
-      this.$store.commit('SET_IS_EDIT_PRODUCT_VISIBLE', true)
+      this.$store.commit('SET_IS_PATCH_PRODUCT_VISIBLE', true)
     },
 
     async deleteProduct (id) {
