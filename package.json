@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "cd backend && npm run dev & cd frontend && npm run dev",
     "commitmsg": "commitlint -e $GIT_PARAMS",
+    "install": "cd frontend && npm i && cd ../backend && npm i",
     "push": "git push && git push heroku `git subtree split --prefix backend master`:master --force"
   },
   "repository": {
