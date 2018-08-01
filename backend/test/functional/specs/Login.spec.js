@@ -26,7 +26,8 @@ describe('Login', function() {
           .end((error, response) => {
             if (error) return done(error)
 
-            chai.assert.isNotEmpty(response.body.token)
+            chai.assert.isNotEmpty(response.body.xToken)
+            chai.assert.isNotEmpty(response.body.cookie)
             done()
           })
       })
