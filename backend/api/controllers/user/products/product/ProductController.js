@@ -1,65 +1,59 @@
 module.exports = {
-  postProduct: (req, res) => {
-    const { title, price, description } = req.allParams()
-    const user = CryptographyService.decrypt(req.cookies.user)
+  postProduct: async (req, res) => {
+    const {title, price, description} = req.allParams()
+    const userIdentifier = CryptographyService.decrypt(req.cookies.user)
 
-    Product
-      .create({title, description, price, user})
-      .exec((error, product) => {
-        if (error) return res.serverError(error)
+    const product = await Product
+      .create({title, description, price, user: userIdentifier})
+      .catch(error => res.serverError(error))
 
-        sails.log.info('Product created', product)
+    sails.log.info('Product created', product)
 
-        if (product) return res.ok()
-      })
+    return res.ok()
   },
 
-  getProduct: (req, res) => {
+  getProduct: async (req, res) => {
     const id = req.param('id')
-    const user = CryptographyService.decrypt(req.cookies.user)
+    const userIdentifier = CryptographyService.decrypt(req.cookies.user)
 
-    Product
-      .findOne({id, user})
-      .exec((error, product) => {
-        if (error) return res.serverError(error)
-        if (product) return res.json(product)
-      })
+    const product = await Product
+      .findOne({id, user: userIdentifier})
+      .catch(error => res.serverError(error))
+
+    return res.json(product)
   },
 
-  patchProduct: (req, res) => {
+  patchProduct: async (req, res) => {
     const {id, title, price, description} = req.allParams()
-    const user = CryptographyService.decrypt(req.cookies.user)
+    const userIdentifier = CryptographyService.decrypt(req.cookies.user)
 
-    Product
+    const product = await Product
       .update({
         id,
-        user
+        user: userIdentifier
       }, {
         title,
         description,
         price
       })
-      .exec((error, product) => {
-        if (error) return res.serverError(error)
+      .catch(error => res.serverError(error))
 
-        sails.log.info('Product patched', product)
+    sails.log.info('Product patched', product)
 
-        if (product) return res.ok()
-      })
+    return res.ok()
   },
 
-  deleteProduct: (req, res) => {
+  deleteProduct: async (req, res) => {
     const id = req.param('id')
-    const user = CryptographyService.decrypt(req.cookies.user)
+    const userIdentifier = CryptographyService.decrypt(req.cookies.user)
 
-    Product
-      .destroy({id, user})
-      .exec(error => {
-        if (error) return res.serverError(error)
+    await Product
+      .destroy({id, user: userIdentifier})
+      .catch(error => res.serverError(error))
 
-        sails.log.info('Product removed')
+    sails.log.info('Product removed')
 
-        return res.ok()
-      })
+    return res.ok()
+
   }
 }

@@ -35,9 +35,11 @@
     </b-form-fieldset>
 
     <template slot="modal-footer">
-      <b-button size="sm" variant="outline-primary" @click="cancel">{{ t('productpatch.mixin.button.first') }}
+      <b-button size="sm" variant="outline-primary" @click="cancel">
+        {{ t('productpatch.mixin.button.first') }}
       </b-button>
-      <b-button size="sm" variant="outline-success" @click="patchProduct">{{ t('productpatch.mixin.button.second') }}
+      <b-button size="sm" variant="outline-success" @click="patchProduct">
+        {{ t('productpatch.mixin.button.second') }}
       </b-button>
     </template>
   </b-modal>
@@ -70,12 +72,12 @@ export default {
 
       this.$store.dispatch('getProductsByUser', this.user)
 
-      this.$store.commit('SET_IS_PATCH_PRODUCT_VISIBLE', false)
+      this.$store.commit('SET_IS_VISIBLE_PRODUCT_PATCH', false)
       this.$store.commit('RESET_PRODUCT')
     },
 
     cancel () {
-      this.$store.commit('SET_IS_PATCH_PRODUCT_VISIBLE', false)
+      this.$store.commit('SET_IS_VISIBLE_PRODUCT_PATCH', false)
       this.$root.$emit('bv::hide::modal', 'patch-product')
     }
   },

@@ -88,9 +88,9 @@ export default {
   methods: {
     setIoHandler () {
       if (!this.io) {
-        let io = sailsIo(socketIoClient)
+        const isProductionEnvironment = (process.env.NODE_ENV === 'production')
 
-        let isProductionEnvironment = (process.env.NODE_ENV === 'production')
+        let io = sailsIo(socketIoClient)
         let url
 
         if (isProductionEnvironment) {

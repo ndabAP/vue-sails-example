@@ -12,6 +12,6 @@ before(function (done) {
 })
 
 after(function (done) {
-  fs.unlinkSync(__dirname + '/../.tmp/testDB.db')
+  fs.unlinkSync(`${__dirname}/../.tmp/testDB.db`)
   sails.lower(done)
 })

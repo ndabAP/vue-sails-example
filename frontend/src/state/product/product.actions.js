@@ -4,12 +4,8 @@ export default {
   getProduct ({}, id) {
     return new Promise((resolve, reject) => {
       Vue.http
-        .get('/api/user/products/product/get', {
-          params: {
-            id
-          }
-        })
-        .then(response => resolve(response.body))
+        .get('/api/user/products/product/get', {params: {id}})
+        .then(({body}) => resolve(body))
         .catch(error => reject(error))
     })
   },

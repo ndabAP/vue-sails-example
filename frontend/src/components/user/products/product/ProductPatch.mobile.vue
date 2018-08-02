@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mt-popup v-model="isPatchProductVisible" class="mint-popup-1">
+    <mt-popup v-model="isVisibleProductPatch" class="mint-popup-1">
       <mt-field :label="t('productpatch.mixin.label.first')" v-model="title"></mt-field>
       <mt-field :label="t('productpatch.mixin.label.third')" v-model="description"></mt-field>
       <mt-field :label="t('productpatch.mixin.label.second')" v-model="price"></mt-field>
@@ -23,7 +23,7 @@ export default {
   mixins: [ProductPatchMixin],
 
   async created () {
-    let product = await this.$store.dispatch('getProduct', this.id)
+    const product = await this.$store.dispatch('getProduct', this.id)
 
     this.$store.commit('SET_PRODUCT_TITLE', product.title)
     this.$store.commit('SET_PRODUCT_DESCRIPTION', product.description)
@@ -45,13 +45,14 @@ export default {
         duration: 3000
       })
 
-      this.$store.dispatch('getProductsByUser', this.user)
-      this.$store.commit('SET_IS_PATCH_PRODUCT_VISIBLE', false)
+      await this.$store.dispatch('getProductsByUser', this.user)
+
+      this.$store.commit('SET_IS_VISIBLE_PRODUCT_PATCH', false)
       this.$store.commit('RESET_PRODUCT')
     },
 
     cancel () {
-      this.$store.commit('SET_IS_PATCH_PRODUCT_VISIBLE', false)
+      this.$store.commit('SET_IS_VISIBLE_PRODUCT_PATCH', false)
     }
   },
 

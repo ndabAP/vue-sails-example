@@ -5,7 +5,7 @@ module.exports = function isAuthorized (req, res, next) {
   if ('undefined' === token) return res.forbidden()
 
   try {
-    let decryptedSessionStorageToken = TokenService.verify(token)
+    const decryptedSessionStorageToken = TokenService.verify(token)
 
     User
       .findOne({id: decryptedSessionStorageToken.id})

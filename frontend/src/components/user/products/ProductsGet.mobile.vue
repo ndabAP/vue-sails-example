@@ -1,13 +1,13 @@
 <template>
   <div>
-    <product-patch v-if="isPatchProductVisible" v-bind:id="id"></product-patch>
+    <product-patch v-if="isVisibleProductPatch" v-bind:id="id"></product-patch>
 
     <mt-cell v-for="product in products" :key="product.id" :title="product.title">
-      <mt-button size="small" @click="showPatchForm(product.id)" type="default">{{ t('productsget.mixin.button.first')
-        }}
+      <mt-button size="small" @click="showPatchForm(product.id)" type="default">
+        {{ t('productsget.mixin.button.first') }}
       </mt-button>
-      <mt-button size="small" @click="deleteProduct(product.id)" type="danger">{{ t('productsget.mixin.button.second')
-        }}
+      <mt-button size="small" @click="deleteProduct(product.id)" type="danger">
+        {{ t('productsget.mixin.button.second') }}
       </mt-button>
     </mt-cell>
   </div>
@@ -28,7 +28,7 @@ export default {
   methods: {
     showPatchForm (id) {
       this.$set(this, 'id', id)
-      this.$store.commit('SET_IS_PATCH_PRODUCT_VISIBLE', true)
+      this.$store.commit('SET_IS_VISIBLE_PRODUCT_PATCH', true)
     },
 
     async deleteProduct (id) {

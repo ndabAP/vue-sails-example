@@ -11,8 +11,8 @@ export default {
     state.product.price = price
   },
 
-  SET_IS_PATCH_PRODUCT_VISIBLE (state, isPatchProductVisible) {
-    state.product.meta.isPatchProductVisible = isPatchProductVisible
+  SET_IS_VISIBLE_PRODUCT_PATCH (state, isVisibleProductPatch) {
+    state.product.meta.isVisibleProductPatch = isVisibleProductPatch
   },
 
   RESET_PRODUCT (state) {

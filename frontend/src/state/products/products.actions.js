@@ -5,7 +5,7 @@ export default {
     return new Promise((resolve, reject) => {
       Vue.http
         .get('/api/products/get', {params: {page}})
-        .then(async ({body}) => {
+        .then(({body}) => {
           context.commit('SET_PRODUCTS', body)
           resolve()
         })

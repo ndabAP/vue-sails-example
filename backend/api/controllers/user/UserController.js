@@ -1,12 +1,11 @@
 module.exports = {
-  get: (req, res) => {
-    const user = CryptographyService.decrypt(req.cookies.user)
+  get: async (req, res) => {
+    const userIdentifier = CryptographyService.decrypt(req.cookies.user)
 
-    User
-      .findOne({id: user})
-      .exec((error, user) => {
-        if (error) return res.serverError(error)
-        if (user) return res.json(user)
-      })
+    const user = await User
+      .findOne({id: userIdentifier})
+      .catch(error => res.serverError(error))
+
+    return res.json(user)
   }
 }

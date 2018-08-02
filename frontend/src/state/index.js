@@ -8,8 +8,8 @@ import basket from './basket/basket.module'
 Vue.use(Vuex)
 
 const getCookie = name => {
-  let a = `; ${document.cookie}`.match(`;\\s*${name}=([^;]+)`)
-  return a ? a[1] : ''
+  const cookies = `; ${document.cookie}`.match(`;\\s*${name}=([^;]+)`)
+  return cookies ? cookies[1] : ''
 }
 
 export default new Vuex.Store({

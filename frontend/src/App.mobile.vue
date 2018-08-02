@@ -5,7 +5,7 @@
         <mt-button>{{ t('app.mixin.home')}}</mt-button>
       </router-link>
       <span slot="right">
-        <mt-button icon="more" @click.native="isNavbarVisible = true"></mt-button>
+        <mt-button icon="more" @click.native="isVisibleNavbar = true"></mt-button>
         </span>
     </mt-header>
 
@@ -24,7 +24,7 @@
       :cancelText="t('app.mixin.cancelText')"
       size="large"
       :actions="actions"
-      v-model="isNavbarVisible">
+      v-model="isVisibleNavbar">
     </mt-actionsheet>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
 
   data: () => ({
     actions: [],
-    isNavbarVisible: false
+    isVisibleNavbar: false
   }),
 
   mounted () {
@@ -106,7 +106,7 @@ export default {
       actions.push({
         name: 'Change language',
         method: () => {
-          let locale = this.$store.state.locale
+          const locale = this.$store.state.locale
 
           if (locale === 'en') this.setLocale('de')
           if (locale === 'de') this.setLocale('en')

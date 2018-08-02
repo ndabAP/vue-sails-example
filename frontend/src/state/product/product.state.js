@@ -4,7 +4,7 @@ export default {
     description: '',
     price: null,
     meta: {
-      isPatchProductVisible: false
+      isVisibleProductPatch: false
     }
   }
 }

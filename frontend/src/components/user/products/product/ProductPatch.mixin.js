@@ -38,13 +38,13 @@ export default {
       }
     },
 
-    isPatchProductVisible: {
+    isVisibleProductPatch: {
       get () {
-        return this.$store.state.Product.product.meta.isPatchProductVisible
+        return this.$store.state.Product.product.meta.isVisibleProductPatch
       },
 
-      set (isPatchProductVisible) {
-        this.$store.commit('SET_IS_PATCH_PRODUCT_VISIBLE', isPatchProductVisible)
+      set (isVisibleProductPatch) {
+        this.$store.commit('SET_IS_VISIBLE_PRODUCT_PATCH', isVisibleProductPatch)
       }
     }
   }

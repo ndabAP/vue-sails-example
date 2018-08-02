@@ -1,24 +1,20 @@
 module.exports = {
-  getProducts: (req, res) => {
+  getProducts: async (req, res) => {
     const page = req.param('page')
 
-    Product
+    const amountOfProducts = await Product
       .count()
-      .exec((error, amountOfProducts) => {
-        if (error) return res.serverError(error)
+      .catch(error => res.serverError(error))
 
-        Product
-          .find()
-          .populate('user')
-          .paginate({page, limit: 6})
-          .exec((error, products) => {
-            if (error) return res.serverError(error)
+    const products = await Product
+      .find()
+      .populate('user')
+      .paginate({page, limit: 6})
+      .catch(error => res.serverError(error))
 
-            if (products) return res.json({
-              products,
-              amountOfProducts
-            })
-          })
-      })
+    return res.json({
+      products,
+      amountOfProducts
+    })
   }
 }

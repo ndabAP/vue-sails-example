@@ -20,13 +20,6 @@ module.exports = {
     }
   },
 
-  customToJSON () {
-    let user = this.toObject()
-    delete user.password
-
-    return user
-  },
-
   beforeCreate: (user, next) => {
     bcrypt.genSalt(10, (error, salt) => {
       if (error) return next(error)
