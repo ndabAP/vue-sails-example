@@ -29,9 +29,7 @@ export default {
   },
 
   methods: {
-    deleteCookie (cookie) {
-      document.cookie = `${cookie}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`
-    },
+    deleteCookie: cookie => { document.cookie = `${cookie}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;` },
 
     ...mapMutations({
       setLocale: 'SET_LOCALE'

@@ -2,7 +2,7 @@ module.exports = function isAuthorized (req, res, next) {
   if (process.env.NODE_ENV === 'test') return next()
 
   const token = req.headers['x-token']
-  if ('undefined' === token) return res.forbidden()
+  if (!token) return res.forbidden()
 
   try {
     const decryptedSessionStorageToken = TokenService.verify(token)

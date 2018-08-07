@@ -42,7 +42,7 @@ export default {
 
     async deleteProduct (id) {
       await this.$store.dispatch('deleteProduct', id)
-      this.$store.dispatch('getProductsByUser', this.user)
+      await this.$store.dispatch('getProductsByUser', this.user)
     }
   }
 }

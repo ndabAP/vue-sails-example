@@ -3,8 +3,8 @@ export default {
     id: ''
   }),
 
-  created () {
-    this.$store.dispatch('getProductsByUser', this.user)
+  async created () {
+    await this.$store.dispatch('getProductsByUser', this.user)
   },
 
   computed: {

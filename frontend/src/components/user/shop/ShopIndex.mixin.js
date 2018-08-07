@@ -11,8 +11,8 @@ export default {
   }),
 
   watch: {
-    currentPage () {
-      this.$store.dispatch('getShopProducts', this.currentPage)
+    async currentPage () {
+      await this.$store.dispatch('getShopProducts', this.currentPage)
     }
   },
 

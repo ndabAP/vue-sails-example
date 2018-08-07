@@ -40,7 +40,7 @@ export default {
         duration: 3000
       })
 
-      this.$store.dispatch('getProductsByUser', this.user)
+      await this.$store.dispatch('getProductsByUser', this.user)
     }
   }
 }

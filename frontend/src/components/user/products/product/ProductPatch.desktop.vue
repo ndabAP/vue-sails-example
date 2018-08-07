@@ -70,7 +70,7 @@ export default {
         description: this.description
       })
 
-      this.$store.dispatch('getProductsByUser', this.user)
+      await this.$store.dispatch('getProductsByUser', this.user)
 
       this.$store.commit('SET_IS_VISIBLE_PRODUCT_PATCH', false)
       this.$store.commit('RESET_PRODUCT')

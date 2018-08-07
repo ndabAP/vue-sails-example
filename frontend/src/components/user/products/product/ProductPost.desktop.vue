@@ -52,7 +52,7 @@ export default {
         user: this.user
       })
 
-      this.$store.dispatch('getProductsByUser', this.user)
+      await this.$store.dispatch('getProductsByUser', this.user)
     }
   }
 }

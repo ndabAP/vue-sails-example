@@ -28,8 +28,8 @@ export default {
   },
 
   methods: {
-    signUp () {
-      this.$store.dispatch('signUp', this.user)
+    async signUp () {
+      await this.$store.dispatch('signUp', this.user)
     }
   }
 }

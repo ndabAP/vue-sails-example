@@ -33,13 +33,13 @@ module.exports = {
     })
   },
 
-  checkIfPasswordIsValid: (password, user, callback) => {
+  isValidPassword: (password, user, callback) => {
     bcrypt.compare(password, user.password, (error, isMatch) => {
-      if (error) callback(error)
+      if (error) return callback(error)
 
       if (isMatch) {
         callback(null, true)
-      } else callback(error, false)
+      } else callback(new Error('Passwords doesn\'t match'), false)
     })
   }
 }

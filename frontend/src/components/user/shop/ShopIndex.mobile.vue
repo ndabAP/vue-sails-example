@@ -5,7 +5,7 @@
     </mt-cell>
 
     <mt-cell title="">
-      <mt-button :disabled="isNextButtonDisabled" size="small" type="primary" @click="currentPage++">{{
+      <mt-button :disabled="isDisabledNextButton" size="small" type="primary" @click="currentPage++">{{
         t('shopindex.mixin.button.third')}}
       </mt-button>
     </mt-cell>
@@ -20,7 +20,7 @@ export default {
   mixins: [ShopIndexMixin],
 
   computed: {
-    isNextButtonDisabled () {
+    isDisabledNextButton () {
       return this.currentPage === Math.ceil(this.amountOfProducts / 6)
     }
   },
