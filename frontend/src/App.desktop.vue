@@ -42,13 +42,9 @@
       <div class="container">
         <span class="text-muted">
           <small>
-            <svg xmlns="http://www.w3.org/2000/svg" class="info" width="15" height="15" viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-            </svg>
-            This shop is not real and only for demonstration purposes. <a
-            href="https://github.com/ndabAP/vue-sails-example">Source code</a>
-
+            <img src="/img/baseline-info-24px.svg">
+            This shop is not real and only for demonstration purposes.
+            <a ref="https://github.com/ndabAP/vue-sails-example">Source code</a>
           </small>
         </span>
       </div>
