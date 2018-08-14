@@ -13,6 +13,16 @@ const getCookie = name => {
 }
 
 export default new Vuex.Store({
+  plugins: [store => {
+    store.subscribe((mutation, state) => {
+      switch (mutation.type) {
+        case 'PUSH_TO_BASKET':
+        case 'REMOVE_PRODUCT_FROM_BASKET':
+          sessionStorage.setItem('basket', JSON.stringify(state.Basket.basket))
+      }
+    })
+  }],
+
   modules: {
     User: user,
     Product: product,

@@ -1,14 +1,14 @@
 # Vue.js with Sails.js example project
 
-This project is for those who are new to 
-[single-page applications](https://en.wikipedia.org/wiki/Single-page_application) and want to learn through a real 
+This project is for those who are new to
+[single-page applications](https://en.wikipedia.org/wiki/Single-page_application) and want to learn through a real
 example. Besides that, it should cover most of the features from Sails.js and Vue.js, like a reference book. For a better understanding, you should be aware of [JavaScript ES6 features](http://es6-features.org) and also [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
 
 To see this project in action, click [here](https://vue-sails-example.herokuapp.com/).
 
 ## Features
 
-This project should cover as many features as possible. It should be used as an example for newbies and also serve as 
+This project should cover as many features as possible. It should be used as an example for newbies and also serve as
 a reference book. These notable elements are covered.
 
 - Internationalization
@@ -18,6 +18,7 @@ a reference book. These notable elements are covered.
 - Local storage plus cookie authentication
 - User input validation
 - Basic progressive web app support
+- Persist state
 
 ## Installation
 
@@ -49,13 +50,13 @@ $ cd ../backend && npm install
 
 ### Development
 
-`cd backend && sails lift` and then `cd ../frontend && npm run dev`. After that, open 
+`cd backend && sails lift` and then `cd ../frontend && npm run dev`. After that, open
 [localhost:8080](http://localhost:8080) in your browser. Make sure that you start both servers simultaneously.
 
 ### Production
 
-First, you have to build up your Vue.js components and merge them with Sails.js. This can be done with 
-`cd frontend && npm run build`. Now do `cd ../backend && NODE_ENV=production node app.js` and then open your browser and go to 
+First, you have to build up your Vue.js components and merge them with Sails.js. This can be done with
+`cd frontend && npm run build`. Now do `cd ../backend && NODE_ENV=production node app.js` and then open your browser and go to
 [localhost:1337](http://localhost:1337).
 
 ## Commands
@@ -78,7 +79,7 @@ For a complete list see `package.json`.
 | `npm run dev`             | Start the development server at [localhost:8080](http://localhost:8080).                 |
 | `npm run build`           | Minfiy, uglify and merge the application with Sails.js.                                  |
 | `npm run test`            | Run all available tests like unit or functional tests.                                   |
-                                                                
+
 ## Essential components used
 
 The following components are used in this project. There are plenty more, though, check the `package.json` files.
