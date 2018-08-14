@@ -1,5 +1,5 @@
 <template>
-  <b-modal size="lg" id="patch-product" :hide-header-close="true">
+  <b-modal size="lg" id="patch-product" :hide-header-close="true" no-fade>
     <template slot="modal-title">{{ t('productpatch.mixin.first.title') }}</template>
     <div class="row">
       <div class="col-8">

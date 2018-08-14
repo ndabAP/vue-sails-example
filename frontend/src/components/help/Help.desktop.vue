@@ -1,5 +1,6 @@
 <template>
   <b-modal
+    no-fade
     :no-close-on-backdrop="true"
     :no-close-on-esc="true"
     :hide-header-close="true"
