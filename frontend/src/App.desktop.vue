@@ -44,7 +44,7 @@
           <small>
             <img src="/img/baseline-info-24px.svg">
             This shop is not real and only for demonstration purposes.
-            <a ref="https://github.com/ndabAP/vue-sails-example">Source code</a>
+            <a href="https://github.com/ndabAP/vue-sails-example">Source code</a>
           </small>
         </span>
       </div>
