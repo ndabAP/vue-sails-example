@@ -18,7 +18,7 @@ a reference book. These notable elements are covered.
 - Local storage plus cookie authentication
 - User input validation
 - Basic progressive web app support
-- Persist state
+- State persistence
 
 ## Installation
 
