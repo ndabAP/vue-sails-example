@@ -65,10 +65,11 @@ First, you have to build up your Vue.js components and merge them with Sails.js.
 
 For a complete list see `package.json`.
 
-| Command           | Description                                                                                      |
-|-------------------|--------------------------------------------------------------------------------------------------|
-| `npm run dev`     | Start Sails.js if you didn't install it globally.                                                |
-| `npm run test`    | Run all available tests like unit or functional tests.                                           |
+| Command             | Description                                                                                      |
+|---------------------|--------------------------------------------------------------------------------------------------|
+| `npm run dev`       | Start Sails.js if you didn't install it globally                                                 |
+| `npm run dev:watch` | Start Sails.js with watch mode if you didn't install it globally                                 |
+| `npm run test`      | Run all available tests like unit or functional tests                                            |
 
 ### Frontend
 
@@ -76,9 +77,9 @@ For a complete list see `package.json`.
 
 | Command                   | Description                                                                              |
 |---------------------------|------------------------------------------------------------------------------------------|
-| `npm run dev`             | Start the development server at [localhost:8080](http://localhost:8080).                 |
-| `npm run build`           | Minfiy, uglify and merge the application with Sails.js.                                  |
-| `npm run test`            | Run all available tests like unit or functional tests.                                   |
+| `npm run dev`             | Start the development server at [localhost:8080](http://localhost:8080)                  |
+| `npm run build`           | Minfiy, uglify and merge the application with Sails.js                                   |
+| `npm run test`            | Run all available tests like unit or functional tests                                    |
 
 ## Essential components used
 

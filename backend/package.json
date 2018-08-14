@@ -23,6 +23,7 @@
     "include-all": "^1.0.0",
     "jsonwebtoken": "^8.3.0",
     "mocha": "^3.4.2",
+    "nodemon": "^1.18.3",
     "rc": "1.0.1",
     "sails": "^1.0.2",
     "sails-disk": "^0.10.10",
@@ -37,6 +38,7 @@
     "checkout": "NODE_PATH=. node ./node_modules/git-checkout.js/src/index.js",
     "debug": "node debug app.js",
     "dev": "NODE_ENV=development ./node_modules/sails/bin/sails.js lift",
+    "dev:watch": "NODE_ENV=development nodemon ./node_modules/sails/bin/sails.js lift --watch",
     "start": "node app.js",
     "test:start": "NODE_ENV=test node app.js",
     "test": "NODE_ENV=test node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/**/*.spec.js"
