@@ -22,7 +22,7 @@
           <b-nav-item v-if="isUserAuthenticated" @click="signOut">Logout</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-item @click="setIsVisibleHelp(true)">{{ t('app.mixin.help') }}</b-nav-item>
+          <b-nav-item class="d-none d-lg-block" @click="setIsVisibleHelp(true)">{{ t('app.mixin.help') }}</b-nav-item>
           <b-nav-item :disabled="!basket.products.length" v-if="isUserAuthenticated" :to="{ name: 'Basket'}">
             {{ t('app.mixin.basket') }} ({{ basket.products.length }})
           </b-nav-item>
