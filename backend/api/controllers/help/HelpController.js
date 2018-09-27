@@ -7,9 +7,11 @@ module.exports = {
 
     const manager = new NlpManager({languages: ['en']})
 
+    let timeout = 3000
     if (fs.existsSync('./.tmp/model.nlp')) {
       manager.load('./.tmp/model.nlp')
     } else {
+      timeout = 0
       // Adds the utterances and intents for the NLP
       manager.addDocument('en', 'Say about you', 'agent.acquaintance')
       manager.addDocument('en', 'Why are you here', 'agent.acquaintance')
@@ -578,7 +580,7 @@ module.exports = {
           : 'Sorry, I don\'t understand'
 
         return res.json({answer: answer.answer})
-      }, 3000 * Math.random() + 3000)
+      }, timeout * Math.random() + timeout)
     })
   }
 }
