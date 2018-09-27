@@ -23,6 +23,7 @@
     "include-all": "^1.0.0",
     "jsonwebtoken": "^8.3.0",
     "mocha": "^3.4.2",
+    "node-nlp": "^2.0.2",
     "nodemon": "^1.18.3",
     "rc": "1.0.1",
     "sails": "^1.0.2",

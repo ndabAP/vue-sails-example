@@ -93,7 +93,7 @@ export default {
         time: new Date().toString()
       })
 
-      this.io.socket.post('/api/help', {}, message => {
+      this.io.socket.post('/api/help', {message: this.message}, message => {
         this.messages.push({
           message: {
             assistant: {

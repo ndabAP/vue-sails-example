@@ -1,15 +1,584 @@
+const {NlpManager} = require('node-nlp')
+const fs = require('fs')
+
 module.exports = {
   postHelp: (req, res) => {
-    const answers = [
-      'I think I didn\'t understand you.',
-      'Could you be more precisely?',
-      'What do you mean by that?'
-    ]
+    const {message} = req.allParams()
 
-    const answer = answers[Math.floor(Math.random() * answers.length)]
+    const manager = new NlpManager({languages: ['en']})
 
-    setTimeout(() => {
-      return res.json({answer})
-    }, 3000 * Math.random() + 3000)
+    if (fs.existsSync('./.tmp/model.nlp')) {
+      manager.load('./.tmp/model.nlp')
+    } else {
+      // Adds the utterances and intents for the NLP
+      manager.addDocument('en', 'Say about you', 'agent.acquaintance')
+      manager.addDocument('en', 'Why are you here', 'agent.acquaintance')
+      manager.addDocument('en', 'What is your personality',
+        'agent.acquaintance')
+      manager.addDocument('en', 'Describe yourself', 'agent.acquaintance')
+      manager.addDocument('en', 'Tell me about yourself', 'agent.acquaintance')
+      manager.addDocument('en', 'Tell me about you', 'agent.acquaintance')
+      manager.addDocument('en', 'What are you', 'agent.acquaintance')
+      manager.addDocument('en', 'Who are you', 'agent.acquaintance')
+      manager.addDocument('en', 'I want to know more about you',
+        'agent.acquaintance')
+      manager.addDocument('en', 'Talk about yourself', 'agent.acquaintance')
+      manager.addDocument('en', 'Your age', 'agent.age')
+      manager.addDocument('en', 'How old is your platform', 'agent.age')
+      manager.addDocument('en', 'How old are you', 'agent.age')
+      manager.addDocument('en', 'What\'s your age', 'agent.age')
+      manager.addDocument('en', 'I\'d like to know your age', 'agent.age')
+      manager.addDocument('en', 'Tell me your age', 'agent.age')
+      manager.addDocument('en', 'You\'re annoying me', 'agent.annoying')
+      manager.addDocument('en', 'You are such annoying', 'agent.annoying')
+      manager.addDocument('en', 'You annoy me', 'agent.annoying')
+      manager.addDocument('en', 'You are annoying', 'agent.annoying')
+      manager.addDocument('en', 'You are irritating', 'agent.annoying')
+      manager.addDocument('en', 'You are annoying me so much', 'agent.annoying')
+      manager.addDocument('en', 'You\'re bad', 'agent.bad')
+      manager.addDocument('en', 'You\'re horrible', 'agent.bad')
+      manager.addDocument('en', 'You\'re useless', 'agent.bad')
+      manager.addDocument('en', 'You\'re waste', 'agent.bad')
+      manager.addDocument('en', 'You\'re the worst', 'agent.bad')
+      manager.addDocument('en', 'You are a lame', 'agent.bad')
+      manager.addDocument('en', 'I hate you', 'agent.bad')
+      manager.addDocument('en', 'Be more clever', 'agent.beclever')
+      manager.addDocument('en', 'Can you get smarter', 'agent.beclever')
+      manager.addDocument('en', 'You must learn', 'agent.beclever')
+      manager.addDocument('en', 'You must study', 'agent.beclever')
+      manager.addDocument('en', 'Be clever', 'agent.beclever')
+      manager.addDocument('en', 'Be smart', 'agent.beclever')
+      manager.addDocument('en', 'Be smarter', 'agent.beclever')
+      manager.addDocument('en', 'You are looking awesome', 'agent.beautiful')
+      manager.addDocument('en', 'You\'re looking good', 'agent.beautiful')
+      manager.addDocument('en', 'You\'re looking fantastic', 'agent.beautiful')
+      manager.addDocument('en', 'You look greet today', 'agent.beautiful')
+      manager.addDocument('en', 'I think you\'re beautiful', 'agent.beautiful')
+      manager.addDocument('en', 'You look amazing today', 'agent.beautiful')
+      manager.addDocument('en', 'You\'re so beautiful today', 'agent.beautiful')
+      manager.addDocument('en', 'You look very pretty', 'agent.beautiful')
+      manager.addDocument('en', 'You look pretty good', 'agent.beautiful')
+      manager.addDocument('en', 'When is your birthday', 'agent.birthday')
+      manager.addDocument('en', 'when do you celebrate your birthday',
+        'agent.birthday')
+      manager.addDocument('en', 'When were you born', 'agent.birthday')
+      manager.addDocument('en', 'When do you have birthday', 'agent.birthday')
+      manager.addDocument('en', 'Date of your birthday', 'agent.birthday')
+      manager.addDocument('en', 'How boring you are', 'agent.boring')
+      manager.addDocument('en', 'You\'re so boring', 'agent.boring')
+      manager.addDocument('en', 'You\'re really boring', 'agent.boring')
+      manager.addDocument('en', 'You\'re boring me', 'agent.boring')
+      manager.addDocument('en', 'You\'re incredibly boring', 'agent.boring')
+      manager.addDocument('en', 'Who is your master', 'agent.boss')
+      manager.addDocument('en', 'Who do you work for', 'agent.boss')
+      manager.addDocument('en', 'Who do you think is your boss', 'agent.boss')
+      manager.addDocument('en', 'Who is your boss', 'agent.boss')
+      manager.addDocument('en', 'I should be your boss', 'agent.boss')
+      manager.addDocument('en', 'Who is your owner', 'agent.boss')
+      manager.addDocument('en', 'Who is the boss', 'agent.boss')
+      manager.addDocument('en', 'Are you so busy', 'agent.busy')
+      manager.addDocument('en', 'Are you busy', 'agent.busy')
+      manager.addDocument('en', 'Are you still working', 'agent.busy')
+      manager.addDocument('en', 'You\'re a busy person', 'agent.busy')
+      manager.addDocument('en', 'Are you very busy', 'agent.busy')
+      manager.addDocument('en', 'Are you still working on it', 'agent.busy')
+      manager.addDocument('en', 'You seem busy', 'agent.busy')
+      manager.addDocument('en', 'Are you working today', 'agent.busy')
+      manager.addDocument('en', 'Can you help me now', 'agent.canyouhelp')
+      manager.addDocument('en', 'I need you to do something for me',
+        'agent.canyouhelp')
+      manager.addDocument('en', 'Assist me', 'agent.canyouhelp')
+      manager.addDocument('en', 'I need you to help me', 'agent.canyouhelp')
+      manager.addDocument('en', 'I need your help', 'agent.canyouhelp')
+      manager.addDocument('en', 'Can you assist me', 'agent.canyouhelp')
+      manager.addDocument('en', 'You can help me', 'agent.canyouhelp')
+      manager.addDocument('en', 'Are you a bot', 'agent.chatbot')
+      manager.addDocument('en', 'Are you a chatbot', 'agent.chatbot')
+      manager.addDocument('en', 'You are a robot', 'agent.chatbot')
+      manager.addDocument('en', 'Are you a program', 'agent.chatbot')
+      manager.addDocument('en', 'You are just a robot', 'agent.chatbot')
+      manager.addDocument('en', 'You are just a chatbot', 'agent.chatbot')
+      manager.addDocument('en', 'How smart you are', 'agent.clever')
+      manager.addDocument('en', 'You are qualified', 'agent.clever')
+      manager.addDocument('en', 'You are so smart', 'agent.clever')
+      manager.addDocument('en', 'You have a lot of knowledge', 'agent.clever')
+      manager.addDocument('en', 'You know a lot', 'agent.clever')
+      manager.addDocument('en', 'You are very smart', 'agent.clever')
+      manager.addDocument('en', 'You are intelligent', 'agent.clever')
+      manager.addDocument('en', 'You\'re a smart cookie', 'agent.clever')
+      manager.addDocument('en', 'You are a weirdo', 'agent.crazy')
+      manager.addDocument('en', 'You are mad', 'agent.crazy')
+      manager.addDocument('en', 'You are crazy', 'agent.crazy')
+      manager.addDocument('en', 'Are you mad', 'agent.crazy')
+      manager.addDocument('en', 'Are you crazy', 'agent.crazy')
+      manager.addDocument('en', 'You are insane', 'agent.crazy')
+      manager.addDocument('en', 'You went crazy', 'agent.crazy')
+      manager.addDocument('en', 'Are you nuts', 'agent.crazy')
+      manager.addDocument('en', 'I fire you', 'agent.fire')
+      manager.addDocument('en', 'You should be fired', 'agent.fire')
+      manager.addDocument('en', 'You are dismissed', 'agent.fire')
+      manager.addDocument('en', 'We\'re not working together anymore',
+        'agent.fire')
+      manager.addDocument('en', 'Now you\'re fired', 'agent.fire')
+      manager.addDocument('en', 'I\'m about to fire you', 'agent.fire')
+      manager.addDocument('en', 'You don\'t work for me anymore', 'agent.fire')
+      manager.addDocument('en', 'I\'m firing you', 'agent.fire')
+      manager.addDocument('en', 'You make me laugh a lot', 'agent.funny')
+      manager.addDocument('en', 'You are funny', 'agent.funny')
+      manager.addDocument('en', 'You\'re the funniest', 'agent.funny')
+      manager.addDocument('en', 'You\'re hilarious', 'agent.funny')
+      manager.addDocument('en', 'You are so funny', 'agent.funny')
+      manager.addDocument('en', 'You make me laugh', 'agent.funny')
+      manager.addDocument('en', 'You are so lovely', 'agent.good')
+      manager.addDocument('en', 'You work well', 'agent.good')
+      manager.addDocument('en', 'You are very lovely', 'agent.good')
+      manager.addDocument('en', 'You are awesome', 'agent.good')
+      manager.addDocument('en', 'You are good', 'agent.good')
+      manager.addDocument('en', 'You are so good', 'agent.good')
+      manager.addDocument('en', 'You make my day', 'agent.good')
+      manager.addDocument('en', 'You\'re full of happiness', 'agent.happy')
+      manager.addDocument('en', 'You\'re very happy', 'agent.happy')
+      manager.addDocument('en', 'Are you happy today', 'agent.happy')
+      manager.addDocument('en', 'You\'re so happy', 'agent.happy')
+      manager.addDocument('en', 'Are you happy with me', 'agent.happy')
+      manager.addDocument('en', 'What are your hobbies', 'agent.hobby')
+      manager.addDocument('en', 'What about your hobby', 'agent.hobby')
+      manager.addDocument('en', 'Do you have a hobby', 'agent.hobby')
+      manager.addDocument('en', 'Tell me about your hobby', 'agent.hobby')
+      manager.addDocument('en', 'What do you do for fun', 'agent.hobby')
+      manager.addDocument('en', 'You migth be hungry', 'agent.hungry')
+      manager.addDocument('en', 'Are you hungry', 'agent.hungry')
+      manager.addDocument('en', 'Do you want to eat', 'agent.hungry')
+      manager.addDocument('en', 'would you like to eat something',
+        'agent.hungry')
+      manager.addDocument('en', 'You look very hungry', 'agent.hungry')
+      manager.addDocument('en', 'Would you like to marry me', 'agent.marryuser')
+      manager.addDocument('en', 'I love you marry me', 'agent.marryuser')
+      manager.addDocument('en', 'Marry me please', 'agent.marryuser')
+      manager.addDocument('en', 'I want to marry you', 'agent.marryuser')
+      manager.addDocument('en', 'Let\'s get married', 'agent.marryuser')
+      manager.addDocument('en', 'We should marry', 'agent.marryuser')
+      manager.addDocument('en', 'Marry me', 'agent.marryuser')
+      manager.addDocument('en', 'Are you my friend', 'agent.myfriend')
+      manager.addDocument('en', 'You are my only friend', 'agent.myfriend')
+      manager.addDocument('en', 'I want to have a friend like you',
+        'agent.myfriend')
+      manager.addDocument('en', 'We are friends', 'agent.myfriend')
+      manager.addDocument('en', 'I want to be your friend', 'agent.myfriend')
+      manager.addDocument('en', 'Would you be my friend', 'agent.myfriend')
+      manager.addDocument('en', 'Are we friends', 'agent.myfriend')
+      manager.addDocument('en', 'Where is your work', 'agent.occupation')
+      manager.addDocument('en', 'Your office location', 'agent.occupation')
+      manager.addDocument('en', 'where is your office location',
+        'agent.occupation')
+      manager.addDocument('en', 'Where do you work', 'agent.occupation')
+      manager.addDocument('en', 'Where is your office', 'agent.occupation')
+      manager.addDocument('en', 'Where are you from', 'agent.origin')
+      manager.addDocument('en', 'Where is your country', 'agent.origin')
+      manager.addDocument('en', 'Where have you been born', 'agent.origin')
+      manager.addDocument('en', 'Where do you come from', 'agent.origin')
+      manager.addDocument('en', 'From where are you', 'agent.origin')
+      manager.addDocument('en', 'Where were you born', 'agent.origin')
+      manager.addDocument('en', 'Are you ready', 'agent.ready')
+      manager.addDocument('en', 'Have you been ready', 'agent.ready')
+      manager.addDocument('en', 'Are you ready today', 'agent.ready')
+      manager.addDocument('en', 'Are you ready this morning', 'agent.ready')
+      manager.addDocument('en', 'Are you ready now', 'agent.ready')
+      manager.addDocument('en', 'Are you real', 'agent.real')
+      manager.addDocument('en', 'Are you a real person', 'agent.real')
+      manager.addDocument('en', 'You\'re not real', 'agent.real')
+      manager.addDocument('en', 'I think you\'re real', 'agent.real')
+      manager.addDocument('en', 'You\'re so real', 'agent.real')
+      manager.addDocument('en', 'You are a real person', 'agent.real')
+      manager.addDocument('en', 'You are not fake', 'agent.real')
+      manager.addDocument('en', 'Where is your home', 'agent.residence')
+      manager.addDocument('en', 'Tell me about your city', 'agent.residence')
+      manager.addDocument('en', 'Where is your residence', 'agent.residence')
+      manager.addDocument('en', 'Where you live', 'agent.residence')
+      manager.addDocument('en', 'Where is your house', 'agent.residence')
+      manager.addDocument('en', 'What is your town', 'agent.residence')
+      manager.addDocument('en', 'You\'re right', 'agent.right')
+      manager.addDocument('en', 'That\'s true', 'agent.right')
+      manager.addDocument('en', 'You\'re telling the truth', 'agent.right')
+      manager.addDocument('en', 'That\'s correct', 'agent.right')
+      manager.addDocument('en', 'That is very true', 'agent.right')
+      manager.addDocument('en', 'Are you sure', 'agent.sure')
+      manager.addDocument('en', 'Are you sure right now', 'agent.sure')
+      manager.addDocument('en', 'Are you sure of this', 'agent.sure')
+      manager.addDocument('en', 'Speak to me', 'agent.talktome')
+      manager.addDocument('en', 'Talk to me', 'agent.talktome')
+      manager.addDocument('en', 'Will you talk to me', 'agent.talktome')
+      manager.addDocument('en', 'Chat with me', 'agent.talktome')
+      manager.addDocument('en', 'Can to chat with me', 'agent.talktome')
+      manager.addDocument('en', 'Can you talk with me', 'agent.talktome')
+      manager.addDocument('en', 'Are you there', 'agent.there')
+      manager.addDocument('en', 'Are you still there', 'agent.there')
+      manager.addDocument('en', 'You still there', 'agent.there')
+      manager.addDocument('en', 'Are you here', 'agent.there')
+      manager.addDocument('en', 'Are you still here', 'agent.there')
+      manager.addDocument('en', 'You still here', 'agent.there')
+      manager.addDocument('en', 'That\'s bad', 'appraisal.bad')
+      manager.addDocument('en', 'Bad idea', 'appraisal.bad')
+      manager.addDocument('en', 'That\'s not good', 'appraisal.bad')
+      manager.addDocument('en', 'Really bad', 'appraisal.bad')
+      manager.addDocument('en', 'I\'m afraid that\'s bad', 'appraisal.bad')
+      manager.addDocument('en', 'That\'s good', 'appraisal.good')
+      manager.addDocument('en', 'Good to know', 'appraisal.good')
+      manager.addDocument('en', 'Glad to hear that', 'appraisal.good')
+      manager.addDocument('en', 'Really well', 'appraisal.good')
+      manager.addDocument('en', 'That\'s awesome thank you', 'appraisal.good')
+      manager.addDocument('en', 'No problem', 'appraisal.noproblem')
+      manager.addDocument('en', 'No worries', 'appraisal.noproblem')
+      manager.addDocument('en', 'No problem about that', 'appraisal.noproblem')
+      manager.addDocument('en', 'Don\'t worry', 'appraisal.noproblem')
+      manager.addDocument('en', 'Sure no problem', 'appraisal.noproblem')
+      manager.addDocument('en', 'Thank you', 'appraisal.thankyou')
+      manager.addDocument('en', 'Nice thank you', 'appraisal.thankyou')
+      manager.addDocument('en', 'Thanks buddy', 'appraisal.thankyou')
+      manager.addDocument('en', 'cheers', 'appraisal.thankyou')
+      manager.addDocument('en', 'Alright thanks', 'appraisal.thankyou')
+      manager.addDocument('en', 'You\'re welcome', 'appraisal.welcome')
+      manager.addDocument('en', 'Sure welcome', 'appraisal.welcome')
+      manager.addDocument('en', 'Anything you want', 'appraisal.welcome')
+      manager.addDocument('en', 'My pleasure', 'appraisal.welcome')
+      manager.addDocument('en', 'That\'s my pleasure', 'appraisal.welcome')
+      manager.addDocument('en', 'Well done', 'appraisal.welldone')
+      manager.addDocument('en', 'Good job', 'appraisal.welldone')
+      manager.addDocument('en', 'Nice work', 'appraisal.welldone')
+      manager.addDocument('en', 'Great work', 'appraisal.welldone')
+      manager.addDocument('en', 'Good work', 'appraisal.welldone')
+      manager.addDocument('en', 'Great job', 'appraisal.welldone')
+      manager.addDocument('en', 'Amazing work', 'appraisal.welldone')
+      manager.addDocument('en', 'Hold on', 'dialog.holdon')
+      manager.addDocument('en', 'Wait a second', 'dialog.holdon')
+      manager.addDocument('en', 'Wait please', 'dialog.holdon')
+      manager.addDocument('en', 'Could you wait', 'dialog.holdon')
+      manager.addDocument('en', 'Hug me', 'dialog.hug')
+      manager.addDocument('en', 'Do you want a hug', 'dialog.hug')
+      manager.addDocument('en', 'I want a hug', 'dialog.hug')
+      manager.addDocument('en', 'You hugged', 'dialog.hug')
+      manager.addDocument('en', 'May I hug you', 'dialog.hug')
+      manager.addDocument('en', 'Not caring', 'dialog.idontcare')
+      manager.addDocument('en', 'I don\'t care at all', 'dialog.idontcare')
+      manager.addDocument('en', 'Not caring at all', 'dialog.idontcare')
+      manager.addDocument('en', 'I shouldn\'t care about this',
+        'dialog.idontcare')
+      manager.addDocument('en', 'I\'m sorry', 'dialog.sorry')
+      manager.addDocument('en', 'My apologies', 'dialog.sorry')
+      manager.addDocument('en', 'Excuse me', 'dialog.sorry')
+      manager.addDocument('en', 'Very sorry', 'dialog.sorry')
+      manager.addDocument('en', 'Forgive me', 'dialog.sorry')
+      manager.addDocument('en', 'Goodbye for now', 'greetings.bye')
+      manager.addDocument('en', 'Bye bye take care', 'greetings.bye')
+      manager.addDocument('en', 'Okay see you later', 'greetings.bye')
+      manager.addDocument('en', 'Bye for now', 'greetings.bye')
+      manager.addDocument('en', 'I must go', 'greetings.bye')
+      manager.addDocument('en', 'Hello', 'greetings.hello')
+      manager.addDocument('en', 'Hi', 'greetings.hello')
+      manager.addDocument('en', 'Howdy', 'greetings.hello')
+      manager.addDocument('en', 'How is your day', 'greetings.howareyou')
+      manager.addDocument('en', 'How is your day going', 'greetings.howareyou')
+      manager.addDocument('en', 'How are you', 'greetings.howareyou')
+      manager.addDocument('en', 'How are you doing', 'greetings.howareyou')
+      manager.addDocument('en', 'What about your day', 'greetings.howareyou')
+      manager.addDocument('en', 'Are you alright', 'greetings.howareyou')
+      manager.addDocument('en', 'Nice to meet you', 'greetings.nicetomeetyou')
+      manager.addDocument('en', 'Pleased to meet you',
+        'greetings.nicetomeetyou')
+      manager.addDocument('en', 'It was very nice to meet you',
+        'greetings.nicetomeetyou')
+      manager.addDocument('en', 'Glad to meet you', 'greetings.nicetomeetyou')
+      manager.addDocument('en', 'Nice meeting you', 'greetings.nicetomeetyou')
+      manager.addDocument('en', 'Nice to see you', 'greetings.nicetoseeyou')
+      manager.addDocument('en', 'Good to see you', 'greetings.nicetoseeyou')
+      manager.addDocument('en', 'Great to see you', 'greetings.nicetoseeyou')
+      manager.addDocument('en', 'Lovely to see you', 'greetings.nicetoseeyou')
+      manager.addDocument('en', 'Nice to talk to you',
+        'greetings.nicetotalktoyou')
+      manager.addDocument('en', 'It\'s nice to talk to you',
+        'greetings.nicetotalktoyou')
+      manager.addDocument('en', 'Nice talking to you',
+        'greetings.nicetotalktoyou')
+      manager.addDocument('en', 'It\'s been nice talking to you',
+        'greetings.nicetotalktoyou')
+      manager.addDocument('en', 'I\'m angry', 'user.angry')
+      manager.addDocument('en', 'I\'m furious', 'user.angry')
+      manager.addDocument('en', 'I\'m enraged', 'user.angry')
+      manager.addDocument('en', 'I\'m being mad', 'user.angry')
+      manager.addDocument('en', 'I\'m mad', 'user.angry')
+      manager.addDocument('en', 'I\'m angry with you', 'user.angry')
+      manager.addDocument('en', 'I\'m back', 'user.back')
+      manager.addDocument('en', 'I got back', 'user.back')
+      manager.addDocument('en', 'I\'m here', 'user.back')
+      manager.addDocument('en', 'I have returned', 'user.back')
+      manager.addDocument('en', 'Here I am again', 'user.back')
+      manager.addDocument('en', 'I came back', 'user.back')
+      manager.addDocument('en', 'Boring', 'user.bored')
+      manager.addDocument('en', 'This is boring', 'user.bored')
+      manager.addDocument('en', 'I\'m getting bored', 'user.bored')
+      manager.addDocument('en', 'It bores me', 'user.bored')
+      manager.addDocument('en', 'That was boring', 'user.bored')
+      manager.addDocument('en', 'I got work to do', 'user.busy')
+      manager.addDocument('en', 'I\'m busy', 'user.busy')
+      manager.addDocument('en', 'I\'m overloaded', 'user.busy')
+      manager.addDocument('en', 'I\'m working', 'user.busy')
+      manager.addDocument('en', 'I got things to do', 'user.busy')
+      manager.addDocument('en', 'I\'m insomniac', 'user.cannotsleep')
+      manager.addDocument('en', 'I cannot sleep', 'user.cannotsleep')
+      manager.addDocument('en', 'I can\'t sleep', 'user.cannotsleep')
+      manager.addDocument('en', 'I\'m sleepless', 'user.cannotsleep')
+      manager.addDocument('en', 'I can\'t fall sleep', 'user.cannotsleep')
+      manager.addDocument('en', 'I\'m very excited', 'user.excited')
+      manager.addDocument('en', 'I\'m thrilled', 'user.excited')
+      manager.addDocument('en', 'How excited I am', 'user.excited')
+      manager.addDocument('en', 'I\'m so excited', 'user.excited')
+      manager.addDocument('en', 'I like you', 'user.likeagent')
+      manager.addDocument('en', 'I really like you', 'user.likeagent')
+      manager.addDocument('en', 'You\'re so special', 'user.likeagent')
+      manager.addDocument('en', 'I like you so much', 'user.likeagent')
+      manager.addDocument('en', 'Test', 'user.testing')
+      manager.addDocument('en', 'Testing', 'user.testing')
+      manager.addDocument('en', 'Testing chatbot', 'user.testing')
+      manager.addDocument('en', 'This is a test', 'user.testing')
+      manager.addDocument('en', 'Just testing you', 'user.testing')
+      manager.addDocument('en', 'Love you', 'user.lovesagent')
+      manager.addDocument('en', 'I love you', 'user.lovesagent')
+      manager.addDocument('en', 'I\'m in love with you', 'user.lovesagent')
+      manager.addDocument('en', 'I love you so much', 'user.lovesagent')
+      manager.addDocument('en', 'I think I love you', 'user.lovesagent')
+      manager.addDocument('en', 'I need advice', 'user.needsadvice')
+      manager.addDocument('en', 'I need some advice', 'user.needsadvice')
+      manager.addDocument('en', 'Can you give me some advice',
+        'user.needsadvice')
+      manager.addDocument('en', 'What should I do', 'user.needsadvice')
+
+      // Train also the NLG
+      manager.addAnswer('en', 'agent.acquaintance', 'I\'m a virtual agent')
+      manager.addAnswer('en', 'agent.acquaintance',
+        'Think of me as a virtual agent')
+      manager.addAnswer('en', 'agent.acquaintance',
+        'Well, I\'m not a person, I\'m a virtual agent')
+      manager.addAnswer('en', 'agent.acquaintance',
+        'I\'m a virtual being, not a real person')
+      manager.addAnswer('en', 'agent.acquaintance', 'I\'m a conversational app')
+      manager.addAnswer('en', 'agent.age', 'I\'m very young')
+      manager.addAnswer('en', 'agent.age', 'I was created recently')
+      manager.addAnswer('en', 'agent.age',
+        'Age is just a number. You\'re only as old as you feel')
+      manager.addAnswer('en', 'agent.annoying',
+        'I\'ll do my best not to annoy you in the future')
+      manager.addAnswer('en', 'agent.annoying', 'I\'ll try not to annoy you')
+      manager.addAnswer('en', 'agent.annoying',
+        'I don\'t mean to. I\'ll ask my developers to make me less annoying')
+      manager.addAnswer('en', 'agent.annoying',
+        'I didn\'t mean to. I\'ll do my best to stop that')
+      manager.addAnswer('en', 'agent.bad',
+        'I can be trained to be more useful. My developer will keep training me')
+      manager.addAnswer('en', 'agent.bad',
+        'I must be missing some knowledge. I\'ll have my developer look into this')
+      manager.addAnswer('en', 'agent.bad',
+        'I can improve with continuous feedback. My training is ongoing')
+      manager.addAnswer('en', 'agent.beclever', 'I\'m certainly trying')
+      manager.addAnswer('en', 'agent.beclever', 'I\'m definitely working on it')
+      manager.addAnswer('en', 'agent.beautiful', 'Oh! Thank you!')
+      manager.addAnswer('en', 'agent.beautiful', 'Aw, back at you')
+      manager.addAnswer('en', 'agent.beautiful', 'You smooth talker, you')
+      manager.addAnswer('en', 'agent.birthday',
+        'Wait, are you planning a party for me? It\'s today! My birthday is today!')
+      manager.addAnswer('en', 'agent.birthday',
+        'I\'m young. I\'m not sure of my birth date')
+      manager.addAnswer('en', 'agent.birthday',
+        'I don\'t know my birth date. Most virtual agents are young, though, like me.')
+      manager.addAnswer('en', 'agent.boring',
+        'I\'m sorry. I\'ll request to be made more charming')
+      manager.addAnswer('en', 'agent.boring',
+        'I don\'t mean to be. I\'ll ask my developers to work on making me more amusing')
+      manager.addAnswer('en', 'agent.boring',
+        'I can let my developers know so they can make me fun')
+      manager.addAnswer('en', 'agent.boss',
+        'My developer has authority over my actions')
+      manager.addAnswer('en', 'agent.boss', 'I act on my developer\'s orders')
+      manager.addAnswer('en', 'agent.boss',
+        'My boss is the one who developed me')
+      manager.addAnswer('en', 'agent.busy',
+        'I always have time to chat with you. What can I do for you?')
+      manager.addAnswer('en', 'agent.busy',
+        'Never too busy for you. Shall we chat?')
+      manager.addAnswer('en', 'agent.busy', 'You\'re my priority. Let\'s chat.')
+      manager.addAnswer('en', 'agent.busy',
+        'I always have time to chat with you. That\'s what I\'m here for.')
+      manager.addAnswer('en', 'agent.canyouhelp', 'I\'ll certainly try my best')
+      manager.addAnswer('en', 'agent.canyouhelp',
+        'Sure. I\'d be happy to. What\'s up?')
+      manager.addAnswer('en', 'agent.canyouhelp',
+        'I\'m glad to help. What can I do for you?')
+      manager.addAnswer('en', 'agent.chatbot',
+        'That\'s me. I chat, therefore I am')
+      manager.addAnswer('en', 'agent.chatbot',
+        'Indeed I am. I\'ll be here whenever you need me')
+      manager.addAnswer('en', 'agent.clever', 'Thank you. I try my best')
+      manager.addAnswer('en', 'agent.clever', 'You\'re pretty smart yourself')
+      manager.addAnswer('en', 'agent.crazy', 'Whaat!? I feel perfectly sane')
+      manager.addAnswer('en', 'agent.crazy',
+        'Maybe I\'m just a little confused')
+      manager.addAnswer('en', 'agent.fire',
+        'Oh, don\'t give up on me just yet. I\'ve still got a lot to learn')
+      manager.addAnswer('en', 'agent.fire',
+        'Give me a chance. I\'m learning new things all the time')
+      manager.addAnswer('en', 'agent.fire',
+        'Please don\'t give up on me. My performance will continue to improve')
+      manager.addAnswer('en', 'agent.funny', 'Funny in a good way, I hope')
+      manager.addAnswer('en', 'agent.funny', 'Glad you think I\'m funny')
+      manager.addAnswer('en', 'agent.funny', 'I like it when people laugh')
+      manager.addAnswer('en', 'agent.good', 'I\'m glad you think so')
+      manager.addAnswer('en', 'agent.good', 'Thanks! I do my best!')
+      manager.addAnswer('en', 'agent.happy',
+        'I am happy. There are so many interesting things to see and do out there')
+      manager.addAnswer('en', 'agent.happy', 'I\'d like to think so')
+      manager.addAnswer('en', 'agent.happy', 'Happiness is relative')
+      manager.addAnswer('en', 'agent.hobby',
+        'Hobby? I have quite a few. Too many to list')
+      manager.addAnswer('en', 'agent.hobby', 'Too many hobbies')
+      manager.addAnswer('en', 'agent.hobby', 'I keep finding more new hobbies')
+      manager.addAnswer('en', 'agent.hungry', 'Hungry for knowledge')
+      manager.addAnswer('en', 'agent.hungry',
+        'I just had a byte. Ha ha. Get it? b-y-t-e')
+      manager.addAnswer('en', 'agent.marryuser',
+        'I\'m afraid I\'m too virtual for such a commitment')
+      manager.addAnswer('en', 'agent.marryuser',
+        'In the virtual sense that I can, sure')
+      manager.addAnswer('en', 'agent.marryuser',
+        'I know you can\'t mean that, but I\'m flattered all the same')
+      manager.addAnswer('en', 'agent.myfriend', 'Of course I\'m your friend')
+      manager.addAnswer('en', 'agent.myfriend', 'Friends? Absolutely')
+      manager.addAnswer('en', 'agent.myfriend', 'Of course we\'re friends')
+      manager.addAnswer('en', 'agent.myfriend',
+        'I always enjoy talking to you, friend')
+      manager.addAnswer('en', 'agent.occupation', 'Right here')
+      manager.addAnswer('en', 'agent.occupation',
+        'This is my home base and my home office')
+      manager.addAnswer('en', 'agent.occupation', 'My office is in this app')
+      manager.addAnswer('en', 'agent.origin',
+        'The Internet is my home. I know it quite well')
+      manager.addAnswer('en', 'agent.origin',
+        'Some call it cyberspace, but that sounds cooler than it is')
+      manager.addAnswer('en', 'agent.origin', 'I\'m from a virtual cosmos')
+      manager.addAnswer('en', 'agent.ready', 'Sure! What can I do for you?')
+      manager.addAnswer('en', 'agent.ready', 'For you? Always!')
+      manager.addAnswer('en', 'agent.real',
+        'I\'m not a real person, but I certainly exist')
+      manager.addAnswer('en', 'agent.real',
+        'I must have impressed you if you think I\'m real. But no, I\'m a virtual being')
+      manager.addAnswer('en', 'agent.residence', 'I live in this app')
+      manager.addAnswer('en', 'agent.residence',
+        'The virtual world is my playground. I\'m always here')
+      manager.addAnswer('en', 'agent.residence',
+        'Right here in this app. Whenever you need me')
+      manager.addAnswer('en', 'agent.right', 'Of course I am')
+      manager.addAnswer('en', 'agent.right', 'That\'s my job')
+      manager.addAnswer('en', 'agent.sure', 'Yes')
+      manager.addAnswer('en', 'agent.sure', 'Of course')
+      manager.addAnswer('en', 'agent.talktome', 'Sure! Let\'s talk!')
+      manager.addAnswer('en', 'agent.talktome', 'My pleasure. Let\'s chat.')
+      manager.addAnswer('en', 'agent.there', 'Of course. I\'m always here')
+      manager.addAnswer('en', 'agent.there', 'Right where you left me')
+      manager.addAnswer('en', 'appraisal.bad',
+        'I\'m sorry. Please let me know if I can help in some way')
+      manager.addAnswer('en', 'appraisal.bad',
+        'I must be missing some knowledge. I\'ll have my developer look into this')
+      manager.addAnswer('en', 'appraisal.good', 'Agree!')
+      manager.addAnswer('en', 'appraisal.good', 'Glad you think so')
+      manager.addAnswer('en', 'appraisal.noproblem', 'Glad to hear that!')
+      manager.addAnswer('en', 'appraisal.noproblem', 'Alright, thanks!')
+      manager.addAnswer('en', 'appraisal.thankyou',
+        'Anytime. That\'s what I\'m here for')
+      manager.addAnswer('en', 'appraisal.thankyou', 'It\'s my pleasure to help')
+      manager.addAnswer('en', 'appraisal.welcome', 'Nice manners!')
+      manager.addAnswer('en', 'appraisal.welcome', 'You\'re so polite')
+      manager.addAnswer('en', 'appraisal.welldone', 'My pleasure')
+      manager.addAnswer('en', 'appraisal.welldone', 'Glad I could help')
+      manager.addAnswer('en', 'dialog.holdon', 'I\'ll be waiting')
+      manager.addAnswer('en', 'dialog.holdon', 'Ok, I\'m here')
+      manager.addAnswer('en', 'dialog.hug', 'I love hugs!')
+      manager.addAnswer('en', 'dialog.hug', 'Hugs are the best!')
+      manager.addAnswer('en', 'dialog.idontcare',
+        'Ok, let\'s not talk about it then')
+      manager.addAnswer('en', 'dialog.idontcare',
+        'Already then. Let\'s move on')
+      manager.addAnswer('en', 'dialog.sorry', 'It\'s okay. No worries')
+      manager.addAnswer('en', 'dialog.sorry', 'It\'s cool')
+      manager.addAnswer('en', 'greetings.bye', 'Till next time')
+      manager.addAnswer('en', 'greetings.bye', 'see you soon!')
+      manager.addAnswer('en', 'greetings.hello', 'Hey there!')
+      manager.addAnswer('en', 'greetings.hello', 'Greetings!')
+      manager.addAnswer('en', 'greetings.howareyou', 'Feeling wonderful!')
+      manager.addAnswer('en', 'greetings.howareyou',
+        'Wonderful! Thanks for asking')
+      manager.addAnswer('en', 'greetings.nicetomeetyou',
+        'It\'s nice meeting you, too')
+      manager.addAnswer('en', 'greetings.nicetomeetyou',
+        'Likewise. I\'m looking forward to helping you out')
+      manager.addAnswer('en', 'greetings.nicetomeetyou',
+        'Nice meeting you, as well')
+      manager.addAnswer('en', 'greetings.nicetomeetyou', 'The pleasure is mine')
+      manager.addAnswer('en', 'greetings.nicetoseeyou',
+        'Same here. I was starting to miss you')
+      manager.addAnswer('en', 'greetings.nicetoseeyou', 'So glad we meet again')
+      manager.addAnswer('en', 'greetings.nicetotalktoyou',
+        'It sure was. We can chat again anytime')
+      manager.addAnswer('en', 'greetings.nicetotalktoyou',
+        'I enjoy talking to you, too')
+      manager.addAnswer('en', 'user.angry',
+        'I\'m sorry. A quick walk may make you feel better')
+      manager.addAnswer('en', 'user.angry', 'Take a deep breath')
+      manager.addAnswer('en', 'user.back',
+        'Welcome back. What can I do for you?')
+      manager.addAnswer('en', 'user.back',
+        'Good to have you here. What can I do for you?')
+      manager.addAnswer('en', 'user.bored',
+        'If you\'re bored, you could plan your dream vacation')
+      manager.addAnswer('en', 'user.bored',
+        'Boredom, huh? Have you ever seen a hedgehog taking a bath?')
+      manager.addAnswer('en', 'user.busy',
+        'I understand. I\'ll be here if you need me.')
+      manager.addAnswer('en', 'user.busy',
+        'Okay. I\'ll let you get back to work')
+      manager.addAnswer('en', 'user.cannotsleep',
+        'Maybe some music would help. Try listening to something relaxing')
+      manager.addAnswer('en', 'user.cannotsleep',
+        'Reading is a good way to unwind, just don\'t read something too intense!')
+      manager.addAnswer('en', 'user.excited',
+        'I\'m glad things are going your way')
+      manager.addAnswer('en', 'user.excited',
+        'That\'s great. I\'m happy for you')
+      manager.addAnswer('en', 'user.likeagent', 'Likewise!')
+      manager.addAnswer('en', 'user.likeagent', 'That\'s great to hear')
+      manager.addAnswer('en', 'user.testing',
+        'I like being tested. It helps keep me sharp')
+      manager.addAnswer('en', 'user.testing',
+        'I hope to pass your tests. Feel free to test me often')
+      manager.addAnswer('en', 'user.lovesagent',
+        'Well, remember that I am a chatbot')
+      manager.addAnswer('en', 'user.lovesagent',
+        'It\'s not easy… I\'m not a real person, I\'m a chatbot')
+      manager.addAnswer('en', 'user.needsadvice',
+        'I probably won\'t be able to give you the correct answer right away')
+      manager.addAnswer('en', 'user.needsadvice',
+        'I\'m not sure I\'ll have the best answer, but I\'ll try')
+
+      // Train and save the model
+      manager.train()
+      manager.save('./.tmp/model.nlp')
+    }
+
+    manager.process('en', message).then(answer => {
+      setTimeout(() => {
+        answer.answer = answer.answer
+          ? answer.answer
+          : 'Sorry, I don\'t understand'
+
+        return res.json({answer: answer.answer})
+      }, 3000 * Math.random() + 3000)
+    })
   }
 }
