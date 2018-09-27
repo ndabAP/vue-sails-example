@@ -508,7 +508,7 @@ module.exports = {
       manager.addAnswer('en', 'dialog.sorry', 'It\'s okay. No worries')
       manager.addAnswer('en', 'dialog.sorry', 'It\'s cool')
       manager.addAnswer('en', 'greetings.bye', 'Till next time')
-      manager.addAnswer('en', 'greetings.bye', 'see you soon!')
+      manager.addAnswer('en', 'greetings.bye', 'See you soon!')
       manager.addAnswer('en', 'greetings.hello', 'Hey there!')
       manager.addAnswer('en', 'greetings.hello', 'Greetings!')
       manager.addAnswer('en', 'greetings.howareyou', 'Feeling wonderful!')
