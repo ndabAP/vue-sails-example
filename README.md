@@ -19,6 +19,7 @@ a reference book. These notable elements are covered.
 - User input validation
 - Basic progressive web app support
 - State persistence
+- Natural language processing
 
 ## Installation
 
