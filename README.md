@@ -69,7 +69,7 @@ For a complete list see `package.json`.
 | Command             | Description                                                                                      |
 |---------------------|--------------------------------------------------------------------------------------------------|
 | `npm run dev`       | Start Sails.js if you didn't install it globally                                                 |
-| `npm run dev:watch` | Start Sails.js with watch mode if you didn't install it globally (this will delete your fixtures)                                 |
+| `npm run dev:watch` | Start Sails.js with watch mode if you didn't install it globally (this will delete new products)                                 |
 | `npm run test`      | Run all available tests like unit or functional tests                                            |
 
 ### Frontend
