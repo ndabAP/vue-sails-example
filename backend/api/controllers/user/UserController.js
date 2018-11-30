@@ -6,6 +6,8 @@ module.exports = {
       .findOne({id: userIdentifier})
       .catch(error => res.serverError(error))
 
+    delete user.password
+
     return res.json(user)
   }
 }

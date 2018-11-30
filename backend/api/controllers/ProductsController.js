@@ -8,7 +8,7 @@ module.exports = {
 
     const products = await Product
       .find()
-      .populate('user')
+      .populate('user', { select: ['name'] })
       .paginate({page, limit: 6})
       .catch(error => res.serverError(error))
 

@@ -11,7 +11,7 @@ module.exports = {
     const products = await Product
       .find()
       .where({user: {'!': userIdentifier}})
-      .populate('user')
+      .populate('user', { select: ['name'] })
       .paginate({page, limit: 6})
       .catch(error => res.serverError(error))
 
@@ -26,7 +26,7 @@ module.exports = {
 
     const products = await Product
       .find({user: userIdentifier})
-      .catch(error => res.serverError())
+      .catch(error => res.serverError(error))
 
     return res.json(products)
   }
