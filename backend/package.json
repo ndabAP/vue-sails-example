@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "description": "Product paradise",
   "dependencies": {
+    "@sentry/node": "^4.4.2",
     "bcryptjs": "^2.3.0",
     "chai": "^4.1.0",
     "crypto": "1.0.1",
