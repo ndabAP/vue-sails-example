@@ -34,7 +34,8 @@ export default new Vuex.Store({
   state: {
     locale: 'en',
     isUserAuthenticated: !!(getCookie('user')),
-    isVisibleHelp: false
+    isVisibleHelp: false,
+    isVisibleProductPatch: false
   },
 
   mutations: {
@@ -48,6 +49,10 @@ export default new Vuex.Store({
 
     SET_IS_VISIBLE_HELP (state, isVisibleHelp) {
       state.isVisibleHelp = isVisibleHelp
+    },
+
+    SET_IS_VISIBLE_PRODUCT_PATCH (state, isVisibleProductPatch) {
+      state.isVisibleProductPatch = isVisibleProductPatch
     }
   }
 })
