@@ -13,7 +13,7 @@ module.exports = {
 
     plugins: [
       new WorkboxPlugin.InjectManifest({
-        swSrc: path.join(__dirname, 'src/sw.js'),
+        swSrc: path.join(__dirname, 'src/sw.js')
       })
     ]
   },
