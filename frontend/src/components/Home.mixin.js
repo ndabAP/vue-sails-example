@@ -1,4 +1,5 @@
 import { mapActions } from 'vuex'
+import he from 'he'
 
 export default {
   created () {
@@ -30,6 +31,8 @@ export default {
   },
 
   methods: {
+    encode: text => he.encode(text),
+
     ...mapActions(['getProducts'])
   }
 }

@@ -45,7 +45,7 @@ export default {
     makeProductVisible (product) {
       MessageBox({
         title: product.title,
-        message: product.description,
+        message: this.encode(product.description),
         confirmButtonText: 'Okay'
       })
     }

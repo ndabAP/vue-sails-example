@@ -29,7 +29,7 @@ export default {
     makeProductVisible (product) {
       MessageBox({
         title: product.title,
-        message: product.description,
+        message: this.encode(product.description),
         showCancelButton: true,
         cancelButtonText: this.t('shopindex.mixin.cancelButtonText'),
         confirmButtonText: `${this.t('shopindex.mixin.confirmButtonText')} $${product.price}`
