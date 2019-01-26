@@ -40,7 +40,7 @@ export default {
 
     isVisibleProductPatch: {
       get () {
-        return this.$store.state.Product.product.meta.isVisibleProductPatch
+        return this.$store.state.isVisibleProductPatch
       },
 
       set (isVisibleProductPatch) {
