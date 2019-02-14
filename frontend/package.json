@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "vue-cli-service serve",
+    "serve": "vue-cli-service serve",
     "cypress:open": "npm run dev & cypress open --global",
     "cypress:run": "cypress run --headed",
     "build": "vue-cli-service build",
