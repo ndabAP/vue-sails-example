@@ -51,7 +51,7 @@ $ cd ../backend && npm install
 
 ### Development
 
-`cd backend && sails lift` and then `cd ../frontend && npm run dev`. After that, open
+`cd backend && sails lift` and then `cd ../frontend && npm run serve`. After that, open
 [localhost:8080](http://localhost:8080) in your browser. Make sure that you start both servers simultaneously.
 
 ### Production
@@ -78,11 +78,11 @@ For a complete list see `package.json`.
 
 | Command                   | Description                                                                              |
 |---------------------------|------------------------------------------------------------------------------------------|
-| `npm run dev`             | Start the development server at [localhost:8080](http://localhost:8080)                  |
+| `npm run serve`           | Start the development server at [localhost:8080](http://localhost:8080)                  |
 | `npm run build`           | Minfiy, uglify and merge the application with Sails.js                                   |
 | `npm run test`            | Run all available tests like unit or functional tests                                    |
 
-## Essential components used
+## Essential components
 
 The following components are used in this project. There are plenty more, though, check the `package.json` files.
 
