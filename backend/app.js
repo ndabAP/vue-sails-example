@@ -18,11 +18,6 @@
  * `node app.js --silent --port=80 --prod`
  */
 
-const Sentry = require('@sentry/node')
-Sentry.init(
-  {dsn: 'https://d7efb6056b3446049b11b61f8cec0a5b@sentry.io/1363502'}
-)
-
 var SailsApp = require('sails').Sails
 
 // Ensure we're in the project directory, so cwd-relative paths work as expected

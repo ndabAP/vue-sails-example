@@ -1,11 +1,3 @@
-import * as Sentry from '@sentry/browser'
-
-Sentry.init(
-  {
-    dsn: 'https://d7efb6056b3446049b11b61f8cec0a5b@sentry.io/1363502'
-  }
-)
-
 if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
