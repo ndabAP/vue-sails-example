@@ -40,7 +40,7 @@
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
     "vue-sails.io": "^1.0.2",
-    "vue-socket.io": "^2.1.1-a",
+    "vue-socket.io": "^3.0.10",
     "vue-template-compiler": "^2.5.16",
     "vue-translate-plugin": "^1.2.0",
     "vuex": "^3.0.1",
