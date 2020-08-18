@@ -14,7 +14,7 @@
     "test": "start-server-and-test dev http://localhost:8080 cypress:run"
   },
   "dependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-rc.3",
+    "@vue/cli-plugin-babel": "^4.5.4",
     "@vue/cli-plugin-e2e-cypress": "^3.0.0-rc.3",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.3",
     "@vue/cli-plugin-unit-mocha": "^3.0.0-rc.3",
