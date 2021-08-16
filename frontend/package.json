@@ -18,7 +18,7 @@
     "@vue/cli-plugin-e2e-cypress": "^3.0.0-rc.3",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.3",
     "@vue/cli-plugin-unit-mocha": "^3.0.0-rc.3",
-    "@vue/cli-service": "^3.0.0-rc.3",
+    "@vue/cli-service": "^4.5.4",
     "@vue/eslint-config-standard": "^3.0.0-rc.3",
     "@vue/test-utils": "^1.0.0-beta.20",
     "bootstrap": "^4.1.1",
