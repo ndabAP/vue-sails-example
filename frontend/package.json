@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-rc.3",
-    "@vue/cli-plugin-e2e-cypress": "^3.0.0-rc.3",
+    "@vue/cli-plugin-e2e-cypress": "^4.5.4",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.3",
     "@vue/cli-plugin-unit-mocha": "^3.0.0-rc.3",
     "@vue/cli-service": "^3.0.0-rc.3",
