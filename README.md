@@ -4,8 +4,6 @@ This project is for those who are new to
 [single-page applications](https://en.wikipedia.org/wiki/Single-page_application) and want to learn through a real
 example. Besides that, it should cover most of the features from Sails.js and Vue.js, like a reference book. For a better understanding, you should be aware of [JavaScript ES6 features](http://es6-features.org) and also [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
 
-To see this project in action, click [here](https://vue-sails-example.herokuapp.com/).
-
 ## Features
 
 This project should cover as many features as possible. It should be used as an example for newbies and also serve as
